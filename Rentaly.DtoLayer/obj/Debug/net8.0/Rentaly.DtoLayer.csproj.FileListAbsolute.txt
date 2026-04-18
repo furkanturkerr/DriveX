@@ -1,0 +1,12 @@
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/bin/Debug/net8.0/Rentaly.DtoLayer.deps.json
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/bin/Debug/net8.0/Rentaly.DtoLayer.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/bin/Debug/net8.0/Rentaly.DtoLayer.pdb
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/obj/Debug/net8.0/Rentaly.DtoLayer.GeneratedMSBuildEditorConfig.editorconfig
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/obj/Debug/net8.0/Rentaly.DtoLayer.AssemblyInfoInputs.cache
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/obj/Debug/net8.0/Rentaly.DtoLayer.AssemblyInfo.cs
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/obj/Debug/net8.0/Rentaly.DtoLayer.csproj.CoreCompileInputs.cache
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/obj/Debug/net8.0/Rentaly.DtoLayer.sourcelink.json
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/obj/Debug/net8.0/Rentaly.DtoLayer.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/obj/Debug/net8.0/refint/Rentaly.DtoLayer.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/obj/Debug/net8.0/Rentaly.DtoLayer.pdb
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/obj/Debug/net8.0/ref/Rentaly.DtoLayer.dll

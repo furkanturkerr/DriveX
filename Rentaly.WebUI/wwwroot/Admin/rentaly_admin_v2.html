@@ -1,0 +1,584 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g:#22c55e;--gd:#16a34a;--gx:#15803d;
+  --dark:#0f1117;--dark2:#161b22;--dark3:#1c2333;
+  --font:var(--font-sans)
+}
+.adm{display:flex;height:100vh;min-height:740px;background:#0f1117;font-family:var(--font-sans);font-size:13px;color:#e2e8f0}
+.sb{width:226px;min-width:226px;background:#0d1117;border-right:1px solid #21262d;display:flex;flex-direction:column}
+.sb-logo{padding:20px 18px 16px;border-bottom:1px solid #21262d;display:flex;align-items:center;gap:10px}
+.sb-logo-mark{width:36px;height:36px;background:#22c55e;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.sb-logo-mark svg{width:20px;height:20px}
+.sb-brand{font-size:16px;font-weight:500;color:#f0f6fc;letter-spacing:-.3px}
+.sb-brand span{color:#22c55e}
+.sb-tag{font-size:10px;color:#6e7681;margin-top:1px}
+.sb-nav{flex:1;overflow-y:auto;padding:10px 0;scrollbar-width:none}
+.sb-nav::-webkit-scrollbar{display:none}
+.sb-sec{padding:14px 18px 5px;font-size:10px;font-weight:500;color:#6e7681;letter-spacing:.8px;text-transform:uppercase}
+.ni{display:flex;align-items:center;gap:10px;padding:9px 18px;cursor:pointer;color:#8b949e;border-left:2px solid transparent;transition:all .12s;position:relative}
+.ni:hover{background:#161b22;color:#c9d1d9}
+.ni.act{background:#161b22;color:#22c55e;border-left-color:#22c55e}
+.ni svg{width:15px;height:15px;flex-shrink:0}
+.ni .bx{margin-left:auto;background:#22c55e;color:#fff;font-size:10px;padding:1px 7px;border-radius:20px;font-weight:500;line-height:1.6}
+.ni .bw{background:#f59e0b}
+.ni .br{background:#ef4444}
+.chv{margin-left:auto;width:11px;height:11px;transition:transform .2s;color:#6e7681}
+.chv.op{transform:rotate(90deg)}
+.sn{background:#0a0e14;overflow:hidden;max-height:0;transition:max-height .2s}
+.sn.op{max-height:220px}
+.sni{display:flex;align-items:center;gap:8px;padding:7px 18px 7px 44px;cursor:pointer;color:#8b949e;font-size:12px}
+.sni:hover{color:#c9d1d9;background:#161b22}
+.sni.act{color:#22c55e}
+.sni::before{content:'';width:4px;height:4px;background:currentColor;border-radius:50%;margin-right:4px;flex-shrink:0}
+.sb-footer{padding:14px 18px;border-top:1px solid #21262d;display:flex;align-items:center;gap:10px}
+.av{width:32px;height:32px;border-radius:50%;background:#22c55e;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:#fff;flex-shrink:0}
+.av-name{font-size:12px;color:#c9d1d9;font-weight:500}
+.av-role{font-size:10px;color:#6e7681}
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:#0f1117}
+.tb{height:54px;background:#0d1117;border-bottom:1px solid #21262d;display:flex;align-items:center;padding:0 22px;gap:14px}
+.tb-title{font-size:14px;font-weight:500;color:#f0f6fc;flex:1}
+.tb-bc{font-size:11px;color:#6e7681;margin-top:2px}
+.tb-sr{display:flex;align-items:center;gap:8px;background:#161b22;border:1px solid #30363d;border-radius:8px;padding:6px 12px;width:190px}
+.tb-sr input{background:none;border:none;outline:none;font-size:12px;color:#c9d1d9;width:100%}
+.tb-sr input::placeholder{color:#6e7681}
+.tb-ic{width:32px;height:32px;border-radius:8px;border:1px solid #30363d;background:#161b22;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative}
+.tb-ic:hover{background:#21262d}
+.nd{width:7px;height:7px;background:#22c55e;border-radius:50%;position:absolute;top:4px;right:4px;border:1.5px solid #0d1117}
+.pg{flex:1;overflow-y:auto;padding:20px 22px;scrollbar-width:thin;scrollbar-color:#30363d transparent}
+.pg-sec{display:none}
+.pg-sec.on{display:block}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.sc{background:#161b22;border:1px solid #21262d;border-radius:12px;padding:16px;position:relative;overflow:hidden}
+.sc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:#22c55e;border-radius:2px 2px 0 0}
+.sc.warn::before{background:#f59e0b}
+.sc.info::before{background:#3b82f6}
+.sc.dng::before{background:#ef4444}
+.sc-lbl{font-size:11px;color:#8b949e;font-weight:500;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.sc-lbl svg{width:13px;height:13px}
+.sc-val{font-size:26px;font-weight:500;color:#f0f6fc;margin-bottom:6px;letter-spacing:-1px}
+.sc-ch{font-size:11px}
+.sc-ch.up{color:#22c55e}
+.sc-ch.dn{color:#ef4444}
+.sc-ch.nu{color:#6e7681}
+.r2{display:grid;grid-template-columns:1fr 300px;gap:14px;margin-bottom:16px}
+.cd{background:#161b22;border:1px solid #21262d;border-radius:12px;padding:16px}
+.cd-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #21262d}
+.cd-t{font-size:13px;font-weight:500;color:#f0f6fc;display:flex;align-items:center;gap:8px}
+.cd-t-dot{width:7px;height:7px;background:#22c55e;border-radius:50%}
+.cd-a{font-size:11px;color:#22c55e;cursor:pointer}
+.cd-a:hover{color:#16a34a}
+table{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
+th{text-align:left;padding:7px 10px;color:#6e7681;border-bottom:1px solid #21262d;font-weight:500;font-size:10px;text-transform:uppercase;letter-spacing:.5px}
+td{padding:10px 10px;border-bottom:1px solid #161b22;color:#c9d1d9}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#0d1117}
+.st{padding:2px 9px;border-radius:20px;font-size:10px;font-weight:500;display:inline-block}
+.sa{background:#0d2818;color:#22c55e;border:1px solid #22c55e33}
+.sp{background:#2a1e06;color:#f59e0b;border:1px solid #f59e0b33}
+.sd{background:#0c1f3d;color:#60a5fa;border:1px solid #3b82f633}
+.sc2{background:#2a0d0d;color:#ef4444;border:1px solid #ef444433}
+.car-cards{display:flex;flex-direction:column;gap:8px}
+.cc{background:#0d1117;border:1px solid #21262d;border-radius:10px;padding:10px 12px;display:flex;align-items:center;gap:12px;cursor:pointer}
+.cc:hover{border-color:#30363d}
+.cc-vis{width:60px;height:36px;background:#21262d;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cc-vis svg{width:40px;height:22px}
+.cc-nm{font-size:12px;font-weight:500;color:#f0f6fc}
+.cc-tp{font-size:10px;color:#6e7681;margin-top:2px}
+.cc-pr{margin-left:auto;text-align:right}
+.cc-am{font-size:12px;font-weight:500;color:#22c55e}
+.cc-st{font-size:10px;color:#6e7681}
+.r3{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bar-r{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:12px}
+.bar-lbl{width:68px;color:#8b949e;text-align:right;font-size:11px}
+.bar-tr{flex:1;height:7px;background:#21262d;border-radius:4px;overflow:hidden}
+.bar-fl{height:100%;border-radius:4px}
+.bar-vl{width:34px;color:#8b949e;font-size:11px}
+.qb{display:flex;flex-direction:column;gap:8px}
+.qbtn{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:500;border:1px solid transparent;transition:all .12s}
+.qbtn.grn{background:#0d2818;color:#22c55e;border-color:#22c55e33}
+.qbtn.grn:hover{background:#14391f;border-color:#22c55e55}
+.qbtn.blu{background:#0c1f3d;color:#60a5fa;border-color:#3b82f633}
+.qbtn.blu:hover{background:#112a52}
+.qbtn.def{background:#161b22;color:#c9d1d9;border-color:#21262d}
+.qbtn:hover.def{background:#21262d}
+.sec-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #21262d}
+.sec-ttl{font-size:14px;font-weight:500;color:#f0f6fc;display:flex;align-items:center;gap:8px}
+.sec-ttl svg{width:16px;height:16px;color:#22c55e}
+.add-btn{display:flex;align-items:center;gap:6px;padding:7px 14px;background:#22c55e;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer}
+.add-btn:hover{background:#16a34a}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.fg.w{grid-template-columns:1fr}
+.fl{display:flex;flex-direction:column;gap:5px}
+.fl label{font-size:11px;color:#8b949e;font-weight:500}
+.fl input,.fl select,.fl textarea{background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:8px 11px;font-size:12px;color:#c9d1d9;outline:none;font-family:var(--font-sans);transition:border .12s}
+.fl input:focus,.fl select:focus,.fl textarea:focus{border-color:#22c55e55}
+.fl textarea{resize:vertical;min-height:80px}
+.fl input[type=color]{height:38px;padding:4px 8px;cursor:pointer}
+.fl input[type=date]{color-scheme:dark}
+.sv{background:#22c55e;color:#fff;border:none;padding:9px 22px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;margin-top:4px}
+.sv:hover{background:#16a34a}
+.up-zone{border:1px dashed #30363d;border-radius:8px;padding:18px;text-align:center;cursor:pointer;color:#6e7681;font-size:12px;background:#0d1117}
+.up-zone:hover{border-color:#22c55e55;background:#0d1a10}
+.tbl-wrap{overflow-x:auto}
+.rev-hd{display:grid;grid-template-columns:100px 1fr 60px;gap:8px;align-items:center;margin-bottom:16px}
+.rev-sc{display:flex;gap:3px}
+.rev-sc span{width:12px;height:12px;background:#21262d;border-radius:3px}
+.rev-sc span.on{background:#f59e0b}
+.tag-pill{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;background:#0d2818;color:#22c55e;border-radius:20px;font-size:10px;font-weight:500;border:1px solid #22c55e22;margin:2px}
+.hero-preview{background:#0a0e14;border:1px solid #21262d;border-radius:10px;padding:16px;margin-bottom:14px;position:relative;overflow:hidden}
+.hero-overlay{background:#111;border-radius:8px;padding:12px 16px;margin-bottom:10px}
+.hero-h{font-size:15px;color:#f0f6fc;font-weight:500}
+.hero-h em{color:#22c55e;font-style:normal}
+.step-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.step-c{background:#161b22;border-radius:8px;padding:8px 10px;border:1px solid #21262d}
+.step-n{width:20px;height:20px;background:#22c55e;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:500;margin-bottom:6px}
+.step-t{font-size:11px;font-weight:500;color:#c9d1d9}
+.step-d{font-size:10px;color:#6e7681;margin-top:2px;line-height:1.4}
+</style>
+
+<div class="adm">
+<div class="sb">
+  <div class="sb-logo">
+    <div class="sb-logo-mark">
+      <svg viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 9l2.5-5h13l2.5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M3 9h18" stroke="#fff" stroke-width="1.8"/>
+        <path d="M1 9l-0.5 3.5V14h1.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M23 9l0.5 3.5V14h-1.5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="6.5" cy="14" r="2" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="17.5" cy="14" r="2" stroke="#fff" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="sb-brand">rent<span>aly</span></div>
+      <div class="sb-tag">Admin Panel v2.0</div>
+    </div>
+  </div>
+  <div class="sb-nav">
+    <div class="ni act" onclick="go('db',this)">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h5v5H2zm7 0h5v5H9zm-7 7h5v5H2zm7 0h5v5H9z" opacity=".85"/></svg>
+      Dashboard
+    </div>
+    <div class="sb-sec">Site İçeriği</div>
+    <div class="ni" onclick="tog('sn-say',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 6h6M5 9h4"/></svg>
+      Sayfalar
+      <svg class="chv" id="c-sn-say" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 3l3 3-3 3"/></svg>
+    </div>
+    <div class="sn" id="sn-say">
+      <div class="sni" onclick="go('hero',this)">Ana Sayfa Hero</div>
+      <div class="sni" onclick="go('about',this)">Hakkımızda</div>
+      <div class="sni" onclick="go('srv',this)">Servisler</div>
+      <div class="sni" onclick="go('bnr',this)">Banner</div>
+      <div class="sni" onclick="go('yor',this)">Yorumlar</div>
+    </div>
+    <div class="sb-sec">Araç Yönetimi</div>
+    <div class="ni" onclick="go('cars',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 8l2-4h8l2 4"/><path d="M2 8h12"/><path d="M1 8v3h1.5m10 0H14V8"/><circle cx="5" cy="11" r="1.5"/><circle cx="11" cy="11" r="1.5"/></svg>
+      Araçlar
+      <span class="bx">24</span>
+    </div>
+    <div class="ni" onclick="go('mdl',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 12V5l6-3 6 3v7l-6 3-6-3z"/><path d="M8 2v10M2 5l6 3 6-3"/></svg>
+      Kategoriler
+    </div>
+    <div class="sb-sec">İşlemler</div>
+    <div class="ni" onclick="go('res',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 1v4M11 1v4M2 7h12"/></svg>
+      Rezervasyonlar
+      <span class="bx bw">8</span>
+    </div>
+    <div class="ni" onclick="go('msg',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 3h12v9H2z"/><path d="M2 3l6 5 6-5"/></svg>
+      Mesajlar
+      <span class="bx br">3</span>
+    </div>
+    <div class="ni" onclick="go('usr',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="5.5" r="2.5"/><path d="M3 14a5 5 0 0 1 10 0"/></svg>
+      Kullanıcılar
+    </div>
+    <div class="sb-sec">Sistem</div>
+    <div class="ni" onclick="go('set',this)">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="2.5"/><path d="M8 2v1M8 13v1M2 8h1M13 8h1M3.5 3.5l.7.7M11.8 11.8l.7.7M3.5 12.5l.7-.7M11.8 4.2l.7-.7"/></svg>
+      Ayarlar
+    </div>
+  </div>
+  <div class="sb-footer">
+    <div class="av">AD</div>
+    <div>
+      <div class="av-name">Admin</div>
+      <div class="av-role">Süper Admin</div>
+    </div>
+    <svg style="margin-left:auto;width:14px;height:14px;color:#6e7681" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 3l5 5-5 5M15 8H6M1 3v10"/></svg>
+  </div>
+</div>
+
+<div class="main">
+  <div class="tb">
+    <div>
+      <div class="tb-title" id="ptitle">Dashboard</div>
+    </div>
+    <div style="flex:1"></div>
+    <div class="tb-sr">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="#6e7681" stroke-width="1.5"><circle cx="6.5" cy="6.5" r="4"/><path d="M10 10l3 3"/></svg>
+      <input placeholder="Ara...">
+    </div>
+    <div class="tb-ic">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#8b949e" stroke-width="1.4"><path d="M8 2a4 4 0 0 0-4 4v3l-1.5 2h11L12 9V6a4 4 0 0 0-4-4zm-1 11a1 1 0 0 0 2 0"/></svg>
+      <div class="nd"></div>
+    </div>
+    <div class="tb-ic">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#8b949e" stroke-width="1.4"><circle cx="8" cy="5" r="3"/><path d="M2 14a6 6 0 0 1 12 0"/></svg>
+    </div>
+  </div>
+
+  <div class="pg">
+
+    <!-- DASHBOARD -->
+    <div class="pg-sec on" id="pg-db">
+      <div class="g4">
+        <div class="sc">
+          <div class="sc-lbl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M2 8l2-4h8l2 4H2zm0 0H1v3h1.5m11 0H14V8"/><circle cx="5" cy="11" r="1.5"/><circle cx="11" cy="11" r="1.5"/></svg> Toplam Araç</div>
+          <div class="sc-val">24</div>
+          <div class="sc-ch up">↑ +2 bu ay</div>
+        </div>
+        <div class="sc warn">
+          <div class="sc-lbl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 1v4M11 1v4M2 7h12"/></svg> Aktif Rezervasyon</div>
+          <div class="sc-val">18</div>
+          <div class="sc-ch up">↑ %12 artış</div>
+        </div>
+        <div class="sc info">
+          <div class="sc-lbl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M8 2v12M4 6h5a2 2 0 0 1 0 4H6m-2 3h6"/></svg> Aylık Gelir</div>
+          <div class="sc-val">₺84K</div>
+          <div class="sc-ch up">↑ %8 artış</div>
+        </div>
+        <div class="sc dng">
+          <div class="sc-lbl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M2 3h12v9H2z"/><path d="M2 3l6 5 6-5"/></svg> Bekleyen Mesaj</div>
+          <div class="sc-val">3</div>
+          <div class="sc-ch dn">Yanıt bekliyor</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
+        <div style="background:#0d2818;border:1px solid #22c55e33;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;background:#22c55e22;border-radius:8px;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"><path d="M2 8l2-4h8l2 4H2z"/><circle cx="5" cy="12" r="1.5"/><circle cx="11" cy="12" r="1.5"/></svg></div>
+          <div><div style="font-size:18px;font-weight:500;color:#22c55e">14</div><div style="font-size:10px;color:#16a34a">Müsait</div></div>
+        </div>
+        <div style="background:#2a1e06;border:1px solid #f59e0b33;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;background:#f59e0b22;border-radius:8px;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="#f59e0b" stroke-width="1.5"><path d="M2 8l2-4h8l2 4H2z"/><circle cx="5" cy="12" r="1.5"/><circle cx="11" cy="12" r="1.5"/></svg></div>
+          <div><div style="font-size:18px;font-weight:500;color:#f59e0b">8</div><div style="font-size:10px;color:#d97706">Kirada</div></div>
+        </div>
+        <div style="background:#2a0d0d;border:1px solid #ef444433;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;background:#ef444422;border-radius:8px;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="#ef4444" stroke-width="1.5"><path d="M8 5v5M8 12v1"/><circle cx="8" cy="8" r="6"/></svg></div>
+          <div><div style="font-size:18px;font-weight:500;color:#ef4444">2</div><div style="font-size:10px;color:#dc2626">Serviste</div></div>
+        </div>
+      </div>
+
+      <div class="r2">
+        <div class="cd">
+          <div class="cd-hd">
+            <div class="cd-t"><div class="cd-t-dot"></div>Son Rezervasyonlar</div>
+            <div class="cd-a" onclick="go('res',null)">Tümünü gör →</div>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th style="width:100px">Müşteri</th><th style="width:110px">Araç</th><th style="width:60px">Tarih</th><th style="width:70px">Tutar</th><th style="width:80px">Durum</th></tr></thead>
+              <tbody>
+                <tr><td>Ahmet Y.</td><td>BMW 5 Serisi</td><td>18 Nis</td><td style="color:#22c55e">₺1.200</td><td><span class="st sa">Aktif</span></td></tr>
+                <tr><td>Selin K.</td><td>Mercedes C180</td><td>17 Nis</td><td style="color:#22c55e">₺950</td><td><span class="st sp">Bekliyor</span></td></tr>
+                <tr><td>Mert D.</td><td>VW Passat</td><td>16 Nis</td><td style="color:#22c55e">₺680</td><td><span class="st sd">Tamamlandı</span></td></tr>
+                <tr><td>Elif Ş.</td><td>Toyota Corolla</td><td>15 Nis</td><td style="color:#22c55e">₺440</td><td><span class="st sd">Tamamlandı</span></td></tr>
+                <tr><td>Can A.</td><td>Renault Megane</td><td>14 Nis</td><td style="color:#6e7681">₺380</td><td><span class="st sc2">İptal</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="cd">
+          <div class="cd-hd">
+            <div class="cd-t"><div class="cd-t-dot"></div>Filo Durumu</div>
+            <div class="cd-a" onclick="go('cars',null)">Yönet →</div>
+          </div>
+          <div class="car-cards">
+            <div class="cc"><div class="cc-vis"><svg viewBox="0 0 40 22" fill="none" stroke="#22c55e" stroke-width="1.5"><path d="M4 12l3-6h26l3 6H4zm0 0H2l-1 4v2h2m33-6h2l1 4v2h-2"/><circle cx="9" cy="18" r="2.5"/><circle cx="31" cy="18" r="2.5"/></svg></div><div><div class="cc-nm">BMW 5 Serisi</div><div class="cc-tp">Prestige • 2023</div></div><div class="cc-pr"><div class="cc-am">₺1.200/gün</div><div class="cc-st" style="color:#f59e0b">Kirada</div></div></div>
+            <div class="cc"><div class="cc-vis"><svg viewBox="0 0 40 22" fill="none" stroke="#8b949e" stroke-width="1.5"><path d="M4 12l3-6h26l3 6H4zm0 0H2l-1 4v2h2m33-6h2l1 4v2h-2"/><circle cx="9" cy="18" r="2.5"/><circle cx="31" cy="18" r="2.5"/></svg></div><div><div class="cc-nm">VW Passat</div><div class="cc-tp">Sedan • 2022</div></div><div class="cc-pr"><div class="cc-am">₺680/gün</div><div class="cc-st" style="color:#22c55e">Müsait</div></div></div>
+            <div class="cc"><div class="cc-vis"><svg viewBox="0 0 44 22" fill="none" stroke="#8b949e" stroke-width="1.5"><rect x="2" y="8" width="40" height="10" rx="2"/><path d="M4 8l4-6h24l4 6"/><circle cx="9" cy="18" r="2.5"/><circle cx="35" cy="18" r="2.5"/></svg></div><div><div class="cc-nm">Ford Transit</div><div class="cc-tp">Van • 2023</div></div><div class="cc-pr"><div class="cc-am">₺750/gün</div><div class="cc-st" style="color:#ef4444">Serviste</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="r3">
+        <div class="cd">
+          <div class="cd-hd"><div class="cd-t"><div class="cd-t-dot"></div>Araç Tipi Kullanım Oranı</div></div>
+          <div class="bar-r"><span class="bar-lbl">Sedan</span><div class="bar-tr"><div class="bar-fl" style="width:72%;background:#22c55e"></div></div><span class="bar-vl" style="color:#22c55e">72%</span></div>
+          <div class="bar-r"><span class="bar-lbl">Prestige</span><div class="bar-tr"><div class="bar-fl" style="width:58%;background:#a855f7"></div></div><span class="bar-vl" style="color:#a855f7">58%</span></div>
+          <div class="bar-r"><span class="bar-lbl">Van</span><div class="bar-tr"><div class="bar-fl" style="width:44%;background:#f59e0b"></div></div><span class="bar-vl" style="color:#f59e0b">44%</span></div>
+          <div class="bar-r"><span class="bar-lbl">Minibüs</span><div class="bar-tr"><div class="bar-fl" style="width:28%;background:#3b82f6"></div></div><span class="bar-vl" style="color:#3b82f6">28%</span></div>
+        </div>
+        <div class="cd">
+          <div class="cd-hd"><div class="cd-t"><div class="cd-t-dot"></div>Hızlı İşlemler</div></div>
+          <div class="qb">
+            <div class="qbtn grn" onclick="go('cars',null)"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg>Yeni Araç Ekle</div>
+            <div class="qbtn blu" onclick="go('res',null)"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 1v4M11 1v4M2 7h12"/></svg>Rezervasyon Oluştur</div>
+            <div class="qbtn def" onclick="go('hero',null)"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg>Sayfa İçeriği Düzenle</div>
+            <div class="qbtn def" onclick="go('msg',null)"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M2 3h12v9H2z"/><path d="M2 3l6 5 6-5"/></svg>Mesajları Görüntüle <span style="margin-left:4px;background:#ef4444;color:#fff;font-size:9px;padding:1px 5px;border-radius:10px">3</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="pg-sec" id="pg-hero">
+      <div class="sec-bar"><div class="sec-ttl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M4 7h8M4 10h5"/></svg>Ana Sayfa — Hero Bölümü</div><button class="add-btn sv" onclick="">Değişiklikleri Kaydet</button></div>
+      <div class="hero-preview">
+        <div style="font-size:10px;color:#6e7681;margin-bottom:8px;display:flex;align-items:center;gap:6px"><svg width="11" height="11" viewBox="0 0 16 16" fill="#22c55e"><circle cx="8" cy="8" r="7"/></svg>Önizleme</div>
+        <div class="hero-overlay"><div class="hero-h">Looking for a <em>vehicle</em>? You're at the right place.</div></div>
+        <div class="step-row">
+          <div class="step-c"><div class="step-n">1</div><div class="step-t">Choose a vehicle</div><div class="step-d">Vast fleet tailored to every need</div></div>
+          <div class="step-c"><div class="step-n">2</div><div class="step-t">Pick location</div><div class="step-d">Ideal date & location</div></div>
+          <div class="step-c"><div class="step-n">3</div><div class="step-t">Make a booking</div><div class="step-d">Secure your reservation</div></div>
+          <div class="step-c"><div class="step-n">4</div><div class="step-t">Sit back & relax</div><div class="step-d">We handle every detail</div></div>
+        </div>
+      </div>
+      <div class="cd">
+        <div class="fg">
+          <div class="fl" style="grid-column:1/-1"><label>Hero Başlığı</label><input value="Looking for a vehicle? You're at the right place."></div>
+          <div class="fl"><label>CTA Buton Metni</label><input value="Find a Vehicle"></div>
+          <div class="fl"><label>Buton Rengi</label><input type="color" value="#22c55e"></div>
+          <div class="fl" style="grid-column:1/-1"><label>Arkaplan Görseli</label><div class="up-zone">Havadan çekim görseli yükle (önerilen: 1920×1080)</div></div>
+        </div>
+        <div style="border-top:1px solid #21262d;padding-top:14px;margin-top:4px">
+          <div style="font-size:12px;font-weight:500;color:#c9d1d9;margin-bottom:12px">Adım Kartları</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div class="fl"><label>Adım 1 Başlık</label><input value="Choose a vehicle"></div>
+            <div class="fl"><label>Adım 1 Açıklama</label><input value="Vast fleet tailored to every need"></div>
+            <div class="fl"><label>Adım 2 Başlık</label><input value="Pick location & date"></div>
+            <div class="fl"><label>Adım 2 Açıklama</label><input value="Convenience and flexibility"></div>
+            <div class="fl"><label>Adım 3 Başlık</label><input value="Make a booking"></div>
+            <div class="fl"><label>Adım 3 Açıklama</label><input value="Secure your reservation"></div>
+            <div class="fl"><label>Adım 4 Başlık</label><input value="Sit back & relax"></div>
+            <div class="fl"><label>Adım 4 Açıklama</label><input value="Hassle-free convenience"></div>
+          </div>
+        </div>
+        <button class="sv" style="margin-top:14px">Kaydet</button>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="pg-sec" id="pg-about">
+      <div class="sec-bar"><div class="sec-ttl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v1"/></svg>Hakkımızda</div><button class="sv">Kaydet</button></div>
+      <div class="cd">
+        <div class="fg">
+          <div class="fl" style="grid-column:1/-1"><label>Başlık</label><input value="About Rentaly — Trusted Car Rental Service"></div>
+          <div class="fl" style="grid-column:1/-1"><label>Açıklama</label><textarea>We are a leading car rental service providing premium vehicles...</textarea></div>
+          <div class="fl"><label>Telefon</label><input value="+208 333 9296"></div>
+          <div class="fl"><label>E-posta</label><input value="contact@rentaly.com"></div>
+          <div class="fl"><label>Çalışma Saati</label><input value="Mon - Fri 08.00 - 18.00"></div>
+          <div class="fl"><label>Kuruluş Yılı</label><input value="2015"></div>
+          <div class="fl" style="grid-column:1/-1"><label>Hakkımızda Görseli</label><div class="up-zone">Fotoğraf yükle</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVİS -->
+    <div class="pg-sec" id="pg-srv">
+      <div class="sec-bar"><div class="sec-ttl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M8 2l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z"/></svg>Servisler</div><button class="add-btn">+ Servis Ekle</button></div>
+      <div class="cd" style="margin-bottom:14px">
+        <table>
+          <thead><tr><th style="width:40px">#</th><th>Servis Başlığı</th><th>Durum</th><th style="width:80px">İşlem</th></tr></thead>
+          <tbody>
+            <tr><td style="color:#6e7681">01</td><td><div style="font-size:12px;font-weight:500;color:#f0f6fc">Car Rental</div><div style="font-size:10px;color:#6e7681">Geniş araç filomuz...</div></td><td><span class="st sa">Yayında</span></td><td><span class="cd-a">Düzenle</span></td></tr>
+            <tr><td style="color:#6e7681">02</td><td><div style="font-size:12px;font-weight:500;color:#f0f6fc">Van Rental</div><div style="font-size:10px;color:#6e7681">Gruplar için ideal...</div></td><td><span class="st sa">Yayında</span></td><td><span class="cd-a">Düzenle</span></td></tr>
+            <tr><td style="color:#6e7681">03</td><td><div style="font-size:12px;font-weight:500;color:#f0f6fc">Prestige Cars</div><div style="font-size:10px;color:#6e7681">Lüks deneyim...</div></td><td><span class="st sa">Yayında</span></td><td><span class="cd-a">Düzenle</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd"><div style="font-size:12px;font-weight:500;color:#c9d1d9;margin-bottom:12px">Yeni Servis Ekle</div>
+        <div class="fg"><div class="fl"><label>Başlık</label><input placeholder="Servis adı"></div><div class="fl"><label>Sıralama</label><input type="number" value="4"></div><div class="fl" style="grid-column:1/-1"><label>Açıklama</label><textarea placeholder="Servis açıklaması..."></textarea></div><div class="fl" style="grid-column:1/-1"><label>Görsel</label><div class="up-zone">İkon veya görsel yükle</div></div></div>
+        <button class="sv">Kaydet</button>
+      </div>
+    </div>
+
+    <!-- BANNER -->
+    <div class="pg-sec" id="pg-bnr">
+      <div class="sec-bar"><div class="sec-ttl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><rect x="1" y="5" width="14" height="6" rx="1.5"/><path d="M4 8h8"/></svg>Kampanya Banneri</div><button class="sv">Kaydet</button></div>
+      <div class="cd">
+        <div class="fg">
+          <div class="fl" style="grid-column:1/-1"><label>Banner Başlığı</label><input value="Book Now & Get 20% Off Your First Rental"></div>
+          <div class="fl" style="grid-column:1/-1"><label>Alt Metin</label><input value="Limited time offer — don't miss out!"></div>
+          <div class="fl"><label>Buton Metni</label><input value="Book Now"></div>
+          <div class="fl"><label>Buton Linki</label><input value="/booking"></div>
+          <div class="fl"><label>Arkaplan</label><input type="color" value="#22c55e"></div>
+          <div class="fl"><label>Metin Rengi</label><input type="color" value="#ffffff"></div>
+          <div class="fl"><label>Görünürlük</label><select><option>Aktif</option><option>Pasif</option></select></div>
+          <div class="fl"><label>Bitiş Tarihi</label><input type="date" value="2026-05-01"></div>
+          <div class="fl" style="grid-column:1/-1"><label>Banner Görseli</label><div class="up-zone">Görsel yükle (önerilen: 1600×400)</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YORUMLAR -->
+    <div class="pg-sec" id="pg-yor">
+      <div class="sec-bar"><div class="sec-ttl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M2 3h12v8H9l-3 2V11H2z"/></svg>Müşteri Yorumları</div><button class="add-btn">+ Yorum Ekle</button></div>
+      <div class="cd" style="margin-bottom:14px">
+        <table>
+          <thead><tr><th>Müşteri</th><th style="width:80px">Puan</th><th>Yorum</th><th style="width:80px">Durum</th><th style="width:70px">İşlem</th></tr></thead>
+          <tbody>
+            <tr><td>Ali K.</td><td><div class="rev-sc"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div></td><td style="color:#8b949e">Harika hizmet...</td><td><span class="st sa">Yayında</span></td><td><span class="cd-a">Düzenle</span></td></tr>
+            <tr><td>Zeynep M.</td><td><div class="rev-sc"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div></td><td style="color:#8b949e">Çok temiz araçlar...</td><td><span class="st sp">Bekliyor</span></td><td><span class="cd-a">Onayla</span></td></tr>
+            <tr><td>Burak T.</td><td><div class="rev-sc"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div></td><td style="color:#8b949e">Fiyat performans...</td><td><span class="st sa">Yayında</span></td><td><span class="cd-a">Düzenle</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd"><div style="font-size:12px;font-weight:500;color:#c9d1d9;margin-bottom:12px">Yorum Ekle</div>
+        <div class="fg"><div class="fl"><label>Müşteri Adı</label><input placeholder="Ad Soyad"></div><div class="fl"><label>Puan</label><select><option>5 Yıldız</option><option>4 Yıldız</option><option>3 Yıldız</option></select></div><div class="fl" style="grid-column:1/-1"><label>Yorum</label><textarea placeholder="Müşteri yorumu..."></textarea></div></div>
+        <button class="sv">Kaydet</button>
+      </div>
+    </div>
+
+    <!-- ARABALAR -->
+    <div class="pg-sec" id="pg-cars">
+      <div class="sec-bar"><div class="sec-ttl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M2 8l2-4h8l2 4H2z"/><circle cx="5" cy="12" r="1.5"/><circle cx="11" cy="12" r="1.5"/></svg>Araç Yönetimi</div><button class="add-btn">+ Araç Ekle</button></div>
+      <div style="display:flex;gap:8px;margin-bottom:14px">
+        <span class="tag-pill">Tümü (24)</span>
+        <span class="tag-pill" style="background:#0c1f3d;color:#60a5fa;border-color:#3b82f633">Sedan (10)</span>
+        <span class="tag-pill" style="background:#1a1030;color:#a855f7;border-color:#a855f733">Prestige (4)</span>
+        <span class="tag-pill" style="background:#2a1e06;color:#f59e0b;border-color:#f59e0b33">Van (6)</span>
+        <span class="tag-pill" style="background:#0c1f3d;color:#3b82f6;border-color:#3b82f633">Minibüs (4)</span>
+      </div>
+      <div class="cd" style="margin-bottom:14px">
+        <table>
+          <thead><tr><th style="width:130px">Araç</th><th style="width:70px">Tip</th><th style="width:80px">Plaka</th><th style="width:90px">Fiyat/gün</th><th style="width:80px">Durum</th><th style="width:60px">İşlem</th></tr></thead>
+          <tbody>
+            <tr><td><div style="font-size:12px;font-weight:500;color:#f0f6fc">BMW 5 Serisi</div><div style="font-size:10px;color:#6e7681">2023</div></td><td><span style="color:#a855f7;font-size:11px">Prestige</span></td><td style="color:#8b949e">06ABC123</td><td style="color:#22c55e;font-weight:500">₺1.200</td><td><span class="st sp">Kirada</span></td><td><span class="cd-a">Düzenle</span></td></tr>
+            <tr><td><div style="font-size:12px;font-weight:500;color:#f0f6fc">Mercedes C180</div><div style="font-size:10px;color:#6e7681">2022</div></td><td><span style="color:#60a5fa;font-size:11px">Sedan</span></td><td style="color:#8b949e">34XYZ456</td><td style="color:#22c55e;font-weight:500">₺950</td><td><span class="st sa">Müsait</span></td><td><span class="cd-a">Düzenle</span></td></tr>
+            <tr><td><div style="font-size:12px;font-weight:500;color:#f0f6fc">Ford Transit</div><div style="font-size:10px;color:#6e7681">2023</div></td><td><span style="color:#f59e0b;font-size:11px">Van</span></td><td style="color:#8b949e">06VAN001</td><td style="color:#22c55e;font-weight:500">₺750</td><td><span class="st sc2">Serviste</span></td><td><span class="cd-a">Düzenle</span></td></tr>
+            <tr><td><div style="font-size:12px;font-weight:500;color:#f0f6fc">VW Passat</div><div style="font-size:10px;color:#6e7681">2022</div></td><td><span style="color:#60a5fa;font-size:11px">Sedan</span></td><td style="color:#8b949e">35KLM789</td><td style="color:#22c55e;font-weight:500">₺680</td><td><span class="st sa">Müsait</span></td><td><span class="cd-a">Düzenle</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd"><div style="font-size:12px;font-weight:500;color:#c9d1d9;margin-bottom:12px">Yeni Araç Ekle</div>
+        <div class="fg">
+          <div class="fl"><label>Marka & Model</label><input placeholder="BMW 5 Serisi"></div>
+          <div class="fl"><label>Plaka</label><input placeholder="06 ABC 123"></div>
+          <div class="fl"><label>Araç Tipi</label><select><option>Sedan</option><option>Van</option><option>Minibüs</option><option>Prestige</option></select></div>
+          <div class="fl"><label>Yıl</label><input placeholder="2024"></div>
+          <div class="fl"><label>Günlük Fiyat (₺)</label><input placeholder="850"></div>
+          <div class="fl"><label>Durum</label><select><option>Müsait</option><option>Kirada</option><option>Serviste</option></select></div>
+          <div class="fl" style="grid-column:1/-1"><label>Araç Fotoğrafı</label><div class="up-zone">Fotoğraf yükle — JPG, PNG (maks. 5MB)</div></div>
+        </div>
+        <button class="sv">Araç Ekle</button>
+      </div>
+    </div>
+
+    <!-- MODELLER -->
+    <div class="pg-sec" id="pg-mdl">
+      <div class="sec-bar"><div class="sec-ttl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M2 12V5l6-3 6 3v7l-6 3z"/></svg>Kategoriler</div><button class="add-btn">+ Kategori Ekle</button></div>
+      <div class="g4" style="margin-bottom:14px">
+        <div style="background:#0d2818;border:1px solid #22c55e33;border-radius:12px;padding:14px 16px"><div style="font-size:22px;font-weight:500;color:#22c55e">10</div><div style="font-size:12px;color:#16a34a;margin-top:4px">Sedan</div><div style="font-size:10px;color:#6e7681;margin-top:2px">Car tipi</div></div>
+        <div style="background:#2a1e06;border:1px solid #f59e0b33;border-radius:12px;padding:14px 16px"><div style="font-size:22px;font-weight:500;color:#f59e0b">6</div><div style="font-size:12px;color:#d97706;margin-top:4px">Van</div><div style="font-size:10px;color:#6e7681;margin-top:2px">Van tipi</div></div>
+        <div style="background:#0c1f3d;border:1px solid #3b82f633;border-radius:12px;padding:14px 16px"><div style="font-size:22px;font-weight:500;color:#3b82f6">4</div><div style="font-size:12px;color:#2563eb;margin-top:4px">Minibüs</div><div style="font-size:10px;color:#6e7681;margin-top:2px">Minibus tipi</div></div>
+        <div style="background:#1a1030;border:1px solid #a855f733;border-radius:12px;padding:14px 16px"><div style="font-size:22px;font-weight:500;color:#a855f7">4</div><div style="font-size:12px;color:#9333ea;margin-top:4px">Prestige</div><div style="font-size:10px;color:#6e7681;margin-top:2px">Lüks araç</div></div>
+      </div>
+      <div class="cd"><div style="font-size:12px;font-weight:500;color:#c9d1d9;margin-bottom:12px">Kategori Düzenle</div>
+        <div class="fg"><div class="fl"><label>Kategori Adı</label><input value="Sedan"></div><div class="fl"><label>Görünürlük</label><select><option>Aktif</option><option>Pasif</option></select></div><div class="fl" style="grid-column:1/-1"><label>Açıklama</label><textarea placeholder="Kategori açıklaması..."></textarea></div><div class="fl" style="grid-column:1/-1"><label>Kategori İkonu</label><div class="up-zone">SVG ikon yükle</div></div></div>
+        <button class="sv">Kaydet</button>
+      </div>
+    </div>
+
+    <!-- REZERVASYONLAR -->
+    <div class="pg-sec" id="pg-res">
+      <div class="sec-bar"><div class="sec-ttl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 1v4M11 1v4M2 7h12"/></svg>Rezervasyonlar</div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <select style="background:#161b22;border:1px solid #30363d;border-radius:8px;padding:6px 10px;color:#c9d1d9;font-size:12px;outline:none"><option>Tüm Durumlar</option><option>Aktif</option><option>Bekliyor</option><option>Tamamlandı</option><option>İptal</option></select>
+          <button class="add-btn">+ Yeni</button>
+        </div>
+      </div>
+      <div class="cd">
+        <div class="tbl-wrap">
+          <table style="table-layout:auto">
+            <thead><tr><th>#</th><th>Müşteri</th><th>Araç</th><th>Alış</th><th>İade</th><th>Lokasyon</th><th>Tutar</th><th>Durum</th><th></th></tr></thead>
+            <tbody>
+              <tr><td style="color:#6e7681">#1042</td><td>Ahmet Yılmaz</td><td>BMW 5</td><td>18 Nis</td><td>21 Nis</td><td>Ankara</td><td style="color:#22c55e;font-weight:500">₺3.600</td><td><span class="st sa">Aktif</span></td><td><span class="cd-a">Detay</span></td></tr>
+              <tr><td style="color:#6e7681">#1041</td><td>Selin Kaya</td><td>Mercedes C</td><td>17 Nis</td><td>19 Nis</td><td>İstanbul</td><td style="color:#22c55e;font-weight:500">₺1.900</td><td><span class="st sp">Bekliyor</span></td><td><span class="cd-a">Onayla</span></td></tr>
+              <tr><td style="color:#6e7681">#1040</td><td>Mert Demir</td><td>VW Passat</td><td>16 Nis</td><td>17 Nis</td><td>İzmir</td><td style="color:#22c55e;font-weight:500">₺680</td><td><span class="st sd">Tamamlandı</span></td><td><span class="cd-a">Detay</span></td></tr>
+              <tr><td style="color:#6e7681">#1039</td><td>Elif Şahin</td><td>Toyota</td><td>15 Nis</td><td>16 Nis</td><td>Bursa</td><td style="color:#22c55e;font-weight:500">₺440</td><td><span class="st sd">Tamamlandı</span></td><td><span class="cd-a">Detay</span></td></tr>
+              <tr><td style="color:#6e7681">#1038</td><td>Can Arslan</td><td>Renault</td><td>14 Nis</td><td>16 Nis</td><td>Ankara</td><td style="color:#6e7681">₺760</td><td><span class="st sc2">İptal</span></td><td><span class="cd-a">Detay</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- MESAJLAR -->
+    <div class="pg-sec" id="pg-msg">
+      <div class="sec-bar"><div class="sec-ttl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M2 3h12v9H2z"/><path d="M2 3l6 5 6-5"/></svg>İletişim Mesajları</div></div>
+      <div class="cd" style="margin-bottom:14px">
+        <table>
+          <thead><tr><th>Ad</th><th>E-posta</th><th>Mesaj</th><th>Tarih</th><th>Durum</th><th>İşlem</th></tr></thead>
+          <tbody>
+            <tr><td style="color:#f0f6fc">Hasan Ö.</td><td style="color:#8b949e">hasan@email.com</td><td style="color:#8b949e">Fiyat teklifi almak istiyorum...</td><td style="color:#6e7681">Bugün</td><td><span class="st sp">Yeni</span></td><td><span class="cd-a">Yanıtla</span></td></tr>
+            <tr><td style="color:#f0f6fc">Fatma A.</td><td style="color:#8b949e">fatma@email.com</td><td style="color:#8b949e">Rezervasyon iptali hakkında...</td><td style="color:#6e7681">Dün</td><td><span class="st sp">Yeni</span></td><td><span class="cd-a">Yanıtla</span></td></tr>
+            <tr><td style="color:#f0f6fc">Kemal S.</td><td style="color:#8b949e">kemal@email.com</td><td style="color:#8b949e">Minibüs kiralama...</td><td style="color:#6e7681">17 Nis</td><td><span class="st sp">Yeni</span></td><td><span class="cd-a">Yanıtla</span></td></tr>
+            <tr><td style="color:#f0f6fc">Nuray T.</td><td style="color:#8b949e">nuray@email.com</td><td style="color:#8b949e">Teşekkürler, harika hizmet...</td><td style="color:#6e7681">16 Nis</td><td><span class="st sd">Yanıtlandı</span></td><td><span class="cd-a">Gör</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cd">
+        <div style="font-size:12px;font-weight:500;color:#c9d1d9;margin-bottom:12px">İletişim Bilgileri</div>
+        <div class="fg"><div class="fl"><label>Telefon</label><input value="+208 333 9296"></div><div class="fl"><label>E-posta</label><input value="contact@rentaly.com"></div><div class="fl"><label>Adres</label><input value="Ankara, Türkiye"></div><div class="fl"><label>Çalışma Saati</label><input value="Mon - Fri 08.00 - 18.00"></div></div>
+        <button class="sv">Kaydet</button>
+      </div>
+    </div>
+
+    <!-- KULLANICILAR -->
+    <div class="pg-sec" id="pg-usr">
+      <div class="sec-bar"><div class="sec-ttl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><circle cx="8" cy="5" r="3"/><path d="M2 14a6 6 0 0 1 12 0"/></svg>Kullanıcılar</div><button class="add-btn">+ Ekle</button></div>
+      <div class="cd">
+        <table>
+          <thead><tr><th>Kullanıcı</th><th>E-posta</th><th>Rol</th><th>Kayıt</th><th>Durum</th></tr></thead>
+          <tbody>
+            <tr><td><div style="display:flex;align-items:center;gap:8px"><div style="width:26px;height:26px;background:#22c55e;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:500">AD</div><span style="color:#f0f6fc">Admin</span></div></td><td style="color:#8b949e">admin@rentaly.com</td><td><span class="st sa">Süper Admin</span></td><td style="color:#6e7681">2024-01-01</td><td><span class="st sa">Aktif</span></td></tr>
+            <tr><td><div style="display:flex;align-items:center;gap:8px"><div style="width:26px;height:26px;background:#3b82f6;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:500">AY</div><span style="color:#f0f6fc">Ahmet Yılmaz</span></div></td><td style="color:#8b949e">ahmet@mail.com</td><td><span class="st sd">Müşteri</span></td><td style="color:#6e7681">2025-03-12</td><td><span class="st sa">Aktif</span></td></tr>
+            <tr><td><div style="display:flex;align-items:center;gap:8px"><div style="width:26px;height:26px;background:#a855f7;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;font-weight:500">SK</div><span style="color:#f0f6fc">Selin Kaya</span></div></td><td style="color:#8b949e">selin@mail.com</td><td><span class="st sd">Müşteri</span></td><td style="color:#6e7681">2026-01-07</td><td><span class="st sa">Aktif</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- AYARLAR -->
+    <div class="pg-sec" id="pg-set">
+      <div class="sec-bar"><div class="sec-ttl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><circle cx="8" cy="8" r="2.5"/><path d="M8 2v1.5M8 12.5V14M2 8h1.5M12.5 8H14M3.8 3.8l1 1M11.2 11.2l1 1M3.8 12.2l1-1M11.2 4.8l1-1"/></svg>Site Ayarları</div><button class="sv">Kaydet</button></div>
+      <div class="cd">
+        <div class="fg">
+          <div class="fl"><label>Site Adı</label><input value="Rentaly"></div>
+          <div class="fl"><label>Tagline</label><input value="Premium Car Rental Service"></div>
+          <div class="fl"><label>Telefon</label><input value="+208 333 9296"></div>
+          <div class="fl"><label>E-posta</label><input value="contact@rentaly.com"></div>
+          <div class="fl"><label>Para Birimi</label><select style="background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:8px 11px;font-size:12px;color:#c9d1d9;outline:none"><option>TRY (₺)</option><option>USD ($)</option><option>EUR (€)</option></select></div>
+          <div class="fl"><label>Çalışma Saati</label><input value="Mon - Fri 08.00 - 18.00"></div>
+          <div class="fl" style="grid-column:1/-1"><label>Site Logosu</label><div class="up-zone">SVG veya PNG logo yükle</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<script>
+const pmap={db:'Dashboard',hero:'Ana Sayfa — Hero',about:'Hakkımızda',srv:'Servisler',bnr:'Kampanya Banneri',yor:'Yorumlar',cars:'Araç Yönetimi',mdl:'Kategoriler',res:'Rezervasyonlar',msg:'Mesajlar',usr:'Kullanıcılar',set:'Ayarlar'};
+function go(id,el){
+  document.querySelectorAll('.pg-sec').forEach(p=>p.classList.remove('on'));
+  const p=document.getElementById('pg-'+id);
+  if(p)p.classList.add('on');
+  document.getElementById('ptitle').textContent=pmap[id]||id;
+  document.querySelectorAll('.ni,.sni').forEach(n=>n.classList.remove('act'));
+  if(el){el.classList.add('act');const sn=el.closest('.sn');if(sn){sn.classList.add('op');const pid=sn.id.replace('sn-','');const ch=document.getElementById('c-'+sn.id);if(ch)ch.classList.add('op');}}
+}
+function tog(id,el){
+  const sn=document.getElementById(id);const ch=document.getElementById('c-'+id);
+  sn.classList.toggle('op');if(ch)ch.classList.toggle('op');
+}
+</script>

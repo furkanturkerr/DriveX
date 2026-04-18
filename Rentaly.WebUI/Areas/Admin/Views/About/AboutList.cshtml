@@ -1,0 +1,109 @@
+@model List<Rentaly.DtoLayer.AboutDtos.ResultAboutDto>
+
+@{
+    ViewData["Title"] = "Hakkımızda Yönetimi";
+    Layout = "~/Views/Admin/Index.cshtml";
+    var about = Model?.FirstOrDefault();
+}
+
+<div class="container-fluid px-4 py-4">
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-between align-items-center">
+            <div>
+                <h3 class="fw-bold text-white mb-1">Hakkımızda Yönetimi</h3>
+                <p class="text-secondary mb-0">Ana sayfadaki hakkımızda alanını buradan yönetebilirsiniz.</p>
+            </div>
+
+            @if (about == null)
+            {
+                <a href="/Admin/About/CreateAbout" class="btn btn-success rounded-pill px-4">
+                    <i class="fas fa-plus me-2"></i>Yeni Hakkımızda Yazısı Ekle
+                </a>
+            }
+        </div>
+    </div>
+
+    @if (about != null)
+    {
+        <div class="row g-4">
+            <div class="col-xl-8 col-lg-7">
+                <div class="card border-0 shadow-sm rounded-4 bg-dark text-white h-100">
+                    <div class="card-header bg-transparent border-bottom border-secondary d-flex justify-content-between align-items-center py-3">
+                        <h5 class="mb-0 fw-semibold">Mevcut Hakkımızda İçeriği</h5>
+                        <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">Aktif Kayıt</span>
+                    </div>
+
+                    <div class="card-body p-4">
+                        <div class="mb-4">
+                            <label class="text-secondary small text-uppercase fw-semibold mb-2">İçerik</label>
+                            <div class="bg-black bg-opacity-25 rounded-4 p-4 border border-secondary-subtle">
+                                <p class="mb-0 text-light" style="line-height:1.9;">
+                                    @about.AboutText
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="/Admin/About/UpdateAbout/@about.AboutId" class="btn btn-warning rounded-pill px-4">
+                                <i class="fas fa-edit me-2"></i>Güncelle
+                            </a>
+
+                            <a href="/Admin/About/DeleteAbout/@about.AboutId"
+                               class="btn btn-outline-danger rounded-pill px-4"
+                               onclick="return confirm('Bu hakkımızda içeriğini silmek istediğinize emin misiniz?');">
+                                <i class="fas fa-trash me-2"></i>Sil
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-5">
+                <div class="card border-0 shadow-sm rounded-4 bg-dark text-white mb-4">
+                    <div class="card-body p-4">
+                        <h5 class="fw-semibold mb-3">Bilgi Kartı</h5>
+                        <div class="mb-3">
+                            <small class="text-secondary d-block mb-1">Kayıt ID</small>
+                            <span class="fw-semibold fs-5">#@about.AboutId</span>
+                        </div>
+
+                        <div class="mb-3">
+                            <small class="text-secondary d-block mb-1">Karakter Sayısı</small>
+                            <span class="fw-semibold fs-5">@((about.AboutText ?? "").Length)</span>
+                        </div>
+
+                        <div>
+                            <small class="text-secondary d-block mb-1">Durum</small>
+                            <span class="badge bg-success px-3 py-2 rounded-pill">Yayında</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card border-0 shadow-sm rounded-4 bg-dark text-white">
+                    <div class="card-body p-4">
+                        <h5 class="fw-semibold mb-3">Yönetim Notu</h5>
+                        <p class="text-secondary mb-0" style="line-height:1.8;">
+                            Hakkımızda alanı tek kayıt üzerinden yönetildiği için burada tablo yerine tek içerik kartı kullanılmaktadır.
+                            Güncelleme işlemi ile ana sayfadaki metni doğrudan değiştirebilirsiniz.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card border-0 shadow-sm rounded-4 bg-dark text-white">
+            <div class="card-body text-center py-5">
+                <div class="mb-3">
+                    <i class="fas fa-info-circle fs-1 text-success"></i>
+                </div>
+                <h4 class="fw-bold mb-2">Henüz hakkımızda kaydı bulunmuyor</h4>
+                <p class="text-secondary mb-4">İlk hakkımızda içeriğini oluşturmak için aşağıdaki butonu kullanabilirsiniz.</p>
+                <a href="/Admin/About/CreateAbout" class="btn btn-success rounded-pill px-4 py-2">
+                    <i class="fas fa-plus me-2"></i>Hakkımızda Yazısı Ekle
+                </a>
+            </div>
+        </div>
+    }
+</div>

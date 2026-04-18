@@ -1,10 +1,10 @@
 namespace Rentaly.BusinessLayer.Abstract;
 
-public interface IGenericService<T> where T : class
+public interface IGenericService<TResultDto, TGetByIdDto, TCreateDto, TUpdateDto>
 {
-    Task TInsertAsync(T entity);
+    Task<List<TResultDto>> TGetListAsync();
+    Task<TUpdateDto> TGetByIdAsync(int id);
+    Task TInsertAsync(TCreateDto dto);
+    Task TUpdateAsync(TUpdateDto dto);
     Task TDeleteAsync(int id);
-    Task TUpdateAsync(T entity);
-    Task<List<T>> TGetListAsync();
-    Task<T> TGetByIdAsync(int id);
 }

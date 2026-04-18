@@ -8,7 +8,12 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Rentaly.DataAccessLayer\Rentaly.DataAccessLayer.csproj" />
+      <ProjectReference Include="..\Rentaly.DtoLayer\Rentaly.DtoLayer.csproj" />
       <ProjectReference Include="..\Rentaly.Entity\Rentaly.Entity.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="13.0.1" />
     </ItemGroup>
 
 </Project>

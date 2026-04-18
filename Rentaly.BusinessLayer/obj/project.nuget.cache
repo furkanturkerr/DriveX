@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "0C35VCbXr7I=",
+  "dgSpecHash": "pN7bknR5Bjw=",
   "success": true,
   "projectFilePath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.BusinessLayer/Rentaly.BusinessLayer.csproj",
   "expectedPackageFiles": [
+    "/Users/furkanturker/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/Users/furkanturker/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/furkanturker/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",
     "/Users/furkanturker/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
@@ -60,5 +61,18 @@
     "/Users/furkanturker/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "/Users/furkanturker/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'AutoMapper' 13.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-rvv3-g6hj-g44x",
+      "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.BusinessLayer/Rentaly.BusinessLayer.csproj",
+      "warningLevel": 1,
+      "filePath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.BusinessLayer/Rentaly.BusinessLayer.csproj",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

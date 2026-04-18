@@ -2,7 +2,7 @@ using Rentaly.Entity;
 
 namespace Rentaly.BusinessLayer.Abstract;
 
-public interface IFaqService : IGenericService<Faq>
+public interface IFaqService 
 {
     
 }

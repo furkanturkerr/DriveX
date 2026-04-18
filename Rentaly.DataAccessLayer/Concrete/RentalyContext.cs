@@ -8,7 +8,7 @@ public class RentalyContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(
-            "Server=localhost,1995;Database=Rentaly;User Id=sa;Password=Furkan12*;TrustServerCertificate=True;");
+            "Server=localhost,1995;Database=RentalyNew;User Id=sa;Password=Furkan12*;TrustServerCertificate=True;");
     }
     
     public DbSet<Car> Cars { get; set; }

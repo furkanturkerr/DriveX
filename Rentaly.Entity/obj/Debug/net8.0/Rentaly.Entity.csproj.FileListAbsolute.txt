@@ -1,0 +1,15 @@
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/bin/Debug/net8.0/Rentaly.Entity.deps.json
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/bin/Debug/net8.0/Rentaly.Entity.runtimeconfig.json
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/bin/Debug/net8.0/Rentaly.Entity.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/bin/Debug/net8.0/Rentaly.Entity.pdb
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/obj/Debug/net8.0/Rentaly.Entity.csproj.AssemblyReference.cache
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/obj/Debug/net8.0/Rentaly.Entity.GeneratedMSBuildEditorConfig.editorconfig
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/obj/Debug/net8.0/Rentaly.Entity.AssemblyInfoInputs.cache
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/obj/Debug/net8.0/Rentaly.Entity.AssemblyInfo.cs
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/obj/Debug/net8.0/Rentaly.Entity.csproj.CoreCompileInputs.cache
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/obj/Debug/net8.0/Rentaly.Entity.sourcelink.json
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/obj/Debug/net8.0/Rentaly.Entity.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/obj/Debug/net8.0/refint/Rentaly.Entity.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/obj/Debug/net8.0/Rentaly.Entity.pdb
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/obj/Debug/net8.0/Rentaly.Entity.genruntimeconfig.cache
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/obj/Debug/net8.0/ref/Rentaly.Entity.dll

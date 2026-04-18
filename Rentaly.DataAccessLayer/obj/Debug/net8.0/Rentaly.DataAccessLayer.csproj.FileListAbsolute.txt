@@ -1,0 +1,16 @@
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/bin/Debug/net8.0/Rentaly.DataAccessLayer.deps.json
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/bin/Debug/net8.0/Rentaly.DataAccessLayer.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/bin/Debug/net8.0/Rentaly.DataAccessLayer.pdb
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/bin/Debug/net8.0/Rentaly.Entity.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/bin/Debug/net8.0/Rentaly.Entity.pdb
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/Rentaly.DataAccessLayer.csproj.AssemblyReference.cache
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/Rentaly.DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/Rentaly.DataAccessLayer.AssemblyInfoInputs.cache
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/Rentaly.DataAccessLayer.AssemblyInfo.cs
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/Rentaly.DataAccessLayer.csproj.CoreCompileInputs.cache
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/Rentaly.DataAccessLayer.sourcelink.json
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/Rentaly..626A1C4F.Up2Date
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/Rentaly.DataAccessLayer.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/refint/Rentaly.DataAccessLayer.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/Rentaly.DataAccessLayer.pdb
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/ref/Rentaly.DataAccessLayer.dll

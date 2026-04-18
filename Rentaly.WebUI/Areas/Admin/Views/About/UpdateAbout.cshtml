@@ -1,0 +1,14 @@
+@model Rentaly.DtoLayer.AboutDtos.UpdateAboutDto
+
+@{
+    Layout = "~/Views/Admin/Index.cshtml";
+
+}
+
+<form method="post">
+    <input type="hidden" asp-for="AboutId"/>
+    <label>Açıklama</label>
+    <textarea rows="4" asp-for="AboutText" class="form-control"></textarea>
+    <br/>
+    <button class="btn btn-outline-success">Güncelle</button>
+</form>

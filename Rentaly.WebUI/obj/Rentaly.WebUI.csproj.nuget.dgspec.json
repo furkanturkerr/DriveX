@@ -4,14 +4,208 @@
     "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/Rentaly.WebUI.csproj": {}
   },
   "projects": {
-    "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/Rentaly.WebUI.csproj": {
+    "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.BusinessLayer/Rentaly.BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/Rentaly.WebUI.csproj",
-        "projectName": "Rentaly.WebUI",
-        "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/Rentaly.WebUI.csproj",
+        "projectUniqueName": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.BusinessLayer/Rentaly.BusinessLayer.csproj",
+        "projectName": "Rentaly.BusinessLayer",
+        "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.BusinessLayer/Rentaly.BusinessLayer.csproj",
         "packagesPath": "/Users/furkanturker/.nuget/packages/",
-        "outputPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/obj/",
+        "outputPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.BusinessLayer/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/furkanturker/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/Rentaly.DataAccessLayer.csproj": {
+                "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/Rentaly.DataAccessLayer.csproj"
+              },
+              "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/Rentaly.DtoLayer.csproj": {
+                "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/Rentaly.DtoLayer.csproj"
+              },
+              "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/Rentaly.Entity.csproj": {
+                "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/Rentaly.Entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/Rentaly.DataAccessLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/Rentaly.DataAccessLayer.csproj",
+        "projectName": "Rentaly.DataAccessLayer",
+        "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/Rentaly.DataAccessLayer.csproj",
+        "packagesPath": "/Users/furkanturker/.nuget/packages/",
+        "outputPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/furkanturker/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/Rentaly.Entity.csproj": {
+                "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/Rentaly.Entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/Rentaly.DtoLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/Rentaly.DtoLayer.csproj",
+        "projectName": "Rentaly.DtoLayer",
+        "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/Rentaly.DtoLayer.csproj",
+        "packagesPath": "/Users/furkanturker/.nuget/packages/",
+        "outputPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/furkanturker/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/Rentaly.Entity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/Rentaly.Entity.csproj",
+        "projectName": "Rentaly.Entity",
+        "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/Rentaly.Entity.csproj",
+        "packagesPath": "/Users/furkanturker/.nuget/packages/",
+        "outputPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/furkanturker/.nuget/NuGet/NuGet.Config"
@@ -43,6 +237,90 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.26, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.26, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.26, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.26, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/Rentaly.WebUI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/Rentaly.WebUI.csproj",
+        "projectName": "Rentaly.WebUI",
+        "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/Rentaly.WebUI.csproj",
+        "packagesPath": "/Users/furkanturker/.nuget/packages/",
+        "outputPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/furkanturker/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.BusinessLayer/Rentaly.BusinessLayer.csproj": {
+                "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.BusinessLayer/Rentaly.BusinessLayer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -54,6 +332,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.26, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.23, )"
             }
           },
           "imports": [
