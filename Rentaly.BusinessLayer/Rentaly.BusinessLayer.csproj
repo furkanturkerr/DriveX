@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Rentaly.DataAccessLayer\Rentaly.DataAccessLayer.csproj" />
+      <ProjectReference Include="..\Rentaly.Entity\Rentaly.Entity.csproj" />
+    </ItemGroup>
+
 </Project>
