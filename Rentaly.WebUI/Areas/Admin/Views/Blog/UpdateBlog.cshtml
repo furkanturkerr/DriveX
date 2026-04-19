@@ -1,0 +1,174 @@
+@model Rentaly.DtoLayer.BlogDtos.UpdateBlogDto
+
+@{
+    ViewData["Title"] = "Blog Düzenle";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div style="padding:20px">
+
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;
+                padding-bottom:14px;border-bottom:1px solid #21262d">
+        <a asp-action="BlogList"
+           style="display:inline-flex;align-items:center;gap:4px;
+                  color:#8b949e;font-size:12px;text-decoration:none">
+            <svg width="13" height="13" fill="none" stroke="currentColor"
+                 stroke-width="1.5" viewBox="0 0 16 16">
+                <path d="M10 3L5 8l5 5"/>
+            </svg>
+            Geri
+        </a>
+        <span style="color:#30363d;font-size:12px">/</span>
+        <span style="font-size:13px;font-weight:500;color:#f0f6fc">Blog Düzenle</span>
+        <span style="font-size:10px;background:#21262d;color:#8b949e;
+                     padding:2px 8px;border-radius:6px">ID: @Model.BlogId</span>
+    </div>
+
+    <form asp-action="UpdateBlog" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="BlogId"/>
+
+        <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;padding:20px">
+
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;
+                            background:#0d1117;border:1px solid #21262d;border-radius:10px;
+                            margin-bottom:16px">
+                    <div style="width:60px;height:44px;border-radius:7px;overflow:hidden;
+                                background:#21262d;flex-shrink:0">
+                        <img src="~/images/@Model.ImageUrl" alt=""
+                             style="width:100%;height:100%;object-fit:cover"/>
+                    </div>
+                    <div>
+                        <div style="font-size:11px;font-weight:500;color:#c9d1d9;margin-bottom:2px">
+                            @Model.Title
+                        </div>
+                        <div style="font-size:10px;color:#6e7681">@Model.ImageUrl</div>
+                    </div>
+                    <div style="margin-left:auto">
+                        @if (Model.IsStatus)
+                        {
+                            <span style="font-size:10px;background:#0d2818;color:#22c55e;
+                                         border:1px solid #22c55e33;padding:2px 9px;
+                                         border-radius:10px">Yayında</span>
+                        }
+                        else
+                        {
+                            <span style="font-size:10px;background:#2a0d0d;color:#ef4444;
+                                         border:1px solid #ef444433;padding:2px 9px;
+                                         border-radius:10px">Taslak</span>
+                        }
+                    </div>
+                </div>
+            }
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;
+                                  display:block;margin-bottom:5px">
+                        Başlık <span style="color:#6e7681">(Title)</span>
+                    </label>
+                    <input asp-for="Title"
+                           style="width:100%;background:#0d1117;border:1px solid #30363d;
+                                  border-radius:8px;padding:9px 12px;font-size:12px;
+                                  color:#c9d1d9;outline:none"/>
+                    <span asp-validation-for="Title" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;
+                                  display:block;margin-bottom:5px">
+                        Kategori <span style="color:#6e7681">(CategoryId)</span>
+                    </label>
+                    <select asp-for="CategoryId" asp-items="ViewBag.category"
+                            style="width:100%;background:#0d1117;border:1px solid #30363d;
+                                   border-radius:8px;padding:9px 12px;font-size:12px;
+                                   color:#c9d1d9;outline:none">
+                        <option value="">Kategori seçin</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" style="font-size:11px;color:#ef4444"></span>
+                </div>
+            </div>
+
+            <div style="margin-bottom:14px">
+                <label style="font-size:11px;color:#8b949e;font-weight:500;
+                              display:block;margin-bottom:5px">
+                    Açıklama <span style="color:#6e7681">(Description)</span>
+                </label>
+                <textarea asp-for="Description" rows="5"
+                          style="width:100%;background:#0d1117;border:1px solid #30363d;
+                                 border-radius:8px;padding:9px 12px;font-size:12px;
+                                 color:#c9d1d9;outline:none;resize:vertical;
+                                 line-height:1.7;font-family:inherit"></textarea>
+                <span asp-validation-for="Description" style="font-size:11px;color:#ef4444"></span>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;
+                                  display:block;margin-bottom:5px">
+                        Görsel Yolu <span style="color:#6e7681">(ImageUrl)</span>
+                    </label>
+                    <div style="display:flex;align-items:center">
+                        <div style="background:#0d1117;border:1px solid #30363d;border-right:none;
+                                    border-radius:8px 0 0 8px;padding:9px 10px;
+                                    font-size:11px;color:#6e7681;white-space:nowrap">
+                            /images/
+                        </div>
+                        <input asp-for="ImageUrl"
+                               style="flex:1;background:#0d1117;border:1px solid #30363d;
+                                      border-left:none;border-radius:0 8px 8px 0;
+                                      padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none"/>
+                    </div>
+                    <span asp-validation-for="ImageUrl" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <input type="hidden" asp-for="DateCreated"/>
+            </div>
+
+            <div style="margin-bottom:20px">
+                <label style="font-size:11px;color:#8b949e;font-weight:500;
+                              display:block;margin-bottom:8px">
+                    Durum <span style="color:#6e7681">(IsStatus)</span>
+                </label>
+                <div style="display:flex;gap:10px">
+                    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;
+                                  padding:10px 16px;background:#0d1117;border-radius:8px;flex:1;
+                                  border:1px solid @(Model.IsStatus ? "#22c55e" : "#30363d")">
+                        <input type="radio" asp-for="IsStatus" value="true"
+                               style="accent-color:#22c55e;width:14px;height:14px"/>
+                        <div>
+                            <div style="font-size:12px;font-weight:500;color:#22c55e">Yayında</div>
+                            <div style="font-size:10px;color:#6e7681;margin-top:2px">Sitede görünür</div>
+                        </div>
+                    </label>
+                    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;
+                                  padding:10px 16px;background:#0d1117;border-radius:8px;flex:1;
+                                  border:1px solid @(!Model.IsStatus ? "#ef4444" : "#30363d")">
+                        <input type="radio" asp-for="IsStatus" value="false"
+                               style="accent-color:#ef4444;width:14px;height:14px"/>
+                        <div>
+                            <div style="font-size:12px;font-weight:500;color:#8b949e">Taslak</div>
+                            <div style="font-size:10px;color:#6e7681;margin-top:2px">Sitede görünmez</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div style="display:flex;gap:8px">
+                <button type="submit"
+                        style="padding:9px 24px;background:#22c55e;color:#fff;border:none;
+                               border-radius:8px;font-size:12px;font-weight:500;cursor:pointer">
+                    Güncelle
+                </button>
+                <a asp-action="BlogList"
+                   style="padding:9px 20px;background:transparent;color:#8b949e;
+                          border:1px solid #30363d;border-radius:8px;font-size:12px;
+                          text-decoration:none;display:inline-flex;align-items:center">
+                    İptal
+                </a>
+            </div>
+        </div>
+    </form>
+</div>

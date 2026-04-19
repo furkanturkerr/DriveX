@@ -21,4 +21,5 @@ public class RentalyContext : DbContext
     public DbSet<Footer> Footers { get; set; }
     public DbSet<Service> Services { get; set; }
     public DbSet<Testimonial> Testimonials { get; set; }
+    public DbSet<Category> Categories { get; set; }
 }

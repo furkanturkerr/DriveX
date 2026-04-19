@@ -28,6 +28,10 @@ builder.Services.AddScoped<IFooterDal, EfFooterDal>();
 builder.Services.AddScoped<IFooterService, FooterManager>();
 builder.Services.AddScoped<IContactService, ContactManager>();
 builder.Services.AddScoped<IContactDal, EfContactDal>();
+builder.Services.AddScoped<IBlogService, BlogManager>();
+builder.Services.AddScoped<IBlogDal, EfBlogDal>();
+builder.Services.AddScoped<ICategoryService, CategoryManager>();
+builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 
 var app = builder.Build();
 

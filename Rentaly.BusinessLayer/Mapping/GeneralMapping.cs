@@ -1,6 +1,8 @@
 using AutoMapper;
 using Rentaly.DtoLayer.AboutDtos;
 using Rentaly.DtoLayer.BannerDtos;
+using Rentaly.DtoLayer.BlogDtos;
+using Rentaly.DtoLayer.CategoryDtos;
 using Rentaly.DtoLayer.ContactDtos;
 using Rentaly.DtoLayer.FaqDtos;
 using Rentaly.DtoLayer.FooterDtos;
@@ -42,5 +44,14 @@ public class GeneralMapping : Profile
         CreateMap<Footer, ResultFooterDto>().ReverseMap();
         CreateMap<Footer, UpdateFooterDto>().ReverseMap();
         CreateMap<Footer, CreateFooterDto>().ReverseMap();
+        
+        CreateMap<Blog, ResultBlogDto>().ReverseMap();
+        CreateMap<Blog, UpdateBlogDto>().ReverseMap();
+        CreateMap<Blog, CreateBlogDto>().ReverseMap();
+        CreateMap<Blog, ResultBlogWithCategoryDto>().ReverseMap();
+        
+        CreateMap<Category, UpdateCategoryDto>().ReverseMap();
+        CreateMap<Category, CreateCategoryDto>().ReverseMap();
+        CreateMap<Category, ResultCategoryDto>().ReverseMap();
     }
 }
