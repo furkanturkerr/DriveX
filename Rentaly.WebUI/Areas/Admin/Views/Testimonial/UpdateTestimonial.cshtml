@@ -1,0 +1,139 @@
+@model Rentaly.DtoLayer.TestimonialDtos.UpdateTestimonialDto
+
+@{
+    ViewData["Title"] = "Yorum Düzenle";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div style="padding:20px">
+
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;
+                padding-bottom:14px;border-bottom:1px solid #21262d">
+        <a asp-action="TestimonialList"
+           style="display:inline-flex;align-items:center;gap:4px;
+                  color:#8b949e;font-size:12px;text-decoration:none">
+            <svg width="13" height="13" fill="none" stroke="currentColor"
+                 stroke-width="1.5" viewBox="0 0 16 16">
+                <path d="M10 3L5 8l5 5"/>
+            </svg>
+            Geri
+        </a>
+        <span style="color:#30363d;font-size:12px">/</span>
+        <span style="font-size:13px;font-weight:500;color:#f0f6fc">Yorum Düzenle</span>
+        <span style="font-size:10px;background:#21262d;color:#8b949e;
+                     padding:2px 8px;border-radius:6px">
+            ID: @Model.TestimonialId
+        </span>
+    </div>
+
+    <form asp-action="UpdateTestimonial" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="TestimonialId"/>
+
+        <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;padding:20px">
+
+            @* MEVCUT GÖRSEL ÖNİZLEME *@
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <div style="display:flex;align-items:center;gap:14px;padding:14px;
+                            background:#0d1117;border:1px solid #21262d;border-radius:10px;
+                            margin-bottom:16px">
+                    <div style="width:52px;height:52px;border-radius:50%;overflow:hidden;
+                                border:2px solid #22c55e33;flex-shrink:0">
+                        <img src="~/images/@Model.ImageUrl" alt="@Model.NameSurname"
+                             style="width:100%;height:100%;object-fit:cover"/>
+                    </div>
+                    <div>
+                        <div style="font-size:12px;font-weight:500;color:#f0f6fc;margin-bottom:2px">
+                            @Model.NameSurname
+                        </div>
+                        <div style="font-size:10px;color:#6e7681">@Model.ImageUrl</div>
+                    </div>
+                    <div style="margin-left:auto;padding:5px 10px;background:#0d2818;
+                                border:1px solid #22c55e33;border-radius:6px;
+                                font-size:10px;color:#22c55e">
+                        Mevcut görsel
+                    </div>
+                </div>
+            }
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;
+                                  display:block;margin-bottom:5px">
+                        Ad Soyad <span style="color:#6e7681">(NameSurname)</span>
+                    </label>
+                    <input asp-for="NameSurname"
+                           style="width:100%;background:#0d1117;border:1px solid #30363d;
+                                  border-radius:8px;padding:9px 12px;font-size:12px;
+                                  color:#c9d1d9;outline:none"/>
+                    <span asp-validation-for="NameSurname"
+                          style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;
+                                  display:block;margin-bottom:5px">
+                        Başlık <span style="color:#6e7681">(Title)</span>
+                    </label>
+                    <input asp-for="Title"
+                           style="width:100%;background:#0d1117;border:1px solid #30363d;
+                                  border-radius:8px;padding:9px 12px;font-size:12px;
+                                  color:#c9d1d9;outline:none"/>
+                    <span asp-validation-for="Title"
+                          style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+            </div>
+
+            <div style="margin-bottom:14px">
+                <label style="font-size:11px;color:#8b949e;font-weight:500;
+                              display:block;margin-bottom:5px">
+                    Açıklama <span style="color:#6e7681">(Description)</span>
+                </label>
+                <textarea asp-for="Description" rows="4"
+                          style="width:100%;background:#0d1117;border:1px solid #30363d;
+                                 border-radius:8px;padding:9px 12px;font-size:12px;
+                                 color:#c9d1d9;outline:none;resize:vertical;
+                                 line-height:1.7;font-family:inherit"></textarea>
+                <span asp-validation-for="Description"
+                      style="font-size:11px;color:#ef4444"></span>
+            </div>
+
+            <div style="margin-bottom:20px">
+                <label style="font-size:11px;color:#8b949e;font-weight:500;
+                              display:block;margin-bottom:5px">
+                    Görsel Yolu <span style="color:#6e7681">(ImageUrl)</span>
+                </label>
+                <div style="display:flex;align-items:center">
+                    <div style="background:#0d1117;border:1px solid #30363d;border-right:none;
+                                border-radius:8px 0 0 8px;padding:9px 10px;
+                                font-size:11px;color:#6e7681;white-space:nowrap">
+                        /images/
+                    </div>
+                    <input asp-for="ImageUrl"
+                           style="flex:1;background:#0d1117;border:1px solid #30363d;
+                                  border-left:none;border-radius:0 8px 8px 0;
+                                  padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none"/>
+                </div>
+                <span asp-validation-for="ImageUrl"
+                      style="font-size:11px;color:#ef4444"></span>
+            </div>
+
+            <div style="display:flex;gap:8px">
+                <button type="submit"
+                        style="padding:9px 24px;background:#22c55e;color:#fff;border:none;
+                               border-radius:8px;font-size:12px;font-weight:500;cursor:pointer">
+                    Güncelle
+                </button>
+                <a asp-action="TestimonialList"
+                   style="padding:9px 20px;background:transparent;color:#8b949e;
+                          border:1px solid #30363d;border-radius:8px;font-size:12px;
+                          text-decoration:none;display:inline-flex;align-items:center">
+                    İptal
+                </a>
+            </div>
+        </div>
+    </form>
+</div>

@@ -18,6 +18,10 @@ builder.Services.AddScoped<IAboutService, AboutManager>();
 builder.Services.AddScoped<IAboutDal, EfAboutDal>();
 builder.Services.AddScoped<IServiceDal, EfServiceDal>();
 builder.Services.AddScoped<IServiceService, ServiceManager>();
+builder.Services.AddScoped<IBannerService, BannerManager>();
+builder.Services.AddScoped<IBannerDal, EfBannerDal>();
+builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
+builder.Services.AddScoped<ITestimonialDal, EfTestimonialDal>();
 
 var app = builder.Build();
 

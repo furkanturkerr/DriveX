@@ -1,0 +1,246 @@
+@model List<Rentaly.DtoLayer.BannerDtos.ResultBannerDto>
+
+@{
+ViewData["Title"] = "Banner Yönetimi";
+Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div style="padding:20px">
+
+    @* TOPBAR *@
+    <div style="display:flex;align-items:center;justify-content:space-between;
+                margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #21262d">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;
+                         display:inline-block"></span>
+            <span style="font-size:14px;font-weight:500;color:#f0f6fc">Banner Yönetimi</span>
+            <span style="font-size:10px;background:#0d2818;color:#22c55e;
+                         border:1px solid #22c55e33;padding:2px 9px;border-radius:20px">
+                @(Model?.Count ?? 0) kayıt
+            </span>
+        </div>
+        <a asp-action="CreateBanner"
+           style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;
+                  background:#22c55e;color:#fff;border-radius:8px;font-size:12px;
+                  font-weight:500;text-decoration:none">
+            <svg width="13" height="13" fill="none" stroke="#fff"
+                 stroke-width="2" viewBox="0 0 16 16">
+                <path d="M8 3v10M3 8h10"/>
+            </svg>
+            Banner Ekle
+        </a>
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+    <div style="text-align:center;padding:52px 20px;background:#161b22;
+                    border:1px dashed #30363d;border-radius:12px">
+        <svg width="40" height="40" fill="none" stroke="#30363d" stroke-width="1.5"
+             viewBox="0 0 16 16" style="margin:0 auto 14px;display:block">
+            <rect x="1" y="4" width="14" height="8" rx="1.5"/>
+            <path d="M4 7h8M4 10h5"/>
+        </svg>
+        <div style="font-size:13px;color:#8b949e;margin-bottom:6px">
+            Henüz banner eklenmemiş
+        </div>
+        <div style="font-size:11px;color:#6e7681">
+            Yukarıdaki "Banner Ekle" butonuna tıklayın
+        </div>
+    </div>
+    }
+    else
+    {
+    @* ÖNİZLEME *@
+    <div style="background:#161b22;border:1px solid #21262d;
+                    border-radius:12px;overflow:hidden;margin-bottom:14px">
+
+        <div style="padding:9px 16px;border-bottom:1px solid #21262d;
+                        display:flex;align-items:center;gap:6px;background:#0d1117">
+                <span style="width:6px;height:6px;background:#22c55e;
+                             border-radius:50%;display:inline-block"></span>
+            <span style="font-size:10px;color:#6e7681;text-transform:uppercase;
+                             letter-spacing:.6px;font-weight:500">Önizleme</span>
+        </div>
+
+        <div style="position:relative;background:#111a11;
+                        display:flex;align-items:center;min-height:130px;overflow:hidden">
+            <div style="position:absolute;inset:0;background:rgba(0,0,0,0.58);z-index:1"></div>
+            <div style="position:relative;z-index:2;display:flex;
+                            align-items:flex-start;width:100%;padding:22px 24px;gap:20px">
+
+                <div style="flex:0 0 160px;padding-right:16px;
+                                border-right:1px solid rgba(255,255,255,.1)">
+                    <div style="font-size:18px;font-weight:700;
+                                    color:#fff;line-height:1.3">
+                        Let's Your<br>Adventure Begin
+                    </div>
+                </div>
+
+                <div style="flex:1;display:flex;gap:16px;flex-wrap:wrap">
+                    @foreach (var item in Model)
+                    {
+                    <div style="flex:1;min-width:130px;max-width:220px">
+                        <div style="width:38px;height:38px;background:#22c55e;
+                                            border-radius:7px;display:flex;align-items:center;
+                                            justify-content:center;margin-bottom:8px">
+                                    <span style="font-size:9px;font-weight:600;color:#fff;
+                                                 letter-spacing:.3px">
+                                        @(item.IconUrl?.Replace(".svg","")
+                                        .Replace(".png","")
+                                        .ToUpper()
+                                        .Substring(0, Math.Min(4,
+                                        item.IconUrl?.Replace(".svg","")
+                                        .Replace(".png","")
+                                        .Length ?? 0)))
+                                    </span>
+                        </div>
+                        <div style="font-size:12px;font-weight:700;
+                                            color:#fff;margin-bottom:5px">
+                            @item.Title
+                        </div>
+                        <div style="font-size:10px;color:rgba(255,255,255,.62);
+                                            line-height:1.55;overflow:hidden;
+                                            display:-webkit-box;-webkit-line-clamp:3;
+                                            -webkit-box-orient:vertical">
+                            @item.Description
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* TABLO *@
+    <div style="background:#161b22;border:1px solid #21262d;
+                    border-radius:12px;overflow:hidden">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed">
+            <colgroup>
+                <col style="width:48px"/>
+                <col style="width:22%"/>
+                <col/>
+                <col style="width:130px"/>
+                <col style="width:140px"/>
+            </colgroup>
+            <thead>
+            <tr style="background:#0d1117;border-bottom:1px solid #21262d">
+                <th style="text-align:left;padding:10px 16px;font-size:10px;
+                                   color:#6e7681;font-weight:500;
+                                   text-transform:uppercase;letter-spacing:.5px">
+                    ID
+                </th>
+                <th style="text-align:left;padding:10px 16px;font-size:10px;
+                                   color:#6e7681;font-weight:500;
+                                   text-transform:uppercase;letter-spacing:.5px">
+                    Başlık
+                </th>
+                <th style="text-align:left;padding:10px 16px;font-size:10px;
+                                   color:#6e7681;font-weight:500;
+                                   text-transform:uppercase;letter-spacing:.5px">
+                    Açıklama
+                </th>
+                <th style="text-align:left;padding:10px 16px;font-size:10px;
+                                   color:#6e7681;font-weight:500;
+                                   text-transform:uppercase;letter-spacing:.5px">
+                    İkon
+                </th>
+                <th style="text-align:right;padding:10px 16px;font-size:10px;
+                                   color:#6e7681;font-weight:500;
+                                   text-transform:uppercase;letter-spacing:.5px">
+                    İşlem
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+            <tr style="border-bottom:1px solid #21262d">
+
+                <td style="padding:12px 16px;color:#6e7681;
+                                       font-size:11px">
+                    @item.BannerId
+                </td>
+
+                <td style="padding:12px 16px">
+                    <div style="font-size:12px;font-weight:500;
+                                            color:#f0f6fc;overflow:hidden;
+                                            white-space:nowrap;text-overflow:ellipsis">
+                        @item.Title
+                    </div>
+                </td>
+
+                <td style="padding:12px 16px">
+                    <div style="font-size:11px;color:#8b949e;line-height:1.5;
+                                            overflow:hidden;white-space:nowrap;
+                                            text-overflow:ellipsis">
+                        @item.Description
+                    </div>
+                </td>
+
+                <td style="padding:12px 16px">
+                    <div style="display:flex;align-items:center;gap:7px">
+                        <div style="width:26px;height:26px;background:#22c55e;
+                                                border-radius:6px;flex-shrink:0;display:flex;
+                                                align-items:center;justify-content:center">
+                                        <span style="font-size:7px;font-weight:600;
+                                                     color:#fff;letter-spacing:.2px">
+                                            @(item.IconUrl?.Replace(".svg","")
+                                            .Replace(".png","")
+                                            .ToUpper()
+                                            .Substring(0, Math.Min(3,
+                                            item.IconUrl?.Replace(".svg","")
+                                            .Replace(".png","")
+                                            .Length ?? 0)))
+                                        </span>
+                        </div>
+                        <span style="font-size:10px;color:#6e7681;
+                                                 overflow:hidden;white-space:nowrap;
+                                                 text-overflow:ellipsis">
+                                        @item.IconUrl
+                                    </span>
+                    </div>
+                </td>
+
+                <td style="padding:12px 16px">
+                    <div style="display:flex;gap:6px;justify-content:flex-end">
+                        <a asp-action="UpdateBanner" asp-route-id="@item.BannerId"
+                           style="display:inline-flex;align-items:center;gap:4px;
+                                              padding:5px 12px;background:#0d2818;color:#22c55e;
+                                              border:1px solid #22c55e33;border-radius:7px;
+                                              font-size:11px;font-weight:500;text-decoration:none;
+                                              white-space:nowrap">
+                            <svg width="11" height="11" fill="none"
+                                 stroke="currentColor" stroke-width="1.5"
+                                 viewBox="0 0 16 16">
+                                <path d="M11 2l3 3-8 8H3v-3l8-8z"/>
+                            </svg>
+                            Düzenle
+                        </a>
+                        <form asp-action="DeleteBanner" asp-route-id="@item.BannerId"
+                              method="post" style="display:inline"
+                              onsubmit="return confirm('Silmek istediğinize emin misiniz?')">
+                            @Html.AntiForgeryToken()
+                            <button type="submit"
+                                    style="display:inline-flex;align-items:center;
+                                                       gap:4px;padding:5px 12px;background:#2a0d0d;
+                                                       color:#ef4444;border:1px solid #ef444433;
+                                                       border-radius:7px;font-size:11px;
+                                                       font-weight:500;cursor:pointer;
+                                                       white-space:nowrap">
+                                <svg width="11" height="11" fill="none"
+                                     stroke="currentColor" stroke-width="1.5"
+                                     viewBox="0 0 16 16">
+                                    <path d="M3 5h10M6 5V3h4v2M5 5l.5 8h5l.5-8"/>
+                                </svg>
+                                Sil
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    }
+</div>

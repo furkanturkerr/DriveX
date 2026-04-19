@@ -1,5 +1,7 @@
+using AutoMapper;
 using Rentaly.BusinessLayer.Abstract;
 using Rentaly.DataAccessLayer.Abstract;
+using Rentaly.DtoLayer.TestimonialDtos;
 using Rentaly.Entity;
 
 namespace Rentaly.BusinessLayer.Concrate;
@@ -7,34 +9,40 @@ namespace Rentaly.BusinessLayer.Concrate;
 public class TestimonialManager : ITestimonialService
 {
     private readonly ITestimonialDal _testimonialDal;
+    private readonly IMapper _mapper;
 
-    public TestimonialManager(ITestimonialDal testimonialDal)
+    public TestimonialManager(ITestimonialDal testimonialDal, IMapper mapper)
     {
         _testimonialDal = testimonialDal;
+        _mapper = mapper;
     }
 
-    public async Task TInsertAsync(Testimonial entity)
+    public async Task<List<ResultTestimonialDto>> TGetListAsync()
     {
-        await _testimonialDal.InsertAsync(entity);
+        var values  = await _testimonialDal.GetListAsync();
+        return _mapper.Map<List<ResultTestimonialDto>>(values);
+    }
+
+    public async Task<UpdateTestimonialDto> TGetByIdAsync(int id)
+    {
+       var values = await _testimonialDal.GetByIdAsync(id);
+       return _mapper.Map<UpdateTestimonialDto>(values);
+    }
+
+    public async Task TInsertAsync(CreateTestimonialDto dto)
+    {
+        var values = _mapper.Map<Testimonial>(dto);
+        await _testimonialDal.InsertAsync(values);
+    }
+
+    public async Task TUpdateAsync(UpdateTestimonialDto dto)
+    {
+        var values = _mapper.Map<Testimonial>(dto);
+        await _testimonialDal.UpdateAsync(values);
     }
 
     public async Task TDeleteAsync(int id)
     {
         await _testimonialDal.DeleteAsync(id);
-    }
-
-    public async Task TUpdateAsync(Testimonial entity)
-    {
-        await _testimonialDal.UpdateAsync(entity);
-    }
-
-    public async Task<List<Testimonial>> TGetListAsync()
-    {
-        return await _testimonialDal.GetListAsync();
-    }
-
-    public async Task<Testimonial> TGetByIdAsync(int id)
-    {
-        return await _testimonialDal.GetByIdAsync(id);
     }
 }
