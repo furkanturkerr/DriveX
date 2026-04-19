@@ -4,106 +4,138 @@
     ViewData["Title"] = "Hakkımızda Yönetimi";
     Layout = "~/Views/Admin/Index.cshtml";
     var about = Model?.FirstOrDefault();
+    bool hasRecord = about != null;
 }
 
-<div class="container-fluid px-4 py-4">
-    <div class="row mb-4">
-        <div class="col-12 d-flex justify-content-between align-items-center">
-            <div>
-                <h3 class="fw-bold text-white mb-1">Hakkımızda Yönetimi</h3>
-                <p class="text-secondary mb-0">Ana sayfadaki hakkımızda alanını buradan yönetebilirsiniz.</p>
-            </div>
+<div style="padding:20px">
 
-            @if (about == null)
-            {
-                <a href="/Admin/About/CreateAbout" class="btn btn-success rounded-pill px-4">
-                    <i class="fas fa-plus me-2"></i>Yeni Hakkımızda Yazısı Ekle
-                </a>
-            }
+    <div style="display:flex;align-items:center;justify-content:space-between;
+                margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #21262d">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;display:inline-block"></span>
+            <span style="font-size:14px;font-weight:500;color:#f0f6fc">Hakkımızda Yönetimi</span>
+            <span style="font-size:10px;background:#0d2818;color:#22c55e;
+                         border:1px solid #22c55e33;padding:2px 9px;border-radius:20px">
+                @(hasRecord ? "1 kayıt" : "0 kayıt")
+            </span>
         </div>
+
+        @if (!hasRecord)
+        {
+            <a asp-action="Create"
+               style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;
+                      background:#22c55e;color:#fff;border-radius:8px;font-size:12px;
+                      font-weight:500;text-decoration:none">
+                <svg width="13" height="13" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 16 16">
+                    <path d="M8 3v10M3 8h10"/>
+                </svg>
+                İçerik Ekle
+            </a>
+        }
     </div>
 
-    @if (about != null)
+    @if (hasRecord)
     {
-        <div class="row g-4">
-            <div class="col-xl-8 col-lg-7">
-                <div class="card border-0 shadow-sm rounded-4 bg-dark text-white h-100">
-                    <div class="card-header bg-transparent border-bottom border-secondary d-flex justify-content-between align-items-center py-3">
-                        <h5 class="mb-0 fw-semibold">Mevcut Hakkımızda İçeriği</h5>
-                        <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">Aktif Kayıt</span>
+        <div style="background:#0c1f3d;border:1px solid #3b82f633;border-radius:8px;
+                    padding:10px 14px;font-size:11px;color:#60a5fa;
+                    display:flex;align-items:center;gap:8px;margin-bottom:14px">
+            <svg width="14" height="14" fill="none" stroke="#60a5fa" stroke-width="1.5" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v.5"/>
+            </svg>
+            Bu bölümde yalnızca 1 kayıt olabilir. Mevcut kaydı düzenleyebilir veya silebilirsiniz.
+        </div>
+
+        <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;overflow:hidden">
+
+            <div style="position:relative;min-height:200px;background:#2a2a2a;
+                        display:flex;align-items:center;overflow:hidden">
+
+                @if (!string.IsNullOrEmpty(about.Image))
+                {
+                    <img src="@about.Image" alt="about"
+                         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0"/>
+                }
+
+                <div style="position:absolute;inset:0;background:rgba(0,0,0,0.62);z-index:1"></div>
+
+                @if (!string.IsNullOrEmpty(about.Image))
+                {
+                    <div style="position:absolute;top:10px;right:12px;z-index:3;
+                                background:rgba(0,0,0,.55);border:1px solid #30363d;
+                                border-radius:6px;padding:4px 9px;font-size:10px;color:#8b949e;
+                                display:flex;align-items:center;gap:4px">
+                        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 16 16">
+                            <rect x="2" y="3" width="12" height="10" rx="1.5"/>
+                            <path d="M2 11l3-3 3 3 2-2 4 4"/><circle cx="5.5" cy="7" r="1"/>
+                        </svg>
+                        @about.Image
                     </div>
+                }
 
-                    <div class="card-body p-4">
-                        <div class="mb-4">
-                            <label class="text-secondary small text-uppercase fw-semibold mb-2">İçerik</label>
-                            <div class="bg-black bg-opacity-25 rounded-4 p-4 border border-secondary-subtle">
-                                <p class="mb-0 text-light" style="line-height:1.9;">
-                                    @about.AboutText
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="d-flex flex-wrap gap-2">
-                            <a href="/Admin/About/UpdateAbout/@about.AboutId" class="btn btn-warning rounded-pill px-4">
-                                <i class="fas fa-edit me-2"></i>Güncelle
-                            </a>
-
-                            <a href="/Admin/About/DeleteAbout/@about.AboutId"
-                               class="btn btn-outline-danger rounded-pill px-4"
-                               onclick="return confirm('Bu hakkımızda içeriğini silmek istediğinize emin misiniz?');">
-                                <i class="fas fa-trash me-2"></i>Sil
-                            </a>
-                        </div>
+                <div style="position:relative;z-index:2;display:flex;
+                            align-items:center;width:100%;padding:36px 5%">
+                    <div style="flex:0 0 46%;padding-right:32px">
+                        <h2 style="font-size:20px;font-weight:700;color:#fff;line-height:1.35">
+                            @about.Title
+                            <span style="color:#22c55e">@about.TitleGreen</span>
+                        </h2>
+                    </div>
+                    <div style="flex:1">
+                        <div style="width:28px;height:3px;background:#22c55e;
+                                    border-radius:2px;margin-bottom:12px"></div>
+                        <p style="font-size:12px;color:rgba(255,255,255,.75);line-height:1.75">
+                            @about.Description
+                        </p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-xl-4 col-lg-5">
-                <div class="card border-0 shadow-sm rounded-4 bg-dark text-white mb-4">
-                    <div class="card-body p-4">
-                        <h5 class="fw-semibold mb-3">Bilgi Kartı</h5>
-                        <div class="mb-3">
-                            <small class="text-secondary d-block mb-1">Kayıt ID</small>
-                            <span class="fw-semibold fs-5">#@about.AboutId</span>
-                        </div>
-
-                        <div class="mb-3">
-                            <small class="text-secondary d-block mb-1">Karakter Sayısı</small>
-                            <span class="fw-semibold fs-5">@((about.AboutText ?? "").Length)</span>
-                        </div>
-
-                        <div>
-                            <small class="text-secondary d-block mb-1">Durum</small>
-                            <span class="badge bg-success px-3 py-2 rounded-pill">Yayında</span>
-                        </div>
-                    </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;
+                        padding:12px 16px;border-top:1px solid #21262d;background:#0d1117">
+                <div style="font-size:11px;color:#6e7681;display:flex;align-items:center;gap:5px">
+                    <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 16 16">
+                        <rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M5 7h6M5 10h3"/>
+                    </svg>
+                    ID: @about.AboutId
                 </div>
-
-                <div class="card border-0 shadow-sm rounded-4 bg-dark text-white">
-                    <div class="card-body p-4">
-                        <h5 class="fw-semibold mb-3">Yönetim Notu</h5>
-                        <p class="text-secondary mb-0" style="line-height:1.8;">
-                            Hakkımızda alanı tek kayıt üzerinden yönetildiği için burada tablo yerine tek içerik kartı kullanılmaktadır.
-                            Güncelleme işlemi ile ana sayfadaki metni doğrudan değiştirebilirsiniz.
-                        </p>
-                    </div>
+                <div style="display:flex;gap:8px">
+                    <a asp-action="UpdateAbout" asp-route-id="@about.AboutId"
+                       style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;
+                              background:#161b22;color:#22c55e;border:1px solid #22c55e33;
+                              border-radius:7px;font-size:11px;font-weight:500;text-decoration:none">
+                        <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16">
+                            <path d="M11 2l3 3-8 8H3v-3l8-8z"/>
+                        </svg>
+                        Düzenle
+                    </a>
+                    <form asp-action="DeleteAbout" asp-route-id="@about.AboutId" method="post" style="display:inline"
+                          onsubmit="return confirm('Bu kaydı silmek istediğinize emin misiniz?')">
+                        @Html.AntiForgeryToken()
+                        <button type="submit"
+                                style="display:inline-flex;align-items:center;gap:5px;padding:6px 14px;
+                                       background:#161b22;color:#ef4444;border:1px solid #ef444433;
+                                       border-radius:7px;font-size:11px;font-weight:500;cursor:pointer">
+                            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16">
+                                <path d="M3 5h10M6 5V3h4v2M5 5l.5 8h5l.5-8"/>
+                            </svg>
+                            Sil
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     }
     else
     {
-        <div class="card border-0 shadow-sm rounded-4 bg-dark text-white">
-            <div class="card-body text-center py-5">
-                <div class="mb-3">
-                    <i class="fas fa-info-circle fs-1 text-success"></i>
-                </div>
-                <h4 class="fw-bold mb-2">Henüz hakkımızda kaydı bulunmuyor</h4>
-                <p class="text-secondary mb-4">İlk hakkımızda içeriğini oluşturmak için aşağıdaki butonu kullanabilirsiniz.</p>
-                <a href="/Admin/About/CreateAbout" class="btn btn-success rounded-pill px-4 py-2">
-                    <i class="fas fa-plus me-2"></i>Hakkımızda Yazısı Ekle
-                </a>
-            </div>
+        <div style="text-align:center;padding:52px 20px;background:#161b22;
+                    border:1px dashed #30363d;border-radius:12px">
+            <svg width="40" height="40" fill="none" stroke="#30363d" stroke-width="1.5"
+                 viewBox="0 0 16 16" style="margin:0 auto 14px;display:block">
+                <rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 6h6M5 9h4"/>
+            </svg>
+            <div style="font-size:13px;color:#8b949e;margin-bottom:6px">Henüz içerik eklenmemiş</div>
+            <div style="font-size:11px;color:#6e7681">Yukarıdaki "İçerik Ekle" butonuna tıklayın</div>
         </div>
     }
+
 </div>

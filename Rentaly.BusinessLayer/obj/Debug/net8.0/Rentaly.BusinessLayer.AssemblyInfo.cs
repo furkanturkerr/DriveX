@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rentaly.BusinessLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93c6210e1a8460b65b68964887bd45329f618ca3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a4f4ca1371f40cd1ff915a60f33fb7e093169a70")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rentaly.BusinessLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rentaly.BusinessLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,58 +1,146 @@
-@model Rentaly.DtoLayer.AboutDtos.CreateAboutDto
+@model Rentaly.DtoLayer.AboutDtos.UpdateAboutDto
 
 @{
-    ViewData["Title"] = "Hakkımızda Ekle";
-    Layout = "~/Views/Admin/Index.cshtml";
+ViewData["Title"] = Model.AboutId == 0 ? "Hakkımızda Ekle" : "Hakkımızda Düzenle";
+Layout = "~/Views/Admin/Index.cshtml";
+bool isEdit = Model.AboutId > 0;
 }
 
-<div class="container-fluid px-4 py-4">
-    <div class="row mb-4">
-        <div class="col-12">
-            <h3 class="fw-bold text-white mb-1">Hakkımızda Ekle</h3>
-            <p class="text-secondary mb-0">Ana sayfada gösterilecek hakkımızda metnini oluşturun.</p>
-        </div>
+<div style="padding:20px">
+
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;
+                padding-bottom:14px;border-bottom:1px solid #21262d">
+        <a asp-action="Index"
+           style="display:inline-flex;align-items:center;gap:4px;
+                  color:#8b949e;font-size:12px;text-decoration:none">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16">
+                <path d="M10 3L5 8l5 5"/>
+            </svg>
+            Geri
+        </a>
+        <span style="color:#30363d;font-size:12px">/</span>
+        <span style="font-size:13px;font-weight:500;color:#f0f6fc">
+            @(isEdit ? "Hakkımızda — Düzenle" : "Hakkımızda — Yeni Ekle")
+        </span>
     </div>
 
-    <div class="row justify-content-center">
-        <div class="col-xl-8 col-lg-10">
-            <div class="card border-0 shadow-sm rounded-4 bg-dark text-white">
-                <div class="card-header bg-transparent border-bottom border-secondary py-3">
-                    <h5 class="mb-0 fw-semibold">Yeni Hakkımızda İçeriği</h5>
+    <form method="post">
+        @Html.AntiForgeryToken()
+
+        @if (isEdit)
+        {
+        <input type="hidden" asp-for="AboutId"/>
+        }
+
+        <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;padding:20px">
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;
+                                  display:block;margin-bottom:5px">
+                        Başlık
+                        <span style="color:#6e7681">(Title)</span>
+                    </label>
+                    <input asp-for="Title"
+                           style="width:100%;background:#0d1117;border:1px solid #30363d;
+                                  border-radius:8px;padding:9px 12px;font-size:12px;
+                                  color:#c9d1d9;outline:none"
+                           placeholder="We offer customers a wide range of"/>
+                    <span asp-validation-for="Title" style="font-size:11px;color:#ef4444"></span>
                 </div>
 
-                <div class="card-body p-4">
-                    <form method="post">
-                        <div class="mb-4">
-                            <label asp-for="AboutText" class="form-label fw-semibold text-light">Hakkımızda Yazısı</label>
-                            <textarea asp-for="AboutText"
-                                      class="form-control bg-black text-white border-secondary rounded-4 p-3"
-                                      rows="10"
-                                      placeholder="Şirketinizin hizmet anlayışını, araç filonuzu ve müşterilere sunduğunuz avantajları açıklayın..."></textarea>
-                            <span asp-validation-for="AboutText" class="text-danger small"></span>
-                        </div>
-
-                        <div class="d-flex flex-wrap gap-2">
-                            <button type="submit" class="btn btn-success rounded-pill px-4">
-                                <i class="fas fa-save me-2"></i>Kaydet
-                            </button>
-
-                            <a href="/Admin/About/AboutList" class="btn btn-outline-light rounded-pill px-4">
-                                <i class="fas fa-arrow-left me-2"></i>Geri Dön
-                            </a>
-                        </div>
-                    </form>
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;
+                                  display:block;margin-bottom:5px">
+                        Yeşil Vurgulu Metin
+                        <span style="color:#22c55e">(TitleGreen)</span>
+                    </label>
+                    <input asp-for="TitleGreen"
+                           style="width:100%;background:#0d1117;border:1px solid #22c55e33;
+                                  border-radius:8px;padding:9px 12px;font-size:12px;
+                                  color:#22c55e;outline:none"
+                           placeholder="commercial cars and luxury cars"/>
+                    <span asp-validation-for="TitleGreen" style="font-size:11px;color:#ef4444"></span>
                 </div>
             </div>
 
-            <div class="card border-0 shadow-sm rounded-4 bg-dark text-white mt-4">
-                <div class="card-body p-4">
-                    <h6 class="fw-semibold mb-3">İçerik Önerisi</h6>
-                    <p class="text-secondary mb-0" style="line-height:1.8;">
-                        Bu alanda firmanızın güvenilirliği, araç çeşitliliği, müşteri memnuniyeti ve sunduğunuz hizmet kalitesi gibi
-                        öne çıkan noktaları sade ve güçlü bir dille anlatmanız daha profesyonel bir görünüm sağlar.
-                    </p>
-                </div>
+            <div style="margin-bottom:14px">
+                <label style="font-size:11px;color:#8b949e;font-weight:500;
+                              display:block;margin-bottom:5px">
+                    Açıklama
+                    <span style="color:#6e7681">(Description)</span>
+                </label>
+                <textarea asp-for="Description" rows="5"
+                          style="width:100%;background:#0d1117;border:1px solid #30363d;
+                                 border-radius:8px;padding:9px 12px;font-size:12px;
+                                 color:#c9d1d9;outline:none;resize:vertical;
+                                 line-height:1.7;font-family:inherit"
+                          placeholder="At our car rental agency..."></textarea>
+                <span asp-validation-for="Description" style="font-size:11px;color:#ef4444"></span>
             </div>
+
+            <div style="margin-bottom:20px">
+    <label style="font-size:11px;color:#8b949e;font-weight:500;
+                  display:block;margin-bottom:5px">
+        Arkaplan Görseli Yolu
+        <span style="color:#6e7681">(Image)</span>
+    </label>
+    <div style="display:flex;align-items:center;gap:8px">
+        <div style="display:flex;align-items:center;gap:6px;background:#0d1117;
+                    border:1px solid #30363d;border-radius:8px 0 0 8px;
+                    padding:9px 12px;flex-shrink:0">
+            <svg width="13" height="13" fill="none" stroke="#6e7681" stroke-width="1.4" viewBox="0 0 16 16">
+                <rect x="2" y="3" width="12" height="10" rx="1.5"/>
+                <path d="M2 11l3-3 3 3 2-2 4 4"/><circle cx="5.5" cy="7" r="1"/>
+            </svg>
+            <span style="font-size:11px;color:#6e7681">/images/</span>
         </div>
+        <input asp-for="Image"
+               style="flex:1;background:#0d1117;border:1px solid #30363d;
+                      border-left:none;border-radius:0 8px 8px 0;padding:9px 12px;
+                      font-size:12px;color:#c9d1d9;outline:none"
+               placeholder="about-bg.jpg"/>
     </div>
+    <span asp-validation-for="Image" style="font-size:11px;color:#ef4444"></span>
+
+    @if (isEdit && !string.IsNullOrEmpty(Model.Image))
+    {
+        <div style="display:flex;align-items:center;gap:6px;margin-top:8px;
+                    padding:7px 10px;background:#0d2818;border:1px solid #22c55e22;
+                    border-radius:6px;width:fit-content">
+            <svg width="12" height="12" fill="none" stroke="#22c55e" stroke-width="1.4" viewBox="0 0 16 16">
+                <path d="M2 11l3-3 3 3 2-2 4 4"/><rect x="2" y="3" width="12" height="10" rx="1.5"/>
+                <circle cx="5.5" cy="7" r="1"/>
+            </svg>
+            <span style="font-size:11px;color:#22c55e">Mevcut: /images/@Model.Image</span>
+        </div>
+    }
+
+    <div style="margin-top:7px;font-size:10px;color:#6e7681;display:flex;align-items:center;gap:4px">
+        <svg width="11" height="11" fill="none" stroke="#6e7681" stroke-width="1.4" viewBox="0 0 16 16">
+            <circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v.5"/>
+        </svg>
+        Görseli <code style="background:#21262d;padding:1px 5px;border-radius:4px;
+                              color:#c9d1d9;font-size:10px">wwwroot/images/</code>
+        klasörüne yükleyin, ardından dosya adını buraya yazın.
+    </div>
+</div>
+
+            <div style="display:flex;gap:8px">
+                <button type="submit"
+                        style="padding:9px 24px;background:#22c55e;color:#fff;
+                               border:none;border-radius:8px;font-size:12px;
+                               font-weight:500;cursor:pointer">
+                    @(isEdit ? "Güncelle" : "Kaydet")
+                </button>
+                <a asp-action="AboutList"
+                   style="padding:9px 20px;background:transparent;color:#8b949e;
+                          border:1px solid #30363d;border-radius:8px;font-size:12px;
+                          text-decoration:none;display:inline-flex;align-items:center">
+                    İptal
+                </a>
+            </div>
+
+        </div>
+    </form>
 </div>

@@ -26,6 +26,7 @@ public class AboutController : Controller
         return View();
     }
     
+    [ValidateAntiForgeryToken]
     [HttpPost]
     public async Task<IActionResult> CreateAbout(CreateAboutDto createAboutDto)
     {
@@ -40,6 +41,7 @@ public class AboutController : Controller
         return View(values);
     }
     
+    [ValidateAntiForgeryToken]
     [HttpPost]
     public async Task<IActionResult> UpdateAbout(UpdateAboutDto updateAboutDto)
     {

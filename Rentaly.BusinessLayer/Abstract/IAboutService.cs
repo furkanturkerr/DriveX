@@ -3,7 +3,7 @@ using Rentaly.Entity;
 
 namespace Rentaly.BusinessLayer.Abstract;
 
-public interface IAboutService : IGenericService<ResultAboutDto, GetAboutByIdDto, CreateAboutDto, UpdateAboutDto>
+public interface IAboutService : IGenericService<ResultAboutDto, CreateAboutDto, UpdateAboutDto>
 {
     
 }

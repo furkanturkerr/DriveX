@@ -1,6 +1,6 @@
 namespace Rentaly.BusinessLayer.Abstract;
 
-public interface IGenericService<TResultDto, TGetByIdDto, TCreateDto, TUpdateDto>
+public interface IGenericService<TResultDto, TCreateDto, TUpdateDto>
 {
     Task<List<TResultDto>> TGetListAsync();
     Task<TUpdateDto> TGetByIdAsync(int id);

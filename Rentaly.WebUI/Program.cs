@@ -16,6 +16,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IAboutService, AboutManager>();
 builder.Services.AddScoped<IAboutDal, EfAboutDal>();
+builder.Services.AddScoped<IServiceDal, EfServiceDal>();
+builder.Services.AddScoped<IServiceService, ServiceManager>();
 
 var app = builder.Build();
 
