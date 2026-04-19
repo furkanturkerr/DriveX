@@ -1,0 +1,203 @@
+@model List<Rentaly.DtoLayer.FaqDtos.ResultFaqDto>
+
+@{
+    ViewData["Title"] = "SSS Yönetimi";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div style="padding:20px">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;
+                margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #21262d">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;
+                         display:inline-block"></span>
+            <span style="font-size:14px;font-weight:500;color:#f0f6fc">SSS Yönetimi</span>
+            <span style="font-size:10px;background:#0d2818;color:#22c55e;
+                         border:1px solid #22c55e33;padding:2px 9px;border-radius:20px">
+                @(Model?.Count ?? 0) kayıt
+            </span>
+        </div>
+        <a asp-action="CreateFaq"
+           style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;
+                  background:#22c55e;color:#fff;border-radius:8px;font-size:12px;
+                  font-weight:500;text-decoration:none">
+            <svg width="13" height="13" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 16 16">
+                <path d="M8 3v10M3 8h10"/>
+            </svg>
+            Soru Ekle
+        </a>
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div style="text-align:center;padding:52px 20px;background:#161b22;
+                    border:1px dashed #30363d;border-radius:12px">
+            <svg width="40" height="40" fill="none" stroke="#30363d" stroke-width="1.5"
+                 viewBox="0 0 16 16" style="margin:0 auto 14px;display:block">
+                <circle cx="8" cy="8" r="6"/>
+                <path d="M8 5a2 2 0 0 1 1.5 3.5c-.5.5-1.5.5-1.5 1.5M8 12v.5"/>
+            </svg>
+            <div style="font-size:13px;color:#8b949e;margin-bottom:6px">
+                Henüz soru eklenmemiş
+            </div>
+            <div style="font-size:11px;color:#6e7681">
+                Yukarıdaki "Soru Ekle" butonuna tıklayın
+            </div>
+        </div>
+    }
+    else
+    {
+        @* ÖNİZLEME *@
+        <div style="background:#161b22;border:1px solid #21262d;
+                    border-radius:12px;overflow:hidden;margin-bottom:14px">
+
+            <div style="padding:9px 16px;border-bottom:1px solid #21262d;
+                        display:flex;align-items:center;gap:6px;background:#0d1117">
+                <span style="width:6px;height:6px;background:#22c55e;
+                             border-radius:50%;display:inline-block"></span>
+                <span style="font-size:10px;color:#6e7681;text-transform:uppercase;
+                             letter-spacing:.6px;font-weight:500">Önizleme</span>
+            </div>
+
+            <div style="padding:20px 24px">
+                <div style="text-align:center;margin-bottom:20px">
+                    <div style="font-size:18px;font-weight:700;color:#f0f6fc">
+                        Have Any Questions?
+                    </div>
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px">
+                    @foreach (var item in Model)
+                    {
+                        <div style="display:flex;align-items:center;justify-content:space-between;
+                                    padding:12px 0;border-bottom:1px solid #21262d;gap:12px">
+                            <span style="font-size:12px;color:#c9d1d9;overflow:hidden;
+                                         white-space:nowrap;text-overflow:ellipsis">
+                                @item.Question
+                            </span>
+                            <div style="width:26px;height:26px;background:#22c55e;border-radius:6px;
+                                        flex-shrink:0;display:flex;align-items:center;
+                                        justify-content:center">
+                                <svg width="12" height="12" fill="none" stroke="#fff"
+                                     stroke-width="2" viewBox="0 0 16 16">
+                                    <path d="M4 6l4 4 4-4"/>
+                                </svg>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        @* TABLO *@
+        <div style="background:#161b22;border:1px solid #21262d;
+                    border-radius:12px;overflow:hidden">
+            <table style="width:100%;border-collapse:collapse;
+                          font-size:12px;table-layout:fixed">
+                <colgroup>
+                    <col style="width:44px"/>
+                    <col style="width:30%"/>
+                    <col/>
+                    <col style="width:148px"/>
+                </colgroup>
+                <thead>
+                    <tr style="background:#0d1117;border-bottom:1px solid #21262d">
+                        <th style="text-align:left;padding:10px 16px;font-size:10px;
+                                   color:#6e7681;font-weight:500;
+                                   text-transform:uppercase;letter-spacing:.5px">
+                            ID
+                        </th>
+                        <th style="text-align:left;padding:10px 16px;font-size:10px;
+                                   color:#6e7681;font-weight:500;
+                                   text-transform:uppercase;letter-spacing:.5px">
+                            Soru
+                        </th>
+                        <th style="text-align:left;padding:10px 16px;font-size:10px;
+                                   color:#6e7681;font-weight:500;
+                                   text-transform:uppercase;letter-spacing:.5px">
+                            Cevap
+                        </th>
+                        <th style="text-align:right;padding:10px 16px;font-size:10px;
+                                   color:#6e7681;font-weight:500;
+                                   text-transform:uppercase;letter-spacing:.5px">
+                            İşlem
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr style="border-bottom:1px solid #21262d">
+
+                            <td style="padding:12px 16px;color:#6e7681;font-size:11px">
+                                @item.FaqId
+                            </td>
+
+                            <td style="padding:12px 16px">
+                                <div style="display:flex;align-items:center;gap:8px">
+                                    <div style="width:22px;height:22px;background:#22c55e;
+                                                border-radius:5px;flex-shrink:0;display:flex;
+                                                align-items:center;justify-content:center">
+                                        <svg width="11" height="11" fill="none" stroke="#fff"
+                                             stroke-width="2" viewBox="0 0 16 16">
+                                            <path d="M4 6l4 4 4-4"/>
+                                        </svg>
+                                    </div>
+                                    <span style="font-size:12px;font-weight:500;color:#f0f6fc;
+                                                 overflow:hidden;white-space:nowrap;
+                                                 text-overflow:ellipsis">
+                                        @item.Question
+                                    </span>
+                                </div>
+                            </td>
+
+                            <td style="padding:12px 16px">
+                                <div style="font-size:11px;color:#8b949e;overflow:hidden;
+                                            white-space:nowrap;text-overflow:ellipsis">
+                                    @item.Answer
+                                </div>
+                            </td>
+
+                            <td style="padding:12px 16px">
+                                <div style="display:flex;gap:6px;justify-content:flex-end">
+                                    <a asp-action="UpdateFaq" asp-route-id="@item.FaqId"
+                                       style="display:inline-flex;align-items:center;gap:4px;
+                                              padding:5px 12px;background:#0d2818;color:#22c55e;
+                                              border:1px solid #22c55e33;border-radius:7px;
+                                              font-size:11px;font-weight:500;text-decoration:none;
+                                              white-space:nowrap">
+                                        <svg width="11" height="11" fill="none"
+                                             stroke="currentColor" stroke-width="1.5"
+                                             viewBox="0 0 16 16">
+                                            <path d="M11 2l3 3-8 8H3v-3l8-8z"/>
+                                        </svg>
+                                        Düzenle
+                                    </a>
+                                    <form asp-action="DeleteFaq" asp-route-id="@item.FaqId"
+                                          method="post" style="display:inline"
+                                          onsubmit="return confirm('Silmek istediğinize emin misiniz?')">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit"
+                                                style="display:inline-flex;align-items:center;
+                                                       gap:4px;padding:5px 12px;background:#2a0d0d;
+                                                       color:#ef4444;border:1px solid #ef444433;
+                                                       border-radius:7px;font-size:11px;
+                                                       font-weight:500;cursor:pointer;
+                                                       white-space:nowrap">
+                                            <svg width="11" height="11" fill="none"
+                                                 stroke="currentColor" stroke-width="1.5"
+                                                 viewBox="0 0 16 16">
+                                                <path d="M3 5h10M6 5V3h4v2M5 5l.5 8h5l.5-8"/>
+                                            </svg>
+                                            Sil
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

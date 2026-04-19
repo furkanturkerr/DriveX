@@ -1,0 +1,239 @@
+@model List<Rentaly.DtoLayer.FooterDtos.ResultFooterDto>
+
+@{
+    ViewData["Title"] = "Footer Yönetimi";
+    Layout = "~/Views/Admin/Index.cshtml";
+    var footer = Model?.FirstOrDefault();
+    bool hasRecord = footer != null;
+}
+
+<div style="padding:20px">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;
+                margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #21262d">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;
+                         display:inline-block"></span>
+            <span style="font-size:14px;font-weight:500;color:#f0f6fc">Footer Yönetimi</span>
+            <span style="font-size:10px;background:#0d2818;color:#22c55e;
+                         border:1px solid #22c55e33;padding:2px 9px;border-radius:20px">
+                @(hasRecord ? "1 kayıt" : "0 kayıt")
+            </span>
+        </div>
+        @if (!hasRecord)
+        {
+            <a asp-action="CreateFooter"
+               style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;
+                      background:#22c55e;color:#fff;border-radius:8px;font-size:12px;
+                      font-weight:500;text-decoration:none">
+                <svg width="13" height="13" fill="none" stroke="#fff"
+                     stroke-width="2" viewBox="0 0 16 16">
+                    <path d="M8 3v10M3 8h10"/>
+                </svg>
+                İçerik Ekle
+            </a>
+        }
+    </div>
+
+    @if (!hasRecord)
+    {
+        <div style="text-align:center;padding:52px 20px;background:#161b22;
+                    border:1px dashed #30363d;border-radius:12px">
+            <svg width="40" height="40" fill="none" stroke="#30363d" stroke-width="1.5"
+                 viewBox="0 0 16 16" style="margin:0 auto 14px;display:block">
+                <rect x="1" y="2" width="14" height="12" rx="1.5"/>
+                <path d="M1 10h14"/>
+            </svg>
+            <div style="font-size:13px;color:#8b949e;margin-bottom:6px">
+                Henüz içerik eklenmemiş
+            </div>
+            <div style="font-size:11px;color:#6e7681">
+                Yukarıdaki "İçerik Ekle" butonuna tıklayın
+            </div>
+        </div>
+    }
+    else
+    {
+        <div style="background:#0c1f3d;border:1px solid #3b82f633;border-radius:8px;
+                    padding:10px 14px;font-size:11px;color:#60a5fa;
+                    display:flex;align-items:center;gap:8px;margin-bottom:14px">
+            <svg width="14" height="14" fill="none" stroke="#60a5fa"
+                 stroke-width="1.5" viewBox="0 0 16 16">
+                <circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5v.5"/>
+            </svg>
+            Bu bölümde yalnızca 1 kayıt olabilir. Mevcut kaydı düzenleyebilirsiniz.
+        </div>
+
+        @* ÖNİZLEME *@
+        <div style="background:#161b22;border:1px solid #21262d;
+                    border-radius:12px;overflow:hidden;margin-bottom:14px">
+            <div style="padding:9px 16px;border-bottom:1px solid #21262d;
+                        display:flex;align-items:center;gap:6px;background:#0d1117">
+                <span style="width:6px;height:6px;background:#22c55e;
+                             border-radius:50%;display:inline-block"></span>
+                <span style="font-size:10px;color:#6e7681;text-transform:uppercase;
+                             letter-spacing:.6px;font-weight:500">Önizleme</span>
+            </div>
+
+            <div style="background:#111;padding:28px 5%">
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px">
+
+                    <div>
+                        <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:12px">
+                            About Rentaly
+                        </div>
+                        <div style="font-size:11px;color:rgba(255,255,255,.6);
+                                    line-height:1.7;display:-webkit-box;
+                                    -webkit-line-clamp:4;-webkit-box-orient:vertical;
+                                    overflow:hidden">
+                            @footer.Description
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:12px">
+                            Contact Info
+                        </div>
+                        <div style="display:flex;flex-direction:column;gap:8px">
+                            <div style="display:flex;align-items:flex-start;gap:8px">
+                                <svg width="13" height="13" fill="none" stroke="#22c55e"
+                                     stroke-width="1.5" viewBox="0 0 16 16" style="flex-shrink:0;margin-top:1px">
+                                    <path d="M8 2a4 4 0 0 0-4 4c0 3 4 8 4 8s4-5 4-8a4 4 0 0 0-4-4z"/>
+                                    <circle cx="8" cy="6" r="1.5"/>
+                                </svg>
+                                <span style="font-size:11px;color:rgba(255,255,255,.65);line-height:1.5">
+                                    @footer.Address
+                                </span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:8px">
+                                <svg width="13" height="13" fill="none" stroke="#22c55e"
+                                     stroke-width="1.5" viewBox="0 0 16 16" style="flex-shrink:0">
+                                    <path d="M2 3a1 1 0 0 1 1-1h2l1 3-1.5 1a9 9 0 0 0 4.5 4.5L11 9l3 1v2a1 1 0 0 1-1 1A13 13 0 0 1 2 3z"/>
+                                </svg>
+                                <span style="font-size:11px;color:rgba(255,255,255,.65)">
+                                    @footer.Number
+                                </span>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:8px">
+                                <svg width="13" height="13" fill="none" stroke="#22c55e"
+                                     stroke-width="1.5" viewBox="0 0 16 16" style="flex-shrink:0">
+                                    <rect x="2" y="4" width="12" height="8" rx="1.5"/>
+                                    <path d="M2 4l6 5 6-5"/>
+                                </svg>
+                                <span style="font-size:11px;color:rgba(255,255,255,.65)">
+                                    @footer.Email
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:12px">
+                            Social Network
+                        </div>
+                        <div style="display:flex;gap:8px">
+                            @foreach (var icon in new[]{"f","t","in","p","rss"})
+                            {
+                                <div style="width:30px;height:30px;background:#1e1e1e;
+                                            border:1px solid #2a2a2a;border-radius:6px;
+                                            display:flex;align-items:center;justify-content:center">
+                                    <span style="font-size:9px;color:#22c55e;font-weight:600">
+                                        @icon
+                                    </span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:20px;padding-top:14px;border-top:1px solid #222;
+                            font-size:10px;color:rgba(255,255,255,.35)">
+                    Copyright 2025 - Rentaly by Designesia
+                </div>
+            </div>
+        </div>
+
+        @* DETAY KART *@
+        <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;overflow:hidden">
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #21262d">
+                <div style="padding:16px 20px;border-right:1px solid #21262d">
+                    <div style="font-size:10px;color:#6e7681;font-weight:500;
+                                text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">
+                        Açıklama
+                    </div>
+                    <div style="font-size:12px;color:#c9d1d9;line-height:1.6">
+                        @footer.Description
+                    </div>
+                </div>
+                <div style="padding:16px 20px">
+                    <div style="font-size:10px;color:#6e7681;font-weight:500;
+                                text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">
+                        İletişim Bilgileri
+                    </div>
+                    <div style="display:flex;flex-direction:column;gap:8px">
+                        <div style="display:flex;align-items:center;gap:8px">
+                            <svg width="12" height="12" fill="none" stroke="#22c55e"
+                                 stroke-width="1.5" viewBox="0 0 16 16">
+                                <path d="M2 3a1 1 0 0 1 1-1h2l1 3-1.5 1a9 9 0 0 0 4.5 4.5L11 9l3 1v2a1 1 0 0 1-1 1A13 13 0 0 1 2 3z"/>
+                            </svg>
+                            <span style="font-size:12px;color:#c9d1d9">@footer.Number</span>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:8px">
+                            <svg width="12" height="12" fill="none" stroke="#22c55e"
+                                 stroke-width="1.5" viewBox="0 0 16 16">
+                                <rect x="2" y="4" width="12" height="8" rx="1.5"/>
+                                <path d="M2 4l6 5 6-5"/>
+                            </svg>
+                            <span style="font-size:12px;color:#c9d1d9">@footer.Email</span>
+                        </div>
+                        <div style="display:flex;align-items:flex-start;gap:8px">
+                            <svg width="12" height="12" fill="none" stroke="#22c55e"
+                                 stroke-width="1.5" viewBox="0 0 16 16" style="flex-shrink:0;margin-top:1px">
+                                <path d="M8 2a4 4 0 0 0-4 4c0 3 4 8 4 8s4-5 4-8a4 4 0 0 0-4-4z"/>
+                                <circle cx="8" cy="6" r="1.5"/>
+                            </svg>
+                            <span style="font-size:12px;color:#c9d1d9;line-height:1.5">
+                                @footer.Address
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;
+                        padding:12px 16px;background:#0d1117">
+                <span style="font-size:11px;color:#6e7681">ID: @footer.FooterId</span>
+                <div style="display:flex;gap:8px">
+                    <a asp-action="UpdateFooter" asp-route-id="@footer.FooterId"
+                       style="display:inline-flex;align-items:center;gap:5px;
+                              padding:6px 14px;background:#0d2818;color:#22c55e;
+                              border:1px solid #22c55e33;border-radius:7px;
+                              font-size:11px;font-weight:500;text-decoration:none">
+                        <svg width="12" height="12" fill="none" stroke="currentColor"
+                             stroke-width="1.5" viewBox="0 0 16 16">
+                            <path d="M11 2l3 3-8 8H3v-3l8-8z"/>
+                        </svg>
+                        Düzenle
+                    </a>
+                    <form asp-action="DeleteFooter" asp-route-id="@footer.FooterId"
+                          method="post" style="display:inline"
+                          onsubmit="return confirm('Silmek istediğinize emin misiniz?')">
+                        @Html.AntiForgeryToken()
+                        <button type="submit"
+                                style="display:inline-flex;align-items:center;gap:5px;
+                                       padding:6px 14px;background:#2a0d0d;color:#ef4444;
+                                       border:1px solid #ef444433;border-radius:7px;
+                                       font-size:11px;font-weight:500;cursor:pointer">
+                            <svg width="12" height="12" fill="none" stroke="currentColor"
+                                 stroke-width="1.5" viewBox="0 0 16 16">
+                                <path d="M3 5h10M6 5V3h4v2M5 5l.5 8h5l.5-8"/>
+                            </svg>
+                            Sil
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>

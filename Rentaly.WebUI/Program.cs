@@ -22,6 +22,12 @@ builder.Services.AddScoped<IBannerService, BannerManager>();
 builder.Services.AddScoped<IBannerDal, EfBannerDal>();
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 builder.Services.AddScoped<ITestimonialDal, EfTestimonialDal>();
+builder.Services.AddScoped<IFaqService, FaqManager>();
+builder.Services.AddScoped<IFaqDal, EfFaqDal>();
+builder.Services.AddScoped<IFooterDal, EfFooterDal>();
+builder.Services.AddScoped<IFooterService, FooterManager>();
+builder.Services.AddScoped<IContactService, ContactManager>();
+builder.Services.AddScoped<IContactDal, EfContactDal>();
 
 var app = builder.Build();
 

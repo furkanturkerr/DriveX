@@ -1,6 +1,9 @@
 using AutoMapper;
 using Rentaly.DtoLayer.AboutDtos;
 using Rentaly.DtoLayer.BannerDtos;
+using Rentaly.DtoLayer.ContactDtos;
+using Rentaly.DtoLayer.FaqDtos;
+using Rentaly.DtoLayer.FooterDtos;
 using Rentaly.DtoLayer.ServiceDtos;
 using Rentaly.DtoLayer.TestimonialDtos;
 using Rentaly.Entity;
@@ -27,5 +30,17 @@ public class GeneralMapping : Profile
         CreateMap<Testimonial, ResultTestimonialDto>().ReverseMap();
         CreateMap<Testimonial, UpdateTestimonialDto>().ReverseMap();
         CreateMap<Testimonial, CreateTestimonialDto>().ReverseMap();
+        
+        CreateMap<Faq, ResultFaqDto>().ReverseMap();
+        CreateMap<Faq, UpdateFaqDto>().ReverseMap();
+        CreateMap<Faq, CreateFaqDto>().ReverseMap();
+        
+        CreateMap<Contact, ResultContactDto>().ReverseMap();
+        CreateMap<Contact, UpdateContactDto>().ReverseMap();
+        CreateMap<Contact, CreateContactDto>().ReverseMap();
+        
+        CreateMap<Footer, ResultFooterDto>().ReverseMap();
+        CreateMap<Footer, UpdateFooterDto>().ReverseMap();
+        CreateMap<Footer, CreateFooterDto>().ReverseMap();
     }
 }

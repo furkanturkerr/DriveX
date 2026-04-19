@@ -1,0 +1,93 @@
+@model Rentaly.DtoLayer.ContactDtos.UpdateContactDto
+
+@{
+    ViewData["Title"] = "İletişim Düzenle";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div style="padding:20px">
+
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;
+                padding-bottom:14px;border-bottom:1px solid #21262d">
+        <a asp-action="ContactList"
+           style="display:inline-flex;align-items:center;gap:4px;
+                  color:#8b949e;font-size:12px;text-decoration:none">
+            <svg width="13" height="13" fill="none" stroke="currentColor"
+                 stroke-width="1.5" viewBox="0 0 16 16">
+                <path d="M10 3L5 8l5 5"/>
+            </svg>
+            Geri
+        </a>
+        <span style="color:#30363d;font-size:12px">/</span>
+        <span style="font-size:13px;font-weight:500;color:#f0f6fc">İletişim Düzenle</span>
+        <span style="font-size:10px;background:#21262d;color:#8b949e;
+                     padding:2px 8px;border-radius:6px">
+            ID: @Model.ContactId
+        </span>
+    </div>
+
+    <form asp-action="UpdateContact" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="ContactId"/>
+
+        <div style="background:#161b22;border:1px solid #21262d;
+                    border-radius:12px;padding:20px">
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;
+                        gap:14px;margin-bottom:14px">
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;
+                                  display:block;margin-bottom:5px">
+                        Alt Başlık <span style="color:#6e7681">(SubTitle)</span>
+                    </label>
+                    <input asp-for="SubTitle"
+                           style="width:100%;background:#0d1117;border:1px solid #30363d;
+                                  border-radius:8px;padding:9px 12px;font-size:12px;
+                                  color:#c9d1d9;outline:none"/>
+                    <span asp-validation-for="SubTitle"
+                          style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;
+                                  display:block;margin-bottom:5px">
+                        Telefon Numarası <span style="color:#6e7681">(Number)</span>
+                    </label>
+                    <input asp-for="Number"
+                           style="width:100%;background:#0d1117;border:1px solid #30363d;
+                                  border-radius:8px;padding:9px 12px;font-size:12px;
+                                  color:#c9d1d9;outline:none"/>
+                    <span asp-validation-for="Number"
+                          style="font-size:11px;color:#ef4444"></span>
+                </div>
+            </div>
+
+            <div style="margin-bottom:20px">
+                <label style="font-size:11px;color:#8b949e;font-weight:500;
+                              display:block;margin-bottom:5px">
+                    Başlık <span style="color:#6e7681">(Title)</span>
+                </label>
+                <input asp-for="Title"
+                       style="width:100%;background:#0d1117;border:1px solid #30363d;
+                              border-radius:8px;padding:9px 12px;font-size:12px;
+                              color:#c9d1d9;outline:none"/>
+                <span asp-validation-for="Title"
+                      style="font-size:11px;color:#ef4444"></span>
+            </div>
+
+            <div style="display:flex;gap:8px">
+                <button type="submit"
+                        style="padding:9px 24px;background:#22c55e;color:#fff;border:none;
+                               border-radius:8px;font-size:12px;font-weight:500;cursor:pointer">
+                    Güncelle
+                </button>
+                <a asp-action="ContactList"
+                   style="padding:9px 20px;background:transparent;color:#8b949e;
+                          border:1px solid #30363d;border-radius:8px;font-size:12px;
+                          text-decoration:none;display:inline-flex;align-items:center">
+                    İptal
+                </a>
+            </div>
+        </div>
+    </form>
+</div>
