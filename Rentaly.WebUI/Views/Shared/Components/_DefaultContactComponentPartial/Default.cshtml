@@ -1,0 +1,32 @@
+@model List<Rentaly.DtoLayer.ContactDtos.ResultContactDto>
+
+
+@foreach (var item in Model)
+{
+    <section id="section-call-to-action" class="bg-color-2 pt60 pb60 text-light">
+        <div class="container">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-4 offset-lg-2">
+                        <span class="subtitle text-white">@item.SubTitle</span>
+                        <h2 class="s2">@item.Title</h2>
+                    </div>
+
+                    <div class="col-lg-4 text-lg-center text-sm-center">
+                        <div class="phone-num-big">
+                            <i class="fa fa-phone"></i>
+                            <span class="pnb-text">
+                                Şimdi Ara
+                            </span>
+                            <span class="pnb-num">
+                                @item.Number
+                            </span>
+                        </div>
+                        <a href="#" class="btn-main">İletişime Geç</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
