@@ -86,7 +86,7 @@
                                   padding:10px 16px;background:#0d1117;border-radius:8px;flex:1;
                                   border:1px solid @(Model.Position == "Left" ? "#22c55e" : "#30363d")"
                            id="lbl-left">
-                        <input type="radio" asp-for="Position" value="Left"
+                        <input type="radio" asp-for="Position" value="fadeInLeft"
                                onchange="highlightPos()"
                                style="accent-color:#22c55e;width:14px;height:14px"/>
                         <div>
@@ -100,7 +100,7 @@
                                   padding:10px 16px;background:#0d1117;border-radius:8px;flex:1;
                                   border:1px solid @(Model.Position == "Right" ? "#22c55e" : "#30363d")"
                            id="lbl-right">
-                        <input type="radio" asp-for="Position" value="Right"
+                        <input type="radio" asp-for="Position" value="fadeInRight"
                                onchange="highlightPos()"
                                style="accent-color:#22c55e;width:14px;height:14px"/>
                         <div>
@@ -133,8 +133,8 @@
 
 <script>
 function highlightPos() {
-    const left  = document.querySelector('input[value="Left"]');
-    const right = document.querySelector('input[value="Right"]');
+    const left  = document.querySelector('input[value="fadeInLeft"]');
+    const right = document.querySelector('input[value="fadeInRight"]');
     document.getElementById('lbl-left').style.borderColor  = left.checked  ? '#22c55e' : '#30363d';
     document.getElementById('lbl-right').style.borderColor = right.checked ? '#22c55e' : '#30363d';
 }

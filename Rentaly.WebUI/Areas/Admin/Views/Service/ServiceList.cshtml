@@ -3,8 +3,8 @@
 @{
     ViewData["Title"] = "Servis Yönetimi";
     Layout = "~/Views/Admin/Index.cshtml";
-    var leftItems  = Model?.Where(x => x.Position == "Left").ToList()  ?? new();
-    var rightItems = Model?.Where(x => x.Position == "Right").ToList() ?? new();
+    var leftItems  = Model?.Where(x => x.Position == "fadeInLeft").ToList()  ?? new();
+    var rightItems = Model?.Where(x => x.Position == "fadeInRight").ToList() ?? new();
 }
 
 <div style="padding:20px">

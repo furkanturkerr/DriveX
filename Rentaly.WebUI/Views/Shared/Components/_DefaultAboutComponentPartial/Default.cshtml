@@ -1,0 +1,53 @@
+@model List<Rentaly.DtoLayer.AboutDtos.ResultAboutDto>
+
+@foreach (var item in Model)
+{
+    <section class="text-light jarallax">
+    <img src="@item.Image" class="jarallax-img" alt="">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInRight">
+                <h2>@item.Title <span class="id-color">@item.TitleGreen</span></h2>
+            </div>
+            <div class="col-lg-6 wow fadeInLeft">
+                @item.Description
+            </div>
+        </div>
+        <div class="spacer-double"></div>
+        <div class="row text-center">
+            <div class="col-md-3 col-sm-6 mb-sm-30">
+                <div class="de_count transparent text-light wow fadeInUp">
+                    <h3>
+                        <span class="timer" data-to="15000" data-speed="3000">0</span>+
+                    </h3>
+                    Tamamlanan Kiralama
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-sm-30">
+                <div class="de_count transparent text-light wow fadeInUp">
+                    <h3>
+                        <span class="timer" data-to="9000" data-speed="3000">0</span>+
+                    </h3>
+                    Mutlu Müşteri
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-sm-30">
+                <div class="de_count transparent text-light wow fadeInUp">
+                    <h3>
+                        <span class="timer" data-to="300" data-speed="3000">0</span>+
+                    </h3>
+                    Araç Seçeneği
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-sm-30">
+                <div class="de_count transparent text-light wow fadeInUp">
+                    <h3>
+                        <span class="timer" data-to="10" data-speed="3000">0</span>+
+                    </h3>
+                    Yıllık Deneyim
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+}

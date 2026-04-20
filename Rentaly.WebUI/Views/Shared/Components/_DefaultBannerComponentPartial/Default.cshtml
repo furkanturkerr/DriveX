@@ -1,0 +1,22 @@
+@model List<Rentaly.DtoLayer.BannerDtos.ResultBannerDto>
+
+<section class="text-light jarallax" aria-label="section">
+    <img src="/Rentaly/RentalyHTML/images/background/3.jpg" alt="" class="jarallax-img">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <h1>Yolculuğunuz Burada Başlıyor</h1>
+                <div class="spacer-20"></div>
+            </div>
+            
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3">
+                    <i class="@item.IconUrl"></i>
+                    <h4>@item.Title</h4>
+                    <p>@item.Description</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>

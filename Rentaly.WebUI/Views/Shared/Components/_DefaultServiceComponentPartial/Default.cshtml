@@ -1,0 +1,50 @@
+@model List<Rentaly.DtoLayer.ServiceDtos.ResultServiceDto>
+
+<section aria-label="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 offset-lg-3 text-center">
+                <h2>DriveX Ayrıcalıkları</h2>
+                <p>DriveX ile araç kiralama artık çok daha kolay, güvenli ve konforlu.
+                    İhtiyacınıza uygun araçları en uygun fiyatlarla keşfedin, yolculuğun keyfini çıkarın.</p>
+                <div class="spacer-20"></div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-lg-3">
+                @foreach (var item in Model)
+                {
+                    @if (item.Position == "fadeInLeft")
+                    {
+                        <div class="box-icon s2 p-small mb20 wow @item.Position" data-wow-delay=".5s">
+                            <i class="@item.IconUrl"></i>
+                            <div class="d-inner">
+                                <h4>@item.Title</h4>
+                                @item.Description
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+            <div class="col-lg-6">
+                <img src="/Rentaly/RentalyHTML/images/misc/car.png" alt="" class="img-fluid wow fadeInUp">
+            </div>
+
+            <div class="col-lg-3">
+                @foreach (var item in Model)
+                {
+                    @if (item.Position == "fadeInRight")
+                    {
+                        <div class="box-icon s2 p-small mb20 wow @item.Position" data-wow-delay=".5s">
+                            <i class="@item.IconUrl"></i>
+                            <div class="d-inner">
+                                <h4>@item.Title</h4>
+                                @item.Description
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</section>

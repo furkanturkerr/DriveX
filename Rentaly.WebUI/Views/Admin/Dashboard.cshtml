@@ -1,0 +1,96 @@
+@model dynamic
+
+@{
+  Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="pg-sec on" id="pg-db">
+      <div class="g4">
+        <div class="sc">
+          <div class="sc-lbl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M2 8l2-4h8l2 4H2zm0 0H1v3h1.5m11 0H14V8"/><circle cx="5" cy="11" r="1.5"/><circle cx="11" cy="11" r="1.5"/></svg> Toplam Araç</div>
+          <div class="sc-val">24</div>
+          <div class="sc-ch up">↑ +2 bu ay</div>
+        </div>
+        <div class="sc warn">
+          <div class="sc-lbl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 1v4M11 1v4M2 7h12"/></svg> Aktif Rezervasyon</div>
+          <div class="sc-val">18</div>
+          <div class="sc-ch up">↑ %12 artış</div>
+        </div>
+        <div class="sc info">
+          <div class="sc-lbl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M8 2v12M4 6h5a2 2 0 0 1 0 4H6m-2 3h6"/></svg> Aylık Gelir</div>
+          <div class="sc-val">₺84K</div>
+          <div class="sc-ch up">↑ %8 artış</div>
+        </div>
+        <div class="sc dng">
+          <div class="sc-lbl"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M2 3h12v9H2z"/><path d="M2 3l6 5 6-5"/></svg> Bekleyen Mesaj</div>
+          <div class="sc-val">3</div>
+          <div class="sc-ch dn">Yanıt bekliyor</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px">
+        <div style="background:#0d2818;border:1px solid #22c55e33;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;background:#22c55e22;border-radius:8px;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="#22c55e" stroke-width="1.5"><path d="M2 8l2-4h8l2 4H2z"/><circle cx="5" cy="12" r="1.5"/><circle cx="11" cy="12" r="1.5"/></svg></div>
+          <div><div style="font-size:18px;font-weight:500;color:#22c55e">14</div><div style="font-size:10px;color:#16a34a">Müsait</div></div>
+        </div>
+        <div style="background:#2a1e06;border:1px solid #f59e0b33;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;background:#f59e0b22;border-radius:8px;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="#f59e0b" stroke-width="1.5"><path d="M2 8l2-4h8l2 4H2z"/><circle cx="5" cy="12" r="1.5"/><circle cx="11" cy="12" r="1.5"/></svg></div>
+          <div><div style="font-size:18px;font-weight:500;color:#f59e0b">8</div><div style="font-size:10px;color:#d97706">Kirada</div></div>
+        </div>
+        <div style="background:#2a0d0d;border:1px solid #ef444433;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;background:#ef444422;border-radius:8px;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="#ef4444" stroke-width="1.5"><path d="M8 5v5M8 12v1"/><circle cx="8" cy="8" r="6"/></svg></div>
+          <div><div style="font-size:18px;font-weight:500;color:#ef4444">2</div><div style="font-size:10px;color:#dc2626">Serviste</div></div>
+        </div>
+      </div>
+
+      <div class="r2">
+        <div class="cd">
+          <div class="cd-hd">
+            <div class="cd-t"><div class="cd-t-dot"></div>Son Rezervasyonlar</div>
+            <div class="cd-a" onclick="go('res',null)">Tümünü gör →</div>
+          </div>
+          <div class="tbl-wrap">
+            <table>
+              <thead><tr><th style="width:100px">Müşteri</th><th style="width:110px">Araç</th><th style="width:60px">Tarih</th><th style="width:70px">Tutar</th><th style="width:80px">Durum</th></tr></thead>
+              <tbody>
+                <tr><td>Ahmet Y.</td><td>BMW 5 Serisi</td><td>18 Nis</td><td style="color:#22c55e">₺1.200</td><td><span class="st sa">Aktif</span></td></tr>
+                <tr><td>Selin K.</td><td>Mercedes C180</td><td>17 Nis</td><td style="color:#22c55e">₺950</td><td><span class="st sp">Bekliyor</span></td></tr>
+                <tr><td>Mert D.</td><td>VW Passat</td><td>16 Nis</td><td style="color:#22c55e">₺680</td><td><span class="st sd">Tamamlandı</span></td></tr>
+                <tr><td>Elif Ş.</td><td>Toyota Corolla</td><td>15 Nis</td><td style="color:#22c55e">₺440</td><td><span class="st sd">Tamamlandı</span></td></tr>
+                <tr><td>Can A.</td><td>Renault Megane</td><td>14 Nis</td><td style="color:#6e7681">₺380</td><td><span class="st sc2">İptal</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="cd">
+          <div class="cd-hd">
+            <div class="cd-t"><div class="cd-t-dot"></div>Filo Durumu</div>
+            <div class="cd-a" onclick="go('cars',null)">Yönet →</div>
+          </div>
+          <div class="car-cards">
+            <div class="cc"><div class="cc-vis"><svg viewBox="0 0 40 22" fill="none" stroke="#22c55e" stroke-width="1.5"><path d="M4 12l3-6h26l3 6H4zm0 0H2l-1 4v2h2m33-6h2l1 4v2h-2"/><circle cx="9" cy="18" r="2.5"/><circle cx="31" cy="18" r="2.5"/></svg></div><div><div class="cc-nm">BMW 5 Serisi</div><div class="cc-tp">Prestige • 2023</div></div><div class="cc-pr"><div class="cc-am">₺1.200/gün</div><div class="cc-st" style="color:#f59e0b">Kirada</div></div></div>
+            <div class="cc"><div class="cc-vis"><svg viewBox="0 0 40 22" fill="none" stroke="#8b949e" stroke-width="1.5"><path d="M4 12l3-6h26l3 6H4zm0 0H2l-1 4v2h2m33-6h2l1 4v2h-2"/><circle cx="9" cy="18" r="2.5"/><circle cx="31" cy="18" r="2.5"/></svg></div><div><div class="cc-nm">VW Passat</div><div class="cc-tp">Sedan • 2022</div></div><div class="cc-pr"><div class="cc-am">₺680/gün</div><div class="cc-st" style="color:#22c55e">Müsait</div></div></div>
+            <div class="cc"><div class="cc-vis"><svg viewBox="0 0 44 22" fill="none" stroke="#8b949e" stroke-width="1.5"><rect x="2" y="8" width="40" height="10" rx="2"/><path d="M4 8l4-6h24l4 6"/><circle cx="9" cy="18" r="2.5"/><circle cx="35" cy="18" r="2.5"/></svg></div><div><div class="cc-nm">Ford Transit</div><div class="cc-tp">Van • 2023</div></div><div class="cc-pr"><div class="cc-am">₺750/gün</div><div class="cc-st" style="color:#ef4444">Serviste</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="r3">
+        <div class="cd">
+          <div class="cd-hd"><div class="cd-t"><div class="cd-t-dot"></div>Araç Tipi Kullanım Oranı</div></div>
+          <div class="bar-r"><span class="bar-lbl">Sedan</span><div class="bar-tr"><div class="bar-fl" style="width:72%;background:#22c55e"></div></div><span class="bar-vl" style="color:#22c55e">72%</span></div>
+          <div class="bar-r"><span class="bar-lbl">Prestige</span><div class="bar-tr"><div class="bar-fl" style="width:58%;background:#a855f7"></div></div><span class="bar-vl" style="color:#a855f7">58%</span></div>
+          <div class="bar-r"><span class="bar-lbl">Van</span><div class="bar-tr"><div class="bar-fl" style="width:44%;background:#f59e0b"></div></div><span class="bar-vl" style="color:#f59e0b">44%</span></div>
+          <div class="bar-r"><span class="bar-lbl">Minibüs</span><div class="bar-tr"><div class="bar-fl" style="width:28%;background:#3b82f6"></div></div><span class="bar-vl" style="color:#3b82f6">28%</span></div>
+        </div>
+        <div class="cd">
+          <div class="cd-hd"><div class="cd-t"><div class="cd-t-dot"></div>Hızlı İşlemler</div></div>
+          <div class="qb">
+            <div class="qbtn grn" onclick="go('cars',null)"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg>Yeni Araç Ekle</div>
+            <div class="qbtn blu" onclick="go('res',null)"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 1v4M11 1v4M2 7h12"/></svg>Rezervasyon Oluştur</div>
+            <div class="qbtn def" onclick="go('hero',null)"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg>Sayfa İçeriği Düzenle</div>
+            <div class="qbtn def" onclick="go('msg',null)"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M2 3h12v9H2z"/><path d="M2 3l6 5 6-5"/></svg>Mesajları Görüntüle <span style="margin-left:4px;background:#ef4444;color:#fff;font-size:9px;padding:1px 5px;border-radius:10px">3</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
