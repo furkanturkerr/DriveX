@@ -15,6 +15,7 @@ public class ResultCarDto
     public int Kilometer { get; set; }
     public decimal DailyPrice { get; set; }
     public string ImageUrl { get; set; }
+    public string ModelName { get; set; }
     public string BrandName { get; set; }
     public string CategoryName { get; set; }
     public string FuelType { get; set; }

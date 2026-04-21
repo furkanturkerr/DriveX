@@ -1,0 +1,403 @@
+@model Rentaly.DtoLayer.CarDtos.CarListPagedResultDto
+
+@{
+    Layout = null;
+
+    string BuildUrl(int pg)
+    {
+        var qs = new System.Collections.Generic.Dictionary<string, string>();
+        if (!string.IsNullOrEmpty(Model.BrandFilter))    qs["brand"]    = Model.BrandFilter;
+        if (!string.IsNullOrEmpty(Model.CategoryFilter)) qs["category"] = Model.CategoryFilter;
+        if (!string.IsNullOrEmpty(Model.FuelFilter))     qs["fuel"]     = Model.FuelFilter;
+        if (Model.MinPrice.HasValue)                     qs["minPrice"] = Model.MinPrice.Value.ToString();
+        if (Model.MaxPrice.HasValue)                     qs["maxPrice"] = Model.MaxPrice.Value.ToString();
+        qs["page"] = pg.ToString();
+        return "?" + string.Join("&", qs.Select(kv => $"{kv.Key}={Uri.EscapeDataString(kv.Value)}"));
+    }
+
+    int startPage = Math.Max(1, Model.CurrentPage - 2);
+    int endPage   = Math.Min(Model.TotalPages, Model.CurrentPage + 2);
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+
+@await Component.InvokeAsync("_DefaultHeadComponentPartial")
+
+<style>
+    .pagination-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        margin-top: 40px;
+        flex-wrap: wrap;
+    }
+    .pagination-wrap a,
+    .pagination-wrap span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        border: 1px solid #e0e0e0;
+        color: #333;
+        font-size: 14px;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+    .pagination-wrap a:hover   { background: #28a745; color: #fff; border-color: #28a745; }
+    .pagination-wrap .active   { background: #28a745; color: #fff !important; border-color: #28a745; font-weight: 700; pointer-events: none; }
+    .pagination-wrap .disabled { opacity: 0.4; pointer-events: none; }
+    .pagination-info           { text-align: center; margin-top: 10px; color: #777; font-size: 13px; }
+
+    .filter-form select {
+        width: 100%;
+        padding: 7px 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #333;
+        background: #fff;
+        margin-top: 4px;
+    }
+    .filter-form input[type="number"] {
+        width: 100%;
+        padding: 7px 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        color: #333;
+        background: #fff;
+    }
+    .btn-filter {
+        width: 100%;
+        padding: 10px;
+        background: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.2s;
+        margin-top: 8px;
+    }
+    .btn-filter:hover { opacity: 0.85; }
+    .btn-reset {
+        display: block;
+        width: 100%;
+        padding: 8px;
+        background: #f5f5f5;
+        color: #555;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 13px;
+        margin-top: 6px;
+        text-align: center;
+        text-decoration: none;
+        transition: background 0.2s;
+        box-sizing: border-box;
+    }
+    .btn-reset:hover { background: #e8e8e8; color: #333; text-decoration: none; }
+
+    .price-input        { display: flex; gap: 10px; }
+    .price-input .field { flex: 1; }
+    .price-input span   { font-size: 12px; color: #888; display: block; margin-bottom: 2px; }
+
+    .slider           { position: relative; height: 5px; border-radius: 5px; background: #ddd; margin: 14px 0 10px; }
+    .slider .progress { height: 100%; border-radius: 5px; background: #28a745; position: absolute; }
+    .range-input      { position: relative; height: 5px; }
+    .range-input input {
+        position: absolute; width: 100%; height: 5px; top: -5px;
+        background: none; pointer-events: none; -webkit-appearance: none;
+    }
+    .range-input input::-webkit-slider-thumb {
+        height: 17px; width: 17px; border-radius: 50%;
+        background: #28a745; pointer-events: auto;
+        -webkit-appearance: none; cursor: pointer;
+    }
+
+    .result-count-badge {
+        display: inline-block;
+        background: #28a745;
+        color: #fff;
+        border-radius: 20px;
+        padding: 2px 10px;
+        font-size: 13px;
+        margin-left: 8px;
+        font-weight: 600;
+    }
+    .no-result { text-align: center; padding: 60px 20px; color: #aaa; }
+    .no-result i { font-size: 48px; display: block; margin-bottom: 16px; }
+</style>
+
+<body>
+    <div id="wrapper">
+
+        @await Component.InvokeAsync("_DefaultNavbarComponentPartial")
+
+        <div class="no-bottom no-top zebra" id="content">
+            <div id="top"></div>
+
+            <section id="subheader" class="jarallax text-light">
+                <img src="~/Rentaly/RentalyHTML/images/background/2.jpg" class="jarallax-img" alt="">
+                <div class="center-y relative text-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h1>Araçlar </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-cars">
+                <div class="container">
+                    <div class="row">
+
+                        <!-- SOL FİLTRE PANELİ -->
+                        <div class="col-lg-3">
+                            <form method="get" asp-action="CarList" asp-controller="Car" class="filter-form">
+
+                                <!-- Marka -->
+                                <div class="item_filter_group">
+                                    <h4>Marka</h4>
+                                    <select name="brand">
+                                        <option value="">Tümü</option>
+                                        @foreach (var b in Model.AllBrands)
+                                        {
+                                            if (Model.BrandFilter == b)
+                                            {
+                                                <option value="@b" selected="selected">@b</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@b">@b</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+<!-- Kategori -->
+                                <div class="item_filter_group">
+                                    <h4>Kategori</h4>
+                                    <select name="category">
+                                        <option value="">Tümü</option>
+                                        @foreach (var cat in Model.AllCategories)
+                                        {
+                                            if (Model.CategoryFilter == cat)
+                                            {
+                                                <option value="@cat" selected="selected">@cat</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@cat">@cat</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <!-- Yakıt Tipi -->
+                                <div class="item_filter_group">
+                                    <h4>Yakıt Tipi</h4>
+                                    <select name="fuel">
+                                        <option value="">Tümü</option>
+                                        @foreach (var fuel in Model.AllFuelTypes)
+                                        {
+                                            if (Model.FuelFilter == fuel)
+                                            {
+                                                <option value="@fuel" selected="selected">@fuel</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@fuel">@fuel</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <!-- Günlük Fiyat -->
+                                <div class="item_filter_group">
+                                    <h4>Günlük Fiyat (₺)</h4>
+                                    <div class="price-input">
+                                        <div class="field">
+                                            <span>Min</span>
+                                            <input type="number" name="minPrice" class="input-min"
+                                                   value="@(Model.MinPrice ?? 0)" min="0" max="10000">
+                                        </div>
+                                        <div class="field">
+                                            <span>Max</span>
+                                            <input type="number" name="maxPrice" class="input-max"
+                                                   value="@(Model.MaxPrice ?? 10000)" min="0" max="10000">
+                                        </div>
+                                    </div>
+                                    <div class="slider">
+                                        <div class="progress" id="sliderProgress"></div>
+                                    </div>
+                                    <div class="range-input">
+                                        <input type="range" class="range-min" min="0" max="10000"
+                                               value="@(Model.MinPrice ?? 0)" step="50">
+                                        <input type="range" class="range-max" min="0" max="10000"
+                                               value="@(Model.MaxPrice ?? 10000)" step="50">
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn-filter">Filtrele</button>
+                                <a asp-action="CarList" asp-controller="Car" class="btn-reset">Filtreleri Temizle</a>
+                            </form>
+                        </div>
+
+                        <!-- SAĞ ARAÇ LİSTESİ -->
+                        <div class="col-lg-9">
+
+                            @if (!Model.Cars.Any())
+                            {
+                                <div class="no-result">
+                                    <i class="fa fa-car"></i>
+                                    <h4>Araç bulunamadı</h4>
+                                    <p>Filtre kriterlerinize uygun araç bulunmamaktadır.<br>Lütfen filtreleri değiştirin.</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="row">
+                                    @foreach (var item in Model.Cars)
+                                    {
+                                        <div class="col-lg-12">
+                                            <div class="de-item-list mb30">
+                                                <div class="d-img">
+                                                    <img src="@item.ImageUrl" class="img-fluid" alt="@item.BrandName">
+                                                </div>
+                                                <div class="d-info">
+                                                    <div class="d-text">
+                                                        <h4>@item.BrandName @item.ModelName</h4>
+                                                        <div class="d-atr-group">
+                                                            <ul class="d-atr">
+                                                                <li><span>Koltuk:</span>@item.SeatCount</li>
+                                                                <li><span>Bagaj:</span>@item.LuggageCount</li>
+                                                                <li><span>Yakıt:</span>@item.FuelType</li>
+                                                                <li><span>Kategori:</span>@item.CategoryName</li>
+                                                                <li><span>Kilometre:</span>@item.Kilometer.ToString("N0")</li>
+                                                                <li><span>Yıl:</span>@item.Year</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-price">
+                                                    Günlük Ücret <span>₺@item.DailyPrice</span>
+                                                    <a class="btn-main" asp-action="CarDetail" asp-controller="Car" asp-route-id="@item.CarId">Şimdi Kirala</a>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+                                <!-- SAYFALAMA -->
+                                @if (Model.TotalPages > 1)
+                                {
+                                    <div class="pagination-wrap">
+
+                                        @if (Model.CurrentPage > 1)
+                                        {
+                                            <a href="@BuildUrl(Model.CurrentPage - 1)">&lsaquo;</a>
+                                        }
+                                        else
+                                        {
+                                            <span class="disabled">&lsaquo;</span>
+                                        }
+
+                                        @if (startPage > 1)
+                                        {
+                                            <a href="@BuildUrl(1)">1</a>
+                                            if (startPage > 2) { <span>…</span> }
+                                        }
+
+                                        @for (int pg = startPage; pg <= endPage; pg++)
+                                        {
+                                            if (pg == Model.CurrentPage)
+                                            {
+                                                <span class="active">@pg</span>
+                                            }
+                                            else
+                                            {
+                                                <a href="@BuildUrl(pg)">@pg</a>
+                                            }
+                                        }
+
+                                        @if (endPage < Model.TotalPages)
+                                        {
+                                            if (endPage < Model.TotalPages - 1) { <span>…</span> }
+                                            <a href="@BuildUrl(Model.TotalPages)">@Model.TotalPages</a>
+                                        }
+
+                                        @if (Model.CurrentPage < Model.TotalPages)
+                                        {
+                                            <a href="@BuildUrl(Model.CurrentPage + 1)">&rsaquo;</a>
+                                        }
+                                        else
+                                        {
+                                            <span class="disabled">&rsaquo;</span>
+                                        }
+
+                                    </div>
+                                    <p class="pagination-info">
+                                        @((Model.CurrentPage - 1) * 6 + 1) – @(Math.Min(Model.CurrentPage * 6, Model.TotalItems)) / @Model.TotalItems araç gösteriliyor
+                                    </p>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <a href="#" id="back-to-top"></a>
+        @await Component.InvokeAsync("_DefaultFooterComponentPartial")
+    </div>
+
+    <script src="~/Rentaly/RentalyHTML/js/plugins.js"></script>
+    <script src="~/Rentaly/RentalyHTML/js/designesia.js"></script>
+    <script>
+    (function () {
+        const rangeMin = document.querySelector(".range-min");
+        const rangeMax = document.querySelector(".range-max");
+        const inputMin = document.querySelector(".input-min");
+        const inputMax = document.querySelector(".input-max");
+        const progress = document.querySelector("#sliderProgress");
+        const MAX = 10000, GAP = 500;
+
+        function syncFromRange() {
+            let lo = parseInt(rangeMin.value), hi = parseInt(rangeMax.value);
+            if (hi - lo < GAP) {
+                if (this === rangeMin) rangeMin.value = hi - GAP;
+                else rangeMax.value = lo + GAP;
+            }
+            inputMin.value = rangeMin.value;
+            inputMax.value = rangeMax.value;
+            updateBar();
+        }
+        function syncFromInput() {
+            let lo = Math.max(0, Math.min(parseInt(inputMin.value) || 0, MAX));
+            let hi = Math.max(0, Math.min(parseInt(inputMax.value) || MAX, MAX));
+            rangeMin.value = lo; rangeMax.value = hi;
+            updateBar();
+        }
+        function updateBar() {
+            progress.style.left  = (rangeMin.value / MAX * 100) + "%";
+            progress.style.right = (100 - rangeMax.value / MAX * 100) + "%";
+        }
+        syncFromInput();
+        rangeMin.addEventListener("input", syncFromRange);
+        rangeMax.addEventListener("input", syncFromRange);
+        inputMin.addEventListener("input", syncFromInput);
+        inputMax.addEventListener("input", syncFromInput);
+    })();
+    </script>
+
+</body>
+</html>

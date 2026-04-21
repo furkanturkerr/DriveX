@@ -71,7 +71,10 @@ public class GeneralMapping : Profile
         CreateMap<Car, UpdateCarDto>().ReverseMap();
         CreateMap<Car, CreateCarDto>().ReverseMap();
         CreateMap<Car, ResultCarWithCategory>()
+            .ForMember(x=>x.BrandName, opt=>opt.MapFrom(x=>x.Brand.BrandName))
+            .ForMember(x => x.ModelName, opt => opt.MapFrom(x => x.CarModel.ModelName))
             .ForMember(x => x.CategoryName, opt => opt.MapFrom(x => x.CarCategory.CarCategoryName));
+            
         
         CreateMap<CarCategory, ResultCarCategoryDto>().ReverseMap();
         CreateMap<CarCategory, UpdateCarCategoryDto>().ReverseMap();

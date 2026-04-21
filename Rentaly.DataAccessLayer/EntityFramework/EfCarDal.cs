@@ -16,7 +16,9 @@ public class EfCarDal : GenericRepository<Car>, ICarDal
 
     public async Task<List<Car>> CarsWithCategoryAsync()
     {
-        var values = await _context.Cars.Include(x => x.CarCategory).Include(x=>x.Brand)
+        var values = await _context.Cars.Include(x => x.CarCategory)
+            .Include(x=>x.Brand)
+            .Include(x=>x.CarModel)
             .ToListAsync();
         return values;
     }

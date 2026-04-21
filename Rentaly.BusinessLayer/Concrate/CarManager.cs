@@ -51,4 +51,56 @@ public class CarManager : ICarService
         var values = await _carDal.CarsWithCategoryAsync();
         return _mapper.Map<List<ResultCarWithCategory>>(values);
     }
+
+    public async Task<CarListPagedResultDto> TGetPagedCarListAsync(CarFilterRequestDto filter)
+    {
+        var values = await _carDal.CarsWithCategoryAsync();
+        var all = _mapper.Map<List<ResultCarWithCategory>>(values);
+
+        var filtered = all.AsEnumerable();
+
+        if (!string.IsNullOrEmpty(filter.Brand))
+            filtered = filtered.Where(x => x.BrandName == filter.Brand);
+
+        if (!string.IsNullOrEmpty(filter.Category))
+            filtered = filtered.Where(x => x.CategoryName == filter.Category);
+
+        if (!string.IsNullOrEmpty(filter.Fuel))
+            filtered = filtered.Where(x => x.FuelType == filter.Fuel);
+
+        if (filter.MinPrice.HasValue)
+            filtered = filtered.Where(x => x.DailyPrice >= filter.MinPrice.Value);
+
+        if (filter.MaxPrice.HasValue)
+            filtered = filtered.Where(x => x.DailyPrice <= filter.MaxPrice.Value);
+
+        var filteredList = filtered.ToList();
+
+        int totalItems = filteredList.Count;
+        int totalPages = (int)Math.Ceiling(totalItems / (double)filter.PageSize);
+        int page = Math.Max(1, Math.Min(filter.Page, Math.Max(1, totalPages)));
+
+        var pagedCars = filteredList
+            .Skip((page - 1) * filter.PageSize)
+            .Take(filter.PageSize)
+            .ToList();
+
+        return new CarListPagedResultDto
+        {
+            Cars = pagedCars,
+            AllBrands = all.Select(x => x.BrandName).Distinct().OrderBy(x => x).ToList(),
+            AllCategories = all.Select(x => x.CategoryName).Distinct().OrderBy(x => x).ToList(),
+            AllFuelTypes = all.Select(x => x.FuelType).Distinct().OrderBy(x => x).ToList(),
+
+            BrandFilter = filter.Brand,
+            CategoryFilter = filter.Category,
+            FuelFilter = filter.Fuel,
+            MinPrice = filter.MinPrice,
+            MaxPrice = filter.MaxPrice,
+
+            CurrentPage = page,
+            TotalPages = totalPages,
+            TotalItems = totalItems
+        };
+    }
 }
