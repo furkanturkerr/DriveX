@@ -1,0 +1,351 @@
+@model List<Rentaly.DtoLayer.CarDtos.ResultCarWithCategory>
+
+@{
+    ViewData["Title"] = "Araç Yönetimi";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div style="padding:20px">
+
+    @* TOPBAR *@
+    <div style="display:flex;align-items:center;justify-content:space-between;
+                margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #21262d">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;display:inline-block"></span>
+            <span style="font-size:14px;font-weight:500;color:#f0f6fc">Araç Yönetimi</span>
+            <span style="font-size:10px;background:#0d2818;color:#22c55e;border:1px solid #22c55e33;padding:2px 9px;border-radius:20px">
+                @(Model?.Count ?? 0) araç
+            </span>
+        </div>
+        <a asp-action="CreateCar"
+           style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;
+                  background:#22c55e;color:#fff;border-radius:8px;font-size:12px;
+                  font-weight:500;text-decoration:none">
+            <svg width="13" height="13" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 16 16">
+                <path d="M8 3v10M3 8h10"/>
+            </svg>
+            Araç Ekle
+        </a>
+    </div>
+
+    @* ARAMA & FİLTRE *@
+    <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;
+                padding:14px 16px;margin-bottom:14px">
+        <form method="get" asp-action="CarList"
+              style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+
+            <div style="display:flex;align-items:center;gap:8px;background:#0d1117;
+                        border:1px solid #30363d;border-radius:8px;padding:7px 12px;flex:1;min-width:180px">
+                <svg width="13" height="13" fill="none" stroke="#6e7681" stroke-width="1.5" viewBox="0 0 16 16">
+                    <circle cx="6.5" cy="6.5" r="4"/><path d="M10 10l3 3"/>
+                </svg>
+                <input name="search" value="@ViewBag.Search" placeholder="Plaka, marka, model ara..."
+                       style="background:none;border:none;outline:none;font-size:12px;
+                              color:#c9d1d9;width:100%"/>
+            </div>
+
+            <select name="fuelType" style="background:#0d1117;border:1px solid #30363d;
+                    border-radius:8px;padding:7px 12px;font-size:12px;color:#c9d1d9;outline:none">
+                <option value="">Tüm Yakıtlar</option>
+                <option value="Benzin"  selected="@(ViewBag.FuelType=="Benzin")">Benzin</option>
+                <option value="Dizel"   selected="@(ViewBag.FuelType=="Dizel")">Dizel</option>
+                <option value="Elektrik" selected="@(ViewBag.FuelType=="Elektrik")">Elektrik</option>
+                <option value="Hibrit"  selected="@(ViewBag.FuelType=="Hibrit")">Hibrit</option>
+                <option value="LPG"     selected="@(ViewBag.FuelType=="LPG")">LPG</option>
+            </select>
+
+            <select name="status" style="background:#0d1117;border:1px solid #30363d;
+                    border-radius:8px;padding:7px 12px;font-size:12px;color:#c9d1d9;outline:none">
+                <option value="">Tüm Durumlar</option>
+                <option value="available" selected="@(ViewBag.Status=="available")">Müsait</option>
+                <option value="rented"    selected="@(ViewBag.Status=="rented")">Kirada</option>
+                <option value="active"    selected="@(ViewBag.Status=="active")">Aktif</option>
+                <option value="passive"   selected="@(ViewBag.Status=="passive")">Pasif</option>
+            </select>
+
+            <button type="submit"
+                    style="padding:7px 16px;background:#22c55e;color:#fff;border:none;
+                           border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;
+                           display:inline-flex;align-items:center;gap:5px">
+                <svg width="12" height="12" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 16 16">
+                    <circle cx="6.5" cy="6.5" r="4"/><path d="M10 10l3 3"/>
+                </svg>
+                Filtrele
+            </button>
+
+            @if (!string.IsNullOrEmpty(ViewBag.Search as string) ||
+                 !string.IsNullOrEmpty(ViewBag.FuelType as string) ||
+                 !string.IsNullOrEmpty(ViewBag.Status as string))
+            {
+                <a asp-action="CarList"
+                   style="padding:7px 14px;background:#2a0d0d;color:#ef4444;border:1px solid #ef444433;
+                          border-radius:8px;font-size:12px;text-decoration:none;
+                          display:inline-flex;align-items:center;gap:5px">
+                    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16">
+                        <path d="M3 3l10 10M13 3L3 13"/>
+                    </svg>
+                    Temizle
+                </a>
+            }
+        </form>
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div style="text-align:center;padding:52px 20px;background:#161b22;
+                    border:1px dashed #30363d;border-radius:12px">
+            <svg width="40" height="40" fill="none" stroke="#30363d" stroke-width="1.5"
+                 viewBox="0 0 16 16" style="margin:0 auto 14px;display:block">
+                <path d="M2 8l2-4h8l2 4H2z"/><circle cx="5" cy="12" r="1.5"/>
+                <circle cx="11" cy="12" r="1.5"/>
+            </svg>
+            <div style="font-size:13px;color:#8b949e;margin-bottom:6px">Araç bulunamadı</div>
+            <div style="font-size:11px;color:#6e7681">Filtre kriterlerini değiştirin veya yeni araç ekleyin</div>
+        </div>
+    }
+    else
+    {
+        @* TABLO *@
+        <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;overflow:hidden;margin-bottom:14px">
+            <table style="width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed">
+                <colgroup>
+                    <col style="width:44px"/>
+                    <col style="width:64px"/>
+                    <col style="width:100px"/>
+                    <col style="width:15%"/>
+                    <col style="width:12%"/>
+                    <col style="width:70px"/>
+                    <col style="width:80px"/>
+                    <col style="width:70px"/>
+                    <col style="width:70px"/>
+                    <col style="width:70px"/>
+                    <col style="width:140px"/>
+                </colgroup>
+                <thead>
+                    <tr style="background:#0d1117;border-bottom:1px solid #21262d">
+                        <th style="text-align:left;padding:10px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">ID</th>
+                        <th style="text-align:left;padding:10px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">Görsel</th>
+                        <th style="text-align:left;padding:10px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">Plaka</th>
+                        <th style="text-align:left;padding:10px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">Marka / Model</th>
+                        <th style="text-align:left;padding:10px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">Kategori</th>
+                        <th style="text-align:left;padding:10px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">Yakıt</th>
+                        <th style="text-align:left;padding:10px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">Fiyat</th>
+                        <th style="text-align:left;padding:10px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">KM</th>
+                        <th style="text-align:left;padding:10px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">Durum</th>
+                        <th style="text-align:left;padding:10px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">Aktif</th>
+                        <th style="text-align:right;padding:10px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr style="border-bottom:1px solid #21262d;transition:background .1s"
+                            onmouseover="this.style.background='#0d1117'"
+                            onmouseout="this.style.background='transparent'">
+
+                            <td style="padding:12px 16px;color:#6e7681;font-size:11px">
+                                @item.CarId
+                            </td>
+
+                            <td style="padding:10px 16px">
+                                <div style="width:46px;height:34px;border-radius:7px;
+                                            overflow:hidden;background:#21262d;border:1px solid #30363d">
+                                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                    {
+                                        <img src="@item.ImageUrl" alt=""
+                                             style="width:100%;height:100%;object-fit:cover"/>
+                                    }
+                                    else
+                                    {
+                                        <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center">
+                                            <svg width="16" height="16" fill="none" stroke="#6e7681" stroke-width="1.2" viewBox="0 0 16 16">
+                                                <path d="M2 8l2-4h8l2 4H2z"/><circle cx="5" cy="11" r="1.5"/><circle cx="11" cy="11" r="1.5"/>
+                                            </svg>
+                                        </div>
+                                    }
+                                </div>
+                            </td>
+
+                            <td style="padding:12px 16px">
+                                <div style="font-size:11px;font-weight:600;color:#f0f6fc;
+                                            background:#21262d;display:inline-block;
+                                            padding:2px 7px;border-radius:5px;
+                                            letter-spacing:.5px">
+                                    @item.PlateNumber
+                                </div>
+                                <div style="font-size:9px;color:#6e7681;margin-top:3px;
+                                            overflow:hidden;white-space:nowrap;text-overflow:ellipsis">
+                                    @item.VIN
+                                </div>
+                            </td>
+
+                            <td style="padding:12px 16px">
+                                <div style="font-size:12px;font-weight:500;color:#f0f6fc;
+                                            overflow:hidden;white-space:nowrap;text-overflow:ellipsis">
+                                    @item.BrandName
+                                </div>
+                                <div style="font-size:10px;color:#6e7681;margin-top:2px">
+                                    @item.Year • @item.SeatCount koltuk • @item.LuggageCount bagaj
+                                </div>
+                            </td>
+
+                            <td style="padding:12px 16px">
+                                <span style="font-size:10px;background:#1a1030;color:#a855f7;
+                                             border:1px solid #a855f733;padding:2px 8px;
+                                             border-radius:10px;overflow:hidden;white-space:nowrap;
+                                             text-overflow:ellipsis;display:block;max-width:90px">
+                                    @item.CategoryName
+                                </span>
+                            </td>
+
+                            <td style="padding:12px 16px">
+                                <span style="font-size:10px;background:#21262d;color:#8b949e;
+                                             padding:2px 8px;border-radius:10px;white-space:nowrap">
+                                    @item.FuelType
+                                </span>
+                            </td>
+
+                            <td style="padding:12px 16px">
+                                <div style="font-size:12px;font-weight:600;color:#22c55e">
+                                    ₺@item.DailyPrice
+                                </div>
+                                <div style="font-size:9px;color:#6e7681">/ gün</div>
+                            </td>
+
+                            <td style="padding:12px 16px;font-size:11px;color:#8b949e">
+                                @item.Kilometer.ToString("N0")
+                            </td>
+
+                            <td style="padding:12px 16px">
+                                @if (item.IsAvailable)
+                                {
+                                    <span style="font-size:10px;background:#0d2818;color:#22c55e;
+                                                 border:1px solid #22c55e33;padding:2px 8px;
+                                                 border-radius:10px;white-space:nowrap;
+                                                 display:inline-flex;align-items:center;gap:4px">
+                                        <span style="width:5px;height:5px;background:#22c55e;border-radius:50%;display:inline-block"></span>
+                                        Müsait
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span style="font-size:10px;background:#2a1e06;color:#f59e0b;
+                                                 border:1px solid #f59e0b33;padding:2px 8px;
+                                                 border-radius:10px;white-space:nowrap;
+                                                 display:inline-flex;align-items:center;gap:4px">
+                                        <span style="width:5px;height:5px;background:#f59e0b;border-radius:50%;display:inline-block"></span>
+                                        Kirada
+                                    </span>
+                                }
+                            </td>
+
+                            <td style="padding:12px 16px">
+                                @if (item.IsActive)
+                                {
+                                    <span style="font-size:10px;background:#0d2818;color:#22c55e;
+                                                 border:1px solid #22c55e33;padding:2px 8px;border-radius:10px">
+                                        Aktif
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span style="font-size:10px;background:#2a0d0d;color:#ef4444;
+                                                 border:1px solid #ef444433;padding:2px 8px;border-radius:10px">
+                                        Pasif
+                                    </span>
+                                }
+                            </td>
+
+                            <td style="padding:12px 16px">
+                                <div style="display:flex;gap:6px;justify-content:flex-end">
+                                    <a asp-action="UpdateCar" asp-route-id="@item.CarId"
+                                       style="display:inline-flex;align-items:center;gap:4px;
+                                              padding:5px 12px;background:#0d2818;color:#22c55e;
+                                              border:1px solid #22c55e33;border-radius:7px;
+                                              font-size:11px;font-weight:500;text-decoration:none;white-space:nowrap">
+                                        <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16">
+                                            <path d="M11 2l3 3-8 8H3v-3l8-8z"/>
+                                        </svg>
+                                        Düzenle
+                                    </a>
+                                    <form asp-action="DeleteCar" asp-route-id="@item.CarId"
+                                          method="post" style="display:inline"
+                                          onsubmit="return confirm('Silmek istediğinize emin misiniz?')">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit"
+                                                style="display:inline-flex;align-items:center;gap:4px;
+                                                       padding:5px 12px;background:#2a0d0d;color:#ef4444;
+                                                       border:1px solid #ef444433;border-radius:7px;
+                                                       font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap">
+                                            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16">
+                                                <path d="M3 5h10M6 5V3h4v2M5 5l.5 8h5l.5-8"/>
+                                            </svg>
+                                            Sil
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        @* PAGİNATION *@
+        @if (ViewBag.TotalPage > 1)
+        {
+            <div style="display:flex;align-items:center;justify-content:space-between;
+                        padding:12px 16px;background:#161b22;border:1px solid #21262d;
+                        border-radius:10px">
+                <div style="font-size:11px;color:#6e7681">
+                    Toplam <span style="color:#f0f6fc;font-weight:500">@Model.Count</span> araç —
+                    Sayfa <span style="color:#f0f6fc;font-weight:500">@ViewBag.CurrentPage</span> /
+                    <span style="color:#f0f6fc;font-weight:500">@ViewBag.TotalPage</span>
+                </div>
+                <div style="display:flex;gap:4px">
+                    @if (ViewBag.CurrentPage > 1)
+                    {
+                        <a href="~/Admin/Car/CarList?page=@(ViewBag.CurrentPage - 1)&search=@ViewBag.Search&fuelType=@ViewBag.FuelType&status=@ViewBag.Status"
+                           style="display:inline-flex;align-items:center;padding:5px 10px;
+                                  background:#0d1117;border:1px solid #30363d;border-radius:7px;
+                                  font-size:12px;color:#8b949e;text-decoration:none">
+                            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg>
+                        </a>
+                    }
+
+                    @for (int i = Math.Max(1, ViewBag.CurrentPage - 2);
+                          i <= Math.Min(ViewBag.TotalPage, ViewBag.CurrentPage + 2); i++)
+                    {
+                        if (i == ViewBag.CurrentPage)
+                        {
+                            <span style="display:inline-flex;align-items:center;justify-content:center;
+                                         width:30px;height:30px;background:#22c55e;color:#fff;
+                                         border-radius:7px;font-size:12px;font-weight:500">
+                                @i
+                            </span>
+                        }
+                        else
+                        {
+                            <a href="~/Admin/Car/CarList?page=@i&search=@ViewBag.Search&fuelType=@ViewBag.FuelType&status=@ViewBag.Status"
+                               style="display:inline-flex;align-items:center;justify-content:center;
+                                      width:30px;height:30px;background:#0d1117;border:1px solid #30363d;
+                                      border-radius:7px;font-size:12px;color:#8b949e;text-decoration:none">
+                                @i
+                            </a>
+                        }
+                    }
+
+                    @if (ViewBag.CurrentPage < ViewBag.TotalPage)
+                    {
+                        <a href="~/Admin/Car/CarList?page=@(ViewBag.CurrentPage + 1)&search=@ViewBag.Search&fuelType=@ViewBag.FuelType&status=@ViewBag.Status"
+                           style="display:inline-flex;align-items:center;padding:5px 10px;
+                                  background:#0d1117;border:1px solid #30363d;border-radius:7px;
+                                  font-size:12px;color:#8b949e;text-decoration:none">
+                            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5"/></svg>
+                        </a>
+                    }
+                </div>
+            </div>
+        }
+    }
+</div>

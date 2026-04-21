@@ -18,7 +18,7 @@
 
   <div class="sb-nav">
 
-    <a class="ni" asp-controller="Dashboard" asp-action="Index">
+    <a class="ni" asp-controller="Admin" asp-action="Dashboard">
       <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h5v5H2zm7 0h5v5H9zm-7 7h5v5H2zm7 0h5v5H9z" opacity=".85"/></svg>
       Dashboard
     </a>
@@ -75,31 +75,47 @@
     @* ── ARAÇ YÖNETİMİ ── *@
     <div class="sb-sec">Araç Yönetimi</div>
 
-    <a class="ni" asp-controller="Car" asp-action="CarList">
+    <a class="ni" asp-area="Admin" asp-controller="Car" asp-action="CarList">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-        <path d="M2 8l2-4h8l2 4"/><path d="M2 8h12"/>
+        <path d="M2 8l2-4h8l2 4"/>
+        <path d="M2 8h12"/>
         <path d="M1 8v3h1.5m10 0H14V8"/>
-        <circle cx="5" cy="11" r="1.5"/><circle cx="11" cy="11" r="1.5"/>
+        <circle cx="5" cy="11" r="1.5"/>
+        <circle cx="11" cy="11" r="1.5"/>
       </svg>
       Araçlar
-      <span class="bx">24</span>
     </a>
 
-    <div class="ni" onclick="tog('sn-arac',this)">
+    <a class="ni" asp-area="Admin" asp-controller="Brand" asp-action="BrandList">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-        <path d="M2 4h12M2 8h8M2 12h5"/>
+        <path d="M3 4h10v8H3z"/>
+        <path d="M5 6h6M5 8h4"/>
       </svg>
-      Tanımlamalar
-      <svg class="chv" id="c-sn-arac" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M4 3l3 3-3 3"/>
+      Markalar
+    </a>
+
+    <a class="ni" asp-area="Admin" asp-controller="CarModel" asp-action="CarModelList">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M3 4h10M3 8h10M3 12h6"/>
       </svg>
-    </div>
-    <div class="sn" id="sn-arac">
-      <a class="sni" asp-area="Admin" asp-controller="Brand"       asp-action="BrandList">Markalar</a>
-      <a class="sni" asp-area="Admin" asp-controller="CarModel"    asp-action="CarModelList">Modeller</a>
-      <a class="sni" asp-area="Admin" asp-controller="CarCategory" asp-action="CarCategoryList">Kategoriler</a>
-      <a class="sni" asp-area="Admin" asp-controller="Branch"      asp-action="BranchList">Şubeler</a>
-    </div>
+      Modeller
+    </a>
+
+    <a class="ni" asp-area="Admin" asp-controller="CarCategory" asp-action="CarCategoryList">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M2.5 4.5h11v7h-11z"/>
+        <path d="M5 4.5v7"/>
+      </svg>
+      Kategoriler
+    </a>
+
+    <a class="ni" asp-area="Admin" asp-controller="Branch" asp-action="BranchList">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M3 13V5l5-2 5 2v8"/>
+        <path d="M6 13V9h4v4"/>
+      </svg>
+      Şubeler
+    </a>
 
     @* ── İŞLEMLER ── *@
     <div class="sb-sec">İşlemler</div>

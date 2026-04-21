@@ -1,0 +1,239 @@
+@model Rentaly.DtoLayer.CarDtos.CreateCarDto
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+ViewData["Title"] = "Araç Ekle";
+Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div style="padding:20px">
+
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid #21262d">
+        <a asp-action="CarList" style="display:inline-flex;align-items:center;gap:4px;color:#8b949e;font-size:12px;text-decoration:none">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg>
+            Geri
+        </a>
+        <span style="color:#30363d;font-size:12px">/</span>
+        <span style="font-size:13px;font-weight:500;color:#f0f6fc">Yeni Araç Ekle</span>
+    </div>
+
+    <form asp-action="CreateCar" method="post">
+        @Html.AntiForgeryToken()
+
+        <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;padding:20px;margin-bottom:14px">
+            <div style="font-size:12px;font-weight:500;color:#f0f6fc;margin-bottom:14px;
+                        padding-bottom:10px;border-bottom:1px solid #21262d;
+                        display:flex;align-items:center;gap:6px">
+                <svg width="13" height="13" fill="none" stroke="#22c55e" stroke-width="1.5" viewBox="0 0 16 16"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 6h6M5 9h4"/></svg>
+                Temel Bilgiler
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px">
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Plaka <span style="color:#6e7681">(PlateNumber)</span></label>
+                    <input asp-for="PlateNumber" style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none" placeholder="34 ABC 123"/>
+                    <span asp-validation-for="PlateNumber" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Şasi No <span style="color:#6e7681">(VIN)</span></label>
+                    <input asp-for="VIN" style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none" placeholder="WBA12345678901234"/>
+                    <span asp-validation-for="VIN" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Yıl <span style="color:#6e7681">(Year)</span></label>
+                    <input asp-for="Year" type="number" style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none" placeholder="2024"/>
+                    <span asp-validation-for="Year" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Marka</label>
+                    <select asp-for="BrandId" asp-items="ViewBag.Brands" id="brandSelect"
+                            style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none">
+                        <option value="">Marka seçin</option>
+                    </select>
+                    <span asp-validation-for="BrandId" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Model</label>
+                    <select asp-for="ModelId" asp-items="ViewBag.Models" id="modelSelect"
+                            style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none">
+                        <option value="">Önce marka seçin</option>
+                    </select>
+                    <span asp-validation-for="ModelId" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Kategori</label>
+                    <select asp-for="CarCategoryId" asp-items="ViewBag.CarCategories"
+                            style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none">
+                        <option value="">Kategori seçin</option>
+                    </select>
+                    <span asp-validation-for="CarCategoryId" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Şube</label>
+                    <select asp-for="BranchId" asp-items="ViewBag.Branches"
+                            style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none">
+                        <option value="">Şube seçin</option>
+                    </select>
+                    <span asp-validation-for="BranchId" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Yakıt Tipi <span style="color:#6e7681">(FuelType)</span></label>
+                    <select asp-for="FuelType" style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none">
+                        <option value="">Seçin</option>
+                        <option value="Benzin">Benzin</option>
+                        <option value="Dizel">Dizel</option>
+                        <option value="Elektrik">Elektrik</option>
+                        <option value="Hibrit">Hibrit</option>
+                        <option value="LPG">LPG</option>
+                    </select>
+                    <span asp-validation-for="FuelType" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Kilometre</label>
+                    <input asp-for="Kilometer" type="number" style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none" placeholder="0"/>
+                    <span asp-validation-for="Kilometer" style="font-size:11px;color:#ef4444"></span>
+                </div>
+            </div>
+        </div>
+
+        <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;padding:20px;margin-bottom:14px">
+            <div style="font-size:12px;font-weight:500;color:#f0f6fc;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #21262d;display:flex;align-items:center;gap:6px">
+                <svg width="13" height="13" fill="none" stroke="#22c55e" stroke-width="1.5" viewBox="0 0 16 16"><path d="M8 2v12M4 6h8M3 10h10"/></svg>
+                Fiyat & Kapasite
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px">
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Günlük Fiyat (₺)</label>
+                    <input asp-for="DailyPrice" type="number" step="0.01" style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none" placeholder="850"/>
+                    <span asp-validation-for="DailyPrice" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Depozito (₺)</label>
+                    <input asp-for="DepositAmount" type="number" step="0.01" style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none" placeholder="2000"/>
+                    <span asp-validation-for="DepositAmount" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Koltuk Sayısı</label>
+                    <input asp-for="SeatCount" type="number" style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none" placeholder="5"/>
+                    <span asp-validation-for="SeatCount" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Bagaj (Adet)</label>
+                    <input asp-for="LuggageCount" type="number" style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none" placeholder="2"/>
+                    <span asp-validation-for="LuggageCount" style="font-size:11px;color:#ef4444"></span>
+                </div>
+            </div>
+        </div>
+
+        <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;padding:20px;margin-bottom:14px">
+            <div style="font-size:12px;font-weight:500;color:#f0f6fc;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #21262d;display:flex;align-items:center;gap:6px">
+                <svg width="13" height="13" fill="none" stroke="#22c55e" stroke-width="1.5" viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="10" rx="1.5"/><path d="M2 11l3-3 3 3 2-2 4 4"/></svg>
+                Görsel & Durum
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+                <div>
+                    <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Görsel Yolu <span style="color:#6e7681">(ImageUrl)</span></label>
+                    <div style="display:flex;align-items:center">
+                        <div style="background:#0d1117;border:1px solid #30363d;border-right:none;border-radius:8px 0 0 8px;padding:9px 10px;font-size:11px;color:#6e7681;white-space:nowrap">/images/</div>
+                        <input asp-for="ImageUrl" style="flex:1;background:#0d1117;border:1px solid #30363d;border-left:none;border-radius:0 8px 8px 0;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none" placeholder="car-1.jpg"/>
+                    </div>
+                    <span asp-validation-for="ImageUrl" style="font-size:11px;color:#ef4444"></span>
+                </div>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                    <div>
+                        <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:8px">Müsaitlik</label>
+                        <div style="display:flex;gap:8px">
+                            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding:8px 12px;background:#0d1117;border:1px solid #22c55e33;border-radius:8px;flex:1">
+                                <input type="radio" asp-for="IsAvailable" value="true" style="accent-color:#22c55e"/>
+                                <span style="font-size:11px;color:#22c55e">Müsait</span>
+                            </label>
+                            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding:8px 12px;background:#0d1117;border:1px solid #30363d;border-radius:8px;flex:1">
+                                <input type="radio" asp-for="IsAvailable" value="false" style="accent-color:#f59e0b"/>
+                                <span style="font-size:11px;color:#8b949e">Kirada</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:8px">Aktiflik</label>
+                        <div style="display:flex;gap:8px">
+                            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding:8px 12px;background:#0d1117;border:1px solid #22c55e33;border-radius:8px;flex:1">
+                                <input type="radio" asp-for="IsActive" value="true" style="accent-color:#22c55e"/>
+                                <span style="font-size:11px;color:#22c55e">Aktif</span>
+                            </label>
+                            <label style="display:flex;align-items:center;gap:6px;cursor:pointer;padding:8px 12px;background:#0d1117;border:1px solid #30363d;border-radius:8px;flex:1">
+                                <input type="radio" asp-for="IsActive" value="false" style="accent-color:#ef4444"/>
+                                <span style="font-size:11px;color:#8b949e">Pasif</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display:flex;gap:8px">
+            <button type="submit" style="padding:9px 24px;background:#22c55e;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer">
+                Kaydet
+            </button>
+            <a asp-action="CarList" style="padding:9px 20px;background:transparent;color:#8b949e;border:1px solid #30363d;border-radius:8px;font-size:12px;text-decoration:none;display:inline-flex;align-items:center">
+                İptal
+            </a>
+        </div>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const brandSelect = document.getElementById("brandSelect");
+        const modelSelect = document.getElementById("modelSelect");
+
+        if (!brandSelect || !modelSelect) return;
+
+        brandSelect.addEventListener("change", async function () {
+            const brandId = this.value;
+
+            modelSelect.innerHTML = '<option value="">Yükleniyor...</option>';
+
+            if (!brandId) {
+                modelSelect.innerHTML = '<option value="">Önce marka seçin</option>';
+                return;
+            }
+
+            try {
+                const response = await fetch('/Admin/Car/GetModelsByBrand?brandId=' + brandId);
+
+                if (!response.ok) {
+                    throw new Error("Modeller alınamadı.");
+                }
+
+                const models = await response.json();
+
+                modelSelect.innerHTML = '<option value="">Model seçin</option>';
+
+                models.forEach(model => {
+                    const option = document.createElement("option");
+                    option.value = model.id;
+                    option.textContent = model.text;
+                    modelSelect.appendChild(option);
+                });
+            } catch (error) {
+                modelSelect.innerHTML = '<option value="">Model getirilemedi</option>';
+                console.error(error);
+            }
+        });
+    });
+</script>

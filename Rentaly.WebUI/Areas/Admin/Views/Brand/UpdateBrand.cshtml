@@ -14,7 +14,7 @@
         <span style="color:#30363d;font-size:12px">/</span>
         <span style="font-size:13px;font-weight:500;color:#f0f6fc">Yeni Marka Ekle</span>
     </div>
-    <form asp-action="CreateBrand" method="post">
+    <form asp-action="UpdateBrand" method="post">
         <input type="hidden" asp-for="BrandId"/>
         @Html.AntiForgeryToken()
         <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;padding:20px">
