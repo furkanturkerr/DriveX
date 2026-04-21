@@ -99,8 +99,10 @@ function go(id,el){
   document.querySelectorAll('.ni,.sni').forEach(n=>n.classList.remove('act'));
   if(el){el.classList.add('act');const sn=el.closest('.sn');if(sn){sn.classList.add('op');const pid=sn.id.replace('sn-','');const ch=document.getElementById('c-'+sn.id);if(ch)ch.classList.add('op');}}
 }
-function tog(id,el){
-  const sn=document.getElementById(id);const ch=document.getElementById('c-'+id);
-  sn.classList.toggle('op');if(ch)ch.classList.toggle('op');
+function tog(id, el) {
+  const sn = document.getElementById(id);
+  const ch = document.getElementById('c-' + id);
+  sn.classList.toggle('op');
+  if (ch) ch.classList.toggle('op');
 }
 </script>

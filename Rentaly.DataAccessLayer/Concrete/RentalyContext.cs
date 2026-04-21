@@ -22,4 +22,7 @@ public class RentalyContext : DbContext
     public DbSet<Service> Services { get; set; }
     public DbSet<Testimonial> Testimonials { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Brand> Brands { get; set; }
+    public DbSet<Branch> Branches { get; set; }
+    public DbSet<CarCategory> CarCategories { get; set; }
 }

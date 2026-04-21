@@ -22,12 +22,16 @@
       <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h5v5H2zm7 0h5v5H9zm-7 7h5v5H2zm7 0h5v5H9z" opacity=".85"/></svg>
       Dashboard
     </a>
-    
+
     <a class="ni" asp-controller="Default" asp-action="Index" target="_blank">
-      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h5v5H2zm7 0h5v5H9zm-7 7h5v5H2zm7 0h5v5H9z" opacity=".85"/></svg>
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M6 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-3"/>
+        <path d="M10 2h4v4M14 2l-6 6"/>
+      </svg>
       Siteye Git
     </a>
 
+    @* ── SİTE İÇERİĞİ ── *@
     <div class="sb-sec">Site İçeriği</div>
 
     <div class="ni" onclick="tog('sn-say',this)">
@@ -40,7 +44,6 @@
         <path d="M4 3l3 3-3 3"/>
       </svg>
     </div>
-
     <div class="sn" id="sn-say">
       <a class="sni" asp-controller="About"       asp-action="AboutList">Hakkımızda</a>
       <a class="sni" asp-controller="Service"     asp-action="ServiceList">Servisler</a>
@@ -50,26 +53,26 @@
       <a class="sni" asp-controller="Contact"     asp-action="ContactList">İletişim</a>
       <a class="sni" asp-controller="Footer"      asp-action="FooterList">Footer</a>
     </div>
-    
-    <div class="sb-sec">Blog Yönetimi</div>
+
+    @* ── BLOG ── *@
+    <div class="sb-sec">Blog</div>
 
     <a class="ni" asp-controller="Blog" asp-action="BlogList">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-        <path d="M2 8l2-4h8l2 4"/><path d="M2 8h12"/>
-        <path d="M1 8v3h1.5m10 0H14V8"/>
-        <circle cx="5" cy="11" r="1.5"/><circle cx="11" cy="11" r="1.5"/>
+        <rect x="2" y="2" width="12" height="12" rx="2"/>
+        <path d="M5 5h6M5 8h6M5 11h4"/>
       </svg>
-      Bloglar
+      Yazılar
     </a>
 
-    <a class="ni" asp-controller="Category" asp-action="CategoryList">
+    <a class="ni" asp-controller="BlogCategory" asp-action="BlogCategoryList">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-        <path d="M2 12V5l6-3 6 3v7l-6 3-6-3z"/>
-        <path d="M8 2v10M2 5l6 3 6-3"/>
+        <path d="M2 3h5l1 2h6v8H2z"/>
       </svg>
-      Kategoriler
+      Blog Kategorileri
     </a>
 
+    @* ── ARAÇ YÖNETİMİ ── *@
     <div class="sb-sec">Araç Yönetimi</div>
 
     <a class="ni" asp-controller="Car" asp-action="CarList">
@@ -82,14 +85,23 @@
       <span class="bx">24</span>
     </a>
 
-    <a class="ni" asp-controller="Category" asp-action="CategoryList">
+    <div class="ni" onclick="tog('sn-arac',this)">
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4">
-        <path d="M2 12V5l6-3 6 3v7l-6 3-6-3z"/>
-        <path d="M8 2v10M2 5l6 3 6-3"/>
+        <path d="M2 4h12M2 8h8M2 12h5"/>
       </svg>
-      Kategoriler
-    </a>
+      Tanımlamalar
+      <svg class="chv" id="c-sn-arac" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M4 3l3 3-3 3"/>
+      </svg>
+    </div>
+    <div class="sn" id="sn-arac">
+      <a class="sni" asp-controller="Brand"       asp-action="BrandList">Markalar</a>
+      <a class="sni" asp-controller="CarModel"    asp-action="CarModelList">Modeller</a>
+      <a class="sni" asp-controller="CarCategory" asp-action="CarCategoryList">Kategoriler</a>
+      <a class="sni" asp-controller="Branch"      asp-action="BranchList">Şubeler</a>
+    </div>
 
+    @* ── İŞLEMLER ── *@
     <div class="sb-sec">İşlemler</div>
 
     <a class="ni" asp-controller="Reservation" asp-action="ReservationList">
@@ -117,6 +129,7 @@
       Kullanıcılar
     </a>
 
+    @* ── SİSTEM ── *@
     <div class="sb-sec">Sistem</div>
 
     <a class="ni" asp-controller="Settings" asp-action="Index">

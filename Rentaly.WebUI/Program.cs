@@ -32,6 +32,8 @@ builder.Services.AddScoped<IBlogService, BlogManager>();
 builder.Services.AddScoped<IBlogDal, EfBlogDal>();
 builder.Services.AddScoped<ICategoryService, CategoryManager>();
 builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
+builder.Services.AddScoped<IBranchService, BranchManager>();
+builder.Services.AddScoped<IBranchDal, EfBranchDal>();
 
 var app = builder.Build();
 

@@ -1,0 +1,25 @@
+namespace Rentaly.Entity;
+
+public class Car
+{
+    public int CarId { get; set; }
+    public string PlateNumber { get; set; }
+    public string VIN { get; set; } 
+    public int BrandId { get; set; }
+    public Brand Brand { get; set; }
+    public int ModelId { get; set; }
+    public int SeatCount { get; set; }
+    public int LuggageCount { get; set; }
+    public int CarCategoryId { get; set; }
+    public CarCategory CarCategory { get; set; }
+    public int BranchId { get; set; }
+    public Branch Branch { get; set; }
+    public int Year { get; set; }
+    public int Kilometer { get; set; }
+    public decimal DailyPrice { get; set; }
+    public string ImageUrl { get; set; }
+    public string FuelType { get; set; }
+    public decimal DepositAmount { get; set; }
+    public bool IsAvailable { get; set; }
+    public bool IsActive { get; set; }
+}
