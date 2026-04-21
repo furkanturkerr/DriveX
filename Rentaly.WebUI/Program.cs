@@ -34,6 +34,8 @@ builder.Services.AddScoped<ICategoryService, CategoryManager>();
 builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 builder.Services.AddScoped<IBranchService, BranchManager>();
 builder.Services.AddScoped<IBranchDal, EfBranchDal>();
+builder.Services.AddScoped<IBrandService, BrandManager>();
+builder.Services.AddScoped<IBrandDal, EfBrandDal>();
 
 var app = builder.Build();
 

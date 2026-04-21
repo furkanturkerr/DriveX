@@ -3,6 +3,7 @@ using Rentaly.DtoLayer.AboutDtos;
 using Rentaly.DtoLayer.BannerDtos;
 using Rentaly.DtoLayer.BlogDtos;
 using Rentaly.DtoLayer.BranchDtos;
+using Rentaly.DtoLayer.BrandDtos;
 using Rentaly.DtoLayer.CategoryDtos;
 using Rentaly.DtoLayer.ContactDtos;
 using Rentaly.DtoLayer.FaqDtos;
@@ -58,5 +59,9 @@ public class GeneralMapping : Profile
         CreateMap<Branch, ResultBranchDto>().ReverseMap();
         CreateMap<Branch, UpdateBranchDto>().ReverseMap();
         CreateMap<Branch, CreateBranchDto>().ReverseMap();
+        
+        CreateMap<Brand, ResultBrandDto>().ReverseMap();
+        CreateMap<Brand, UpdateBrandDto>().ReverseMap();
+        CreateMap<Brand, CreateBrandDto>().ReverseMap();
     }
 }
