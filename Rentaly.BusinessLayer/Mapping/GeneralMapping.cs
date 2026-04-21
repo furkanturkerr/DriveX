@@ -5,6 +5,7 @@ using Rentaly.DtoLayer.BlogDtos;
 using Rentaly.DtoLayer.BranchDtos;
 using Rentaly.DtoLayer.BrandDtos;
 using Rentaly.DtoLayer.CarCategoryDtos;
+using Rentaly.DtoLayer.CarModelDtos;
 using Rentaly.DtoLayer.CategoryDtos;
 using Rentaly.DtoLayer.ContactDtos;
 using Rentaly.DtoLayer.FaqDtos;
@@ -68,5 +69,12 @@ public class GeneralMapping : Profile
         CreateMap<CarCategory, ResultCarCategoryDto>().ReverseMap();
         CreateMap<CarCategory, UpdateCarCategoryDto>().ReverseMap();
         CreateMap<CarCategory, CreateCarCategoryDto>().ReverseMap();
+        
+        CreateMap<CarModel, ResultCarModelDto>().ReverseMap();
+        CreateMap<CarModel, UpdateCarModelDto>().ReverseMap();
+        CreateMap<CarModel, CreateCarModelDto>().ReverseMap();
+        CreateMap<CarModel, ResultCarModelWithBrand>()
+            .ForMember(dest => dest.BrandId, opt => opt.MapFrom(src => src.BrandId))
+            .ForMember(dest => dest.BrandName, opt => opt.MapFrom(src => src.Brand.BrandName));
     }
 }

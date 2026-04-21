@@ -38,6 +38,8 @@ builder.Services.AddScoped<IBrandService, BrandManager>();
 builder.Services.AddScoped<IBrandDal, EfBrandDal>();
 builder.Services.AddScoped<ICarCategoryService, CarCategoryManager>();
 builder.Services.AddScoped<ICarCategoryDal, EfCarCategoryDal>();
+builder.Services.AddScoped<ICarModelService, CarModelManager>();
+builder.Services.AddScoped<ICarModelDal, EfCarModelDal>();
 
 var app = builder.Build();
 

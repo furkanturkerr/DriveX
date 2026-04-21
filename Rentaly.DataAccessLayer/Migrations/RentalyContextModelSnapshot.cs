@@ -263,6 +263,8 @@ namespace Rentaly.DataAccessLayer.Migrations
 
                     b.HasKey("CarModelId");
 
+                    b.HasIndex("BrandId");
+
                     b.ToTable("CarModels");
                 });
 
@@ -452,6 +454,17 @@ namespace Rentaly.DataAccessLayer.Migrations
                     b.Navigation("Brand");
 
                     b.Navigation("CarCategory");
+                });
+
+            modelBuilder.Entity("Rentaly.Entity.CarModel", b =>
+                {
+                    b.HasOne("Rentaly.Entity.Brand", "Brand")
+                        .WithMany()
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
                 });
 
             modelBuilder.Entity("Rentaly.Entity.Branch", b =>

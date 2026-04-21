@@ -1,0 +1,139 @@
+@model List<Rentaly.DtoLayer.CarModelDtos.ResultCarModelWithBrand>
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+@{
+ViewData["Title"] = "Model Yönetimi";
+Layout = "~/Views/Admin/Index.cshtml";
+
+var brands = ViewBag.Brands as SelectList;
+int? selectedBrandId = ViewBag.SelectedBrandId as int?;
+}
+
+<div style="padding:20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #21262d">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;display:inline-block"></span>
+            <span style="font-size:14px;font-weight:500;color:#f0f6fc">Model Yönetimi</span>
+            <span style="font-size:10px;background:#0d2818;color:#22c55e;border:1px solid #22c55e33;padding:2px 9px;border-radius:20px">
+                @(Model?.Count ?? 0) model
+            </span>
+        </div>
+
+        <a asp-action="CreateCarModel"
+           style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:#22c55e;color:#fff;border-radius:8px;font-size:12px;font-weight:500;text-decoration:none">
+            <svg width="13" height="13" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 16 16">
+                <path d="M8 3v10M3 8h10"/>
+            </svg>
+            Model Ekle
+        </a>
+    </div>
+
+    <div style="display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px">
+        <form method="get" asp-action="CarModelList" style="display:flex;align-items:end;gap:10px;flex-wrap:wrap">
+            <div style="display:flex;flex-direction:column;gap:6px">
+                <label style="font-size:11px;color:#8b949e;font-weight:500">Markaya Göre Filtrele</label>
+
+                <select name="brandId"
+                        asp-items="brands"
+                        onchange="this.form.submit()"
+                        style="width:240px;background:#161b22;border:1px solid #30363d;color:#f0f6fc;border-radius:8px;padding:10px 12px;font-size:12px;outline:none">
+                    <option value="">Tüm Markalar</option>
+                </select>
+            </div>
+
+            @if (selectedBrandId.HasValue)
+            {
+            <a asp-action="CarModelList"
+               style="display:inline-flex;align-items:center;gap:6px;padding:10px 14px;background:#2a0d0d;color:#ef4444;border:1px solid #ef444433;border-radius:8px;font-size:12px;font-weight:500;text-decoration:none">
+                Filtreyi Temizle
+            </a>
+            }
+        </form>
+    </div>
+
+    <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;overflow:hidden">
+        <table style="width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed">
+            <colgroup>
+                <col style="width:60px" />
+                <col style="width:38%" />
+                <col style="width:26%" />
+                <col style="width:180px" />
+            </colgroup>
+
+            <thead>
+            <tr style="background:#0d1117;border-bottom:1px solid #21262d">
+                <th style="text-align:left;padding:12px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">
+                    ID
+                </th>
+                <th style="text-align:left;padding:12px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">
+                    Model Adı
+                </th>
+                <th style="text-align:left;padding:12px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">
+                    Marka
+                </th>
+                <th style="text-align:right;padding:12px 16px;font-size:10px;color:#6e7681;font-weight:500;text-transform:uppercase;letter-spacing:.5px">
+                    İşlem
+                </th>
+            </tr>
+            </thead>
+
+            <tbody>
+            @if (Model == null || !Model.Any())
+            {
+            <tr>
+                <td colspan="4" style="padding:32px;text-align:center;color:#6e7681;font-size:12px">
+                    Kayıt bulunamadı
+                </td>
+            </tr>
+            }
+            else
+            {
+            @foreach (var item in Model)
+            {
+            <tr style="border-bottom:1px solid #21262d">
+                <td style="padding:14px 16px;color:#8b949e;font-size:11px">
+                    @item.CarModelId
+                </td>
+
+                <td style="padding:14px 16px">
+                    <div style="font-size:12px;font-weight:600;color:#f0f6fc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
+                        @item.ModelName
+                    </div>
+                </td>
+
+                <td style="padding:14px 16px">
+                                <span style="display:inline-flex;align-items:center;gap:8px;font-size:11px;background:#1a1030;color:#c084fc;border:1px solid #a855f733;padding:5px 10px;border-radius:999px;font-weight:500">
+                                    <span style="width:8px;height:8px;border-radius:50%;background:#a855f7;display:inline-block"></span>
+                                    @item.BrandName
+                                </span>
+                </td>
+
+                <td style="padding:14px 16px">
+                    <div style="display:flex;gap:8px;justify-content:flex-end">
+                        <a asp-action="UpdateCarModel" asp-route-id="@item.CarModelId"
+                           style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:#0d2818;color:#22c55e;border:1px solid #22c55e33;border-radius:7px;font-size:11px;font-weight:500;text-decoration:none;white-space:nowrap">
+                            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16">
+                                <path d="M11 2l3 3-8 8H3v-3l8-8z"/>
+                            </svg>
+                            Düzenle
+                        </a>
+
+                        <form asp-action="DeleteCarModel" asp-route-id="@item.CarModelId" method="post" style="display:inline" onsubmit="return confirm('Emin misiniz?')">
+                            @Html.AntiForgeryToken()
+                            <button type="submit"
+                                    style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;background:#2a0d0d;color:#ef4444;border:1px solid #ef444433;border-radius:7px;font-size:11px;font-weight:500;cursor:pointer;white-space:nowrap">
+                                <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 16 16">
+                                    <path d="M3 5h10M6 5V3h4v2M5 5l.5 8h5l.5-8"/>
+                                </svg>
+                                Sil
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            }
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
