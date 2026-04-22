@@ -39,6 +39,7 @@ public class EfCarDal : GenericRepository<Car>, ICarDal
             .Include(x => x.Brand)
             .Include(x => x.CarCategory)
             .Include(x => x.CarModel)
+            .Where(x=>x.IsActive == true && x.IsAvailable == true)
             .AsQueryable();
 
         if (brandId.HasValue && brandId.Value > 0)

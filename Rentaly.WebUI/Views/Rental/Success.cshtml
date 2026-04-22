@@ -1,0 +1,79 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+
+@await Component.InvokeAsync("_DefaultHeadComponentPartial")
+
+<style>
+    .success-wrap {
+        text-align: center;
+        padding: 80px 20px;
+    }
+    .success-wrap .icon {
+        width: 80px;
+        height: 80px;
+        background: #28a745;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24px;
+        font-size: 36px;
+        color: #fff;
+    }
+    .success-wrap h2 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
+    .success-wrap p {
+        color: #777;
+        font-size: 16px;
+        max-width: 480px;
+        margin: 0 auto 30px;
+    }
+</style>
+
+<body>
+<div id="wrapper">
+
+    @await Component.InvokeAsync("_DefaultNavbarComponentPartial")
+
+    <div class="no-bottom no-top zebra" id="content">
+        <div id="top"></div>
+
+        <section id="subheader" class="jarallax text-light">
+            <img src="~/Rentaly/RentalyHTML/images/background/2.jpg" class="jarallax-img" alt="">
+            <div class="center-y relative text-center">
+                <div class="container">
+                    <div class="col-md-12 text-center">
+                        <h1>Talebiniz Alındı</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="success-wrap">
+                    <div class="icon">✓</div>
+                    <h2>Kiralama Talebiniz Başarıyla Gönderildi!</h2>
+                    <p>Talebiniz incelemeye alınmıştır. En kısa sürede e-posta veya telefon ile size dönüş yapılacaktır.</p>
+                    <a href="@Url.Action("CarList", "Car")" class="btn-main">Araçlara Dön</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <a href="#" id="back-to-top"></a>
+    @await Component.InvokeAsync("_DefaultFooterComponentPartial")
+</div>
+
+<script src="~/Rentaly/RentalyHTML/js/plugins.js"></script>
+<script src="~/Rentaly/RentalyHTML/js/designesia.js"></script>
+</body>
+</html>

@@ -42,6 +42,8 @@ builder.Services.AddScoped<ICarModelService, CarModelManager>();
 builder.Services.AddScoped<ICarModelDal, EfCarModelDal>();
 builder.Services.AddScoped<ICarService, CarManager>();
 builder.Services.AddScoped<ICarDal, EfCarDal>();
+builder.Services.AddScoped<IRentalDal, EfRentalDal>();
+builder.Services.AddScoped<IRentalService, RentalManager>();
 
 var app = builder.Build();
 

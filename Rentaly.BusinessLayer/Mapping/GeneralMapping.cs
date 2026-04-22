@@ -11,6 +11,7 @@ using Rentaly.DtoLayer.CategoryDtos;
 using Rentaly.DtoLayer.ContactDtos;
 using Rentaly.DtoLayer.FaqDtos;
 using Rentaly.DtoLayer.FooterDtos;
+using Rentaly.DtoLayer.RentalDtos;
 using Rentaly.DtoLayer.ServiceDtos;
 using Rentaly.DtoLayer.TestimonialDtos;
 using Rentaly.Entity;
@@ -81,6 +82,21 @@ public class GeneralMapping : Profile
         CreateMap<CarCategory, ResultCarCategoryDto>().ReverseMap();
         CreateMap<CarCategory, UpdateCarCategoryDto>().ReverseMap();
         CreateMap<CarCategory, CreateCarCategoryDto>().ReverseMap();
+        
+        CreateMap<CreateRentalDto, Rental>();
+        CreateMap<UpdateRentalDto, Rental>();
+        // Rental entity → ResultRentalDto
+        CreateMap<Rental, ResultRentalDto>()
+            .ForMember(dest => dest.BrandName,
+                opt => opt.MapFrom(src => src.Car.CarModel.Brand.BrandName))
+            .ForMember(dest => dest.ImageUrl,
+                opt => opt.MapFrom(src => src.Car.ImageUrl))
+            .ForMember(dest => dest.PickupBranchName,
+                opt => opt.MapFrom(src => src.PickupBranch.BranchName))
+            .ForMember(dest => dest.DropoffBranchName,
+                opt => opt.MapFrom(src => src.DropoffBranch.BranchName))
+            .ForMember(dest => dest.Status,
+                opt => opt.MapFrom(src => src.Status.ToString()));
         
         CreateMap<CarModel, ResultCarModelDto>().ReverseMap();
         CreateMap<CarModel, UpdateCarModelDto>().ReverseMap();

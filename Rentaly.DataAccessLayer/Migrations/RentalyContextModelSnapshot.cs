@@ -362,6 +362,91 @@ namespace Rentaly.DataAccessLayer.Migrations
                     b.ToTable("Footers");
                 });
 
+            modelBuilder.Entity("Rentaly.Entity.Rental", b =>
+                {
+                    b.Property<int>("RentalId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RentalId"));
+
+                    b.Property<string>("AdminNote")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ApprovedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("DailyPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("DepositAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("DropoffBranchId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DropoffDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdentityNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LicenseNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PickupBranchId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PickupDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalDays")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("RentalId");
+
+                    b.HasIndex("CarId");
+
+                    b.HasIndex("DropoffBranchId");
+
+                    b.HasIndex("PickupBranchId");
+
+                    b.ToTable("Rentals");
+                });
+
             modelBuilder.Entity("Rentaly.Entity.Service", b =>
                 {
                     b.Property<int>("ServiceId")
@@ -475,6 +560,33 @@ namespace Rentaly.DataAccessLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("Brand");
+                });
+
+            modelBuilder.Entity("Rentaly.Entity.Rental", b =>
+                {
+                    b.HasOne("Rentaly.Entity.Car", "Car")
+                        .WithMany()
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Rentaly.Entity.Branch", "DropoffBranch")
+                        .WithMany()
+                        .HasForeignKey("DropoffBranchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Rentaly.Entity.Branch", "PickupBranch")
+                        .WithMany()
+                        .HasForeignKey("PickupBranchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+
+                    b.Navigation("DropoffBranch");
+
+                    b.Navigation("PickupBranch");
                 });
 
             modelBuilder.Entity("Rentaly.Entity.Branch", b =>

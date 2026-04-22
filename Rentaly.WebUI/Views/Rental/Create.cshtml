@@ -1,0 +1,573 @@
+@using System.Globalization
+@model Rentaly.DtoLayer.RentalDtos.CreateRentalDto
+
+@{
+    Layout = null;
+    var car      = ViewBag.Car      as Rentaly.DtoLayer.CarDtos.ResultCarWithCategory;
+    var branches = ViewBag.Branches as List<Rentaly.DtoLayer.BranchDtos.ResultBranchDto>;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+@await Component.InvokeAsync("_DefaultHeadComponentPartial")
+
+<style>
+    .wizard-wrap         { max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    /* STEPPER */
+    .stepper             { display: flex; align-items: center; justify-content: center; margin-bottom: 50px; }
+    .step-item           { display: flex; flex-direction: column; align-items: center; position: relative; flex: 1; }
+    .step-item:not(:last-child)::after {
+        content: ''; position: absolute; top: 20px; left: 50%;
+        width: 100%; height: 2px; background: #e0e0e0; z-index: 0; transition: background .4s;
+    }
+    .step-item.done:not(:last-child)::after { background: #28a745; }
+    .step-circle         { width: 42px; height: 42px; border-radius: 50%; border: 2px solid #e0e0e0;
+                           background: #fff; display: flex; align-items: center; justify-content: center;
+                           font-weight: 700; font-size: 15px; color: #aaa; position: relative; z-index: 1; transition: all .3s; }
+    .step-item.active .step-circle { border-color: #28a745; color: #28a745; box-shadow: 0 0 0 4px rgba(40,167,69,.15); }
+    .step-item.done   .step-circle { background: #28a745; border-color: #28a745; color: #fff; }
+    .step-label          { font-size: 12px; color: #aaa; margin-top: 8px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase; }
+    .step-item.active .step-label,
+    .step-item.done   .step-label  { color: #28a745; }
+
+    /* PANEL */
+    .step-panel          { display: none; animation: fadeUp .3s ease; }
+    .step-panel.active   { display: block; }
+    @@keyframes fadeUp    { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ARAÇ ÖZET KARTI */
+    .car-summary-card    { display: flex; align-items: center; gap: 24px; background: #f8f9fa;
+                           border-radius: 10px; padding: 20px 24px; margin-bottom: 30px; border: 1px solid #e8e8e8; }
+    .car-summary-card img { width: 160px; object-fit: contain; flex-shrink: 0; }
+    .car-summary-card h4  { font-size: 20px; font-weight: 700; margin: 0 0 8px; }
+    .car-summary-card .attrs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+    .car-summary-card .attr  { background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 3px 10px; font-size: 12px; color: #555; }
+    .car-summary-card .price { font-size: 24px; font-weight: 700; color: #28a745; }
+    .car-summary-card .price span { font-size: 13px; color: #aaa; font-weight: 400; }
+
+    /* INFO BOX */
+    .info-box            { background: #f8f9fa; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .info-row            { display: flex; justify-content: space-between; padding: 7px 0;
+                           border-bottom: 1px dashed #e0e0e0; font-size: 14px; color: #555; }
+    .info-row:last-child { border: none; }
+    .info-row strong     { color: #222; }
+
+    /* FORM */
+    .field-group         { margin-bottom: 20px; }
+    .field-group label   { display: block; font-size: 11px; font-weight: 700; color: #888;
+                           text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px; }
+    .field-group input,
+    .field-group select  { width: 100%; padding: 11px 14px; border: 1px solid #e0e0e0; border-radius: 6px;
+                           font-size: 14px; color: #333; background: #fafafa; transition: border .2s; box-sizing: border-box; }
+    .field-group input:focus,
+    .field-group select:focus { border-color: #28a745; outline: none; background: #fff; }
+    .field-error         { color: #dc3545; font-size: 11px; margin-top: 3px; display: block; }
+
+    /* ÖZET KUTUSU */
+    .summary-box         { border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden; position: sticky; top: 20px; }
+    .summary-box .head   { background: #28a745; color: #fff; padding: 14px 20px; font-weight: 700; font-size: 15px; }
+    .summary-box .body   { padding: 20px; }
+    .sum-row             { display: flex; justify-content: space-between; padding: 8px 0;
+                           border-bottom: 1px dashed #eee; font-size: 13px; color: #666; }
+    .sum-row:last-child  { border: none; }
+    .sum-row strong      { color: #222; font-size: 14px; }
+    .sum-total           { display: flex; justify-content: space-between; padding: 14px 0 0;
+                           font-size: 20px; font-weight: 700; color: #28a745; }
+
+    /* BUTONLAR */
+    .btn-row             { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; }
+    .btn-next            { background: #28a745; color: #fff; border: none; border-radius: 6px;
+                           padding: 13px 36px; font-size: 15px; font-weight: 700; cursor: pointer; transition: opacity .2s; }
+    .btn-next:hover      { opacity: .88; }
+    .btn-back            { background: #f5f5f5; color: #555; border: 1px solid #ddd; border-radius: 6px;
+                           padding: 13px 36px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background .2s; }
+    .btn-back:hover      { background: #e8e8e8; }
+    .btn-submit          { background: #28a745; color: #fff; border: none; border-radius: 6px;
+                           padding: 14px 40px; font-size: 16px; font-weight: 700; cursor: pointer;
+                           transition: opacity .2s; }
+    .btn-submit:hover    { opacity: .88; }
+
+    /* TAKVİM */
+    .date-picker-wrap    { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px; user-select: none; min-height: 280px; }
+    .cal-header          { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .cal-header span     { font-weight: 700; font-size: 14px; color: #222; }
+    .cal-nav             { background: none; border: 1px solid #e0e0e0; border-radius: 4px; width: 28px; height: 28px;
+                           cursor: pointer; font-size: 14px; color: #555; display: flex; align-items: center; justify-content: center; }
+    .cal-nav:hover       { background: #f0fff4; border-color: #28a745; color: #28a745; }
+    .cal-grid            { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+    .cal-day-name        { text-align: center; font-size: 10px; font-weight: 700; color: #aaa;
+                           text-transform: uppercase; padding: 4px 0; }
+    .cal-day             { text-align: center; padding: 6px 2px; font-size: 13px; border-radius: 4px;
+                           cursor: pointer; color: #333; transition: all .15s; }
+    .cal-day:hover       { background: #e8f5e9; color: #28a745; }
+    .cal-day.selected    { background: #28a745; color: #fff; font-weight: 700; }
+    .cal-day.today       { border: 2px solid #28a745; color: #28a745; font-weight: 700; }
+    .cal-day.disabled    { color: #ccc; cursor: not-allowed; pointer-events: none; }
+    .cal-day.empty       { pointer-events: none; }
+    .cal-day.in-range    { background: #e8f5e9; border-radius: 0; }
+
+    /* SAAT BUTONLARI */
+    .time-select-wrap    { display: flex; flex-wrap: wrap; gap: 6px; }
+    .time-btn            { padding: 7px 12px; border: 1px solid #e0e0e0; border-radius: 6px;
+                           font-size: 13px; font-weight: 600; color: #555; background: #fff;
+                           cursor: pointer; transition: all .15s; }
+    .time-btn:hover      { border-color: #28a745; color: #28a745; background: #f0fff4; }
+    .time-btn.active {
+        background: #28a745;
+        color: #fff;
+        border-color: #28a745;
+    }
+
+    .section-label {
+        font-size: 13px;
+        font-weight: 700;
+        color: #222;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0 0 18px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #28a745;
+        display: inline-block;
+    }
+
+    .panel-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 4px;
+    }
+
+    .panel-sub {
+        font-size: 14px;
+        color: #888;
+        margin-bottom: 28px;
+    }
+    .panel-sub           { font-size: 14px; color: #888; margin-bottom: 28px; }
+</style>
+
+<body>
+<div id="wrapper">
+
+    @await Component.InvokeAsync("_DefaultNavbarComponentPartial")
+
+    <div class="no-bottom no-top zebra" id="content">
+        <div id="top"></div>
+
+        <section id="subheader" class="jarallax text-light">
+            <img src="~/Rentaly/RentalyHTML/images/background/2.jpg" class="jarallax-img" alt="">
+            <div class="center-y relative text-center">
+                <div class="container">
+                    <div class="col-md-12 text-center">
+                        <h1>Araç Kiralama</h1>
+                        <p>Birkaç adımda rezervasyonunuzu tamamlayın</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="wizard-wrap">
+
+                    <!-- STEPPER -->
+                    <div class="stepper">
+                        <div class="step-item active" id="si-1">
+                            <div class="step-circle">1</div>
+                            <div class="step-label">Tarih & Şube</div>
+                        </div>
+                        <div class="step-item" id="si-2">
+                            <div class="step-circle">2</div>
+                            <div class="step-label">Bilgiler & Özet</div>
+                        </div>
+                    </div>
+
+                    <!-- ARAÇ ÖZET KARTI (her iki adımda da görünür) -->
+                    @if (car != null)
+                    {
+                        <div class="car-summary-card">
+                            <img src="@car.ImageUrl" alt="@car.BrandName">
+                            <div>
+                                <h4>@car.BrandName</h4>
+                                <div class="attrs">
+                                    <span class="attr">@car.CategoryName</span>
+                                    <span class="attr">@car.FuelType</span>
+                                    <span class="attr">@car.SeatCount Koltuk</span>
+                                    <span class="attr">@car.Year</span>
+                                </div>
+                                <div class="price">₺@car.DailyPrice <span>/ gün</span></div>
+                            </div>
+                        </div>
+                    }
+
+                    <form asp-action="Create" asp-controller="Rental" method="post" id="rental-form">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="CarId" />
+
+                        <!-- ══════ ADIM 1: TARİH & ŞUBE ══════ -->
+                        <div class="step-panel active" id="panel-1">
+                            <div class="panel-title">Tarih & Şube Seçin</div>
+                            <div class="panel-sub">Alış ve teslim bilgilerinizi girin</div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="field-group">
+                                        <label>Alış Şubesi</label>
+                                        <select asp-for="PickupBranchId">
+                                            <option value="">Şube Seçin</option>
+                                            @if (branches != null)
+                                            {
+                                                @foreach (var b in branches)
+                                                {
+                                                    <option value="@b.BranchId">@b.BranchName</option>
+                                                }
+                                            }
+                                        </select>
+                                        <span asp-validation-for="PickupBranchId" class="field-error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="field-group">
+                                        <label>Teslim Şubesi</label>
+                                        <select asp-for="DropoffBranchId">
+                                            <option value="">Şube Seçin</option>
+                                            @if (branches != null)
+                                            {
+                                                @foreach (var b in branches)
+                                                {
+                                                    <option value="@b.BranchId">@b.BranchName</option>
+                                                }
+                                            }
+                                        </select>
+                                        <span asp-validation-for="DropoffBranchId" class="field-error"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="field-group">
+                                        <label>Alış Tarihi</label>
+                                        <div class="date-picker-wrap" id="pickup-calendar"></div>
+                                        <input type="hidden" asp-for="PickupDate" id="pickup-date">
+                                        <span asp-validation-for="PickupDate" class="field-error"></span>
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Alış Saati</label>
+                                        <div class="time-select-wrap">
+                                            <button type="button" class="time-btn active" data-target="pickup" data-hour="09">09:00</button>
+                                            <button type="button" class="time-btn" data-target="pickup" data-hour="10">10:00</button>
+                                            <button type="button" class="time-btn" data-target="pickup" data-hour="11">11:00</button>
+                                            <button type="button" class="time-btn" data-target="pickup" data-hour="12">12:00</button>
+                                            <button type="button" class="time-btn" data-target="pickup" data-hour="13">13:00</button>
+                                            <button type="button" class="time-btn" data-target="pickup" data-hour="14">14:00</button>
+                                            <button type="button" class="time-btn" data-target="pickup" data-hour="15">15:00</button>
+                                            <button type="button" class="time-btn" data-target="pickup" data-hour="16">16:00</button>
+                                            <button type="button" class="time-btn" data-target="pickup" data-hour="17">17:00</button>
+                                            <button type="button" class="time-btn" data-target="pickup" data-hour="18">18:00</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="field-group">
+                                        <label>Teslim Tarihi</label>
+                                        <div class="date-picker-wrap" id="dropoff-calendar"></div>
+                                        <input type="hidden" asp-for="DropoffDate" id="dropoff-date">
+                                        <span asp-validation-for="DropoffDate" class="field-error"></span>
+                                    </div>
+                                    <div class="field-group">
+                                        <label>Teslim Saati</label>
+                                        <div class="time-select-wrap">
+                                            <button type="button" class="time-btn active" data-target="dropoff" data-hour="09">09:00</button>
+                                            <button type="button" class="time-btn" data-target="dropoff" data-hour="10">10:00</button>
+                                            <button type="button" class="time-btn" data-target="dropoff" data-hour="11">11:00</button>
+                                            <button type="button" class="time-btn" data-target="dropoff" data-hour="12">12:00</button>
+                                            <button type="button" class="time-btn" data-target="dropoff" data-hour="13">13:00</button>
+                                            <button type="button" class="time-btn" data-target="dropoff" data-hour="14">14:00</button>
+                                            <button type="button" class="time-btn" data-target="dropoff" data-hour="15">15:00</button>
+                                            <button type="button" class="time-btn" data-target="dropoff" data-hour="16">16:00</button>
+                                            <button type="button" class="time-btn" data-target="dropoff" data-hour="17">17:00</button>
+                                            <button type="button" class="time-btn" data-target="dropoff" data-hour="18">18:00</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Fiyat önizleme -->
+                            <div class="info-box" id="price-preview" style="display:none;">
+                                <div class="info-row">
+                                    <span>Kiralama Süresi</span>
+                                    <strong><span id="calc-days">0</span> gün</strong>
+                                </div>
+                                <div class="info-row">
+                                    <span>Tahmini Toplam</span>
+                                    <strong style="color:#28a745; font-size:18px;" id="calc-total">₺0</strong>
+                                </div>
+                            </div>
+
+                            <div class="btn-row">
+                                <a asp-action="CarList" asp-controller="Car" class="btn-back">← Araçlara Dön</a>
+                                <button type="button" class="btn-next" onclick="goStep2()">Devam Et →</button>
+                            </div>
+                        </div>
+
+                        <!-- ══════ ADIM 2: BİLGİLER & ÖZET ══════ -->
+                        <div class="step-panel" id="panel-2">
+                            <div class="panel-title">Kişisel Bilgiler</div>
+                            <div class="panel-sub">Bilgilerinizi doldurun ve rezervasyonu tamamlayın</div>
+
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="section-label">Kişisel Bilgiler</div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="field-group">
+                                                <label>Ad</label>
+                                                <input asp-for="FirstName" placeholder="Adınız">
+                                                <span asp-validation-for="FirstName" class="field-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="field-group">
+                                                <label>Soyad</label>
+                                                <input asp-for="LastName" placeholder="Soyadınız">
+                                                <span asp-validation-for="LastName" class="field-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="field-group">
+                                                <label>TC Kimlik No</label>
+                                                <input asp-for="IdentityNumber" placeholder="xxxxxxxxxxx" maxlength="11">
+                                                <span asp-validation-for="IdentityNumber" class="field-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="field-group">
+                                                <label>Doğum Tarihi</label>
+                                                <input asp-for="BirthDate" type="date">
+                                                <span asp-validation-for="BirthDate" class="field-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="field-group">
+                                                <label>Telefon</label>
+                                                <input asp-for="Phone" placeholder="05xx xxx xx xx">
+                                                <span asp-validation-for="Phone" class="field-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="field-group">
+                                                <label>E-posta</label>
+                                                <input asp-for="Email" type="email" placeholder="ornek@email.com">
+                                                <span asp-validation-for="Email" class="field-error"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="field-group">
+                                                <label>Ehliyet No</label>
+                                                <input asp-for="LicenseNumber" placeholder="Ehliyet numaranız">
+                                                <span asp-validation-for="LicenseNumber" class="field-error"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Özet -->
+                                <div class="col-lg-4">
+                                    <div class="section-label">Rezervasyon Özeti</div>
+                                    <div class="summary-box">
+                                        <div class="head">📋 Özet</div>
+                                        <div class="body">
+                                            <div class="sum-row">
+                                                <span>Araç</span>
+                                                <strong>@(car?.BrandName ?? "—")</strong>
+                                            </div>
+                                            <div class="sum-row">
+                                                <span>Alış</span>
+                                                <strong id="sum-pickup">—</strong>
+                                            </div>
+                                            <div class="sum-row">
+                                                <span>Teslim</span>
+                                                <strong id="sum-dropoff">—</strong>
+                                            </div>
+                                            <div class="sum-row">
+                                                <span>Süre</span>
+                                                <strong><span id="sum-days">—</span> gün</strong>
+                                            </div>
+                                            <div class="sum-row">
+                                                <span>Günlük Fiyat</span>
+                                                <strong>₺@(car?.DailyPrice ?? 0)</strong>
+                                            </div>
+                                            <div class="sum-total">
+                                                <span>Toplam</span>
+                                                <span id="sum-total">—</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="btn-row">
+                                <button type="button" class="btn-back" onclick="goPanel(1)">← Geri</button>
+                                <button type="submit" class="btn-submit">Rezervasyonu Tamamla ✓</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <a href="#" id="back-to-top"></a>
+    @await Component.InvokeAsync("_DefaultFooterComponentPartial")
+</div>
+
+<script src="~/Rentaly/RentalyHTML/js/plugins.js"></script>
+<script src="~/Rentaly/RentalyHTML/js/designesia.js"></script>
+<script>
+    
+const DAILY_PRICE = @(car?.DailyPrice.ToString(CultureInfo.InvariantCulture) ?? "0");
+
+// ── TAKVİM ──
+const state = {
+    pickup:  { date: null, hour: '09', month: new Date().getMonth(), year: new Date().getFullYear() },
+    dropoff: { date: null, hour: '09', month: new Date().getMonth(), year: new Date().getFullYear() }
+};
+
+const MONTHS = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+const DAYS   = ['Pt','Sa','Ça','Pe','Cu','Ct','Pz'];
+
+function buildCalendar(target) {
+    const s      = state[target];
+    const wrap   = document.getElementById(target + '-calendar');
+    const today  = new Date(); today.setHours(0,0,0,0);
+    const first  = new Date(s.year, s.month, 1);
+    const last   = new Date(s.year, s.month + 1, 0);
+    // Monday-first offset
+    let startDay = first.getDay() === 0 ? 6 : first.getDay() - 1;
+
+    let html = `<div class="cal-header">
+        <button type="button" class="cal-nav" onclick="shiftMonth('${target}',-1)">‹</button>
+        <span>${MONTHS[s.month]} ${s.year}</span>
+        <button type="button" class="cal-nav" onclick="shiftMonth('${target}',1)">›</button>
+    </div><div class="cal-grid">`;
+
+    DAYS.forEach(d => html += `<div class="cal-day-name">${d}</div>`);
+
+    for (let i = 0; i < startDay; i++) html += `<div class="cal-day empty"></div>`;
+
+    for (let d = 1; d <= last.getDate(); d++) {
+        const dt      = new Date(s.year, s.month, d);
+        const isPast  = dt < today;
+        const isTdy   = dt.getTime() === today.getTime();
+        const isSel   = s.date && dt.getTime() === s.date.getTime();
+        // range highlight
+        const pDate   = state.pickup.date;
+        const dDate   = state.dropoff.date;
+        const inRange = pDate && dDate && dt > pDate && dt < dDate;
+
+        let cls = 'cal-day';
+        if (isPast)   cls += ' disabled';
+        if (isTdy)    cls += ' today';
+        if (isSel)    cls += ' selected';
+        if (inRange)  cls += ' in-range';
+
+        html += `<div class="${cls}" onclick="pickDay('${target}',${s.year},${s.month},${d})">${d}</div>`;
+    }
+    html += '</div>';
+    wrap.innerHTML = html;
+}
+
+function shiftMonth(target, dir) {
+    const s = state[target];
+    s.month += dir;
+    if (s.month < 0)  { s.month = 11; s.year--; }
+    if (s.month > 11) { s.month = 0;  s.year++; }
+    buildCalendar(target);
+}
+
+function pickDay(target, y, m, d) {
+    state[target].date = new Date(y, m, d);
+    buildCalendar('pickup');
+    buildCalendar('dropoff');
+    updateHidden(target);
+    calcPrice();
+}
+
+function updateHidden(target) {
+    const s = state[target];
+    if (!s.date) return;
+    const pad = n => String(n).padStart(2, '0');
+    const val = `${s.date.getFullYear()}-${pad(s.date.getMonth()+1)}-${pad(s.date.getDate())}T${pad(s.hour)}:00`;
+    document.getElementById(target + '-date').value = val;
+}
+
+// ── SAAT SEÇ ──
+document.querySelectorAll('.time-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const t = this.dataset.target;
+        document.querySelectorAll(`.time-btn[data-target="${t}"]`).forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        state[t].hour = this.dataset.hour;
+        updateHidden(t);
+        calcPrice();
+    });
+});
+
+// ── FİYAT HESAPLA ──
+function calcPrice() {
+    const p = document.getElementById('pickup-date').value;
+    const d = document.getElementById('dropoff-date').value;
+    if (!p || !d) return;
+
+    const days = Math.ceil((new Date(d) - new Date(p)) / 86400000);
+    if (days <= 0) { document.getElementById('price-preview').style.display = 'none'; return; }
+
+    const total = days * Number(DAILY_PRICE);
+    const fmt   = v => new Date(v).toLocaleDateString('tr-TR', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+
+    document.getElementById('calc-days').textContent   = days;
+    document.getElementById('calc-total').textContent  = '₺' + total.toLocaleString('tr-TR');
+    document.getElementById('price-preview').style.display = 'block';
+
+    document.getElementById('sum-days').textContent    = days;
+    document.getElementById('sum-total').textContent   = '₺' + total.toLocaleString('tr-TR');
+    document.getElementById('sum-pickup').textContent  = fmt(p);
+    document.getElementById('sum-dropoff').textContent = fmt(d);
+}
+
+function goPanel(n) {
+    document.querySelectorAll('.step-panel').forEach((p, i) => p.classList.toggle('active', i + 1 === n));
+    document.querySelectorAll('.step-item').forEach((s, i) => {
+        s.classList.remove('active', 'done');
+        if (i + 1 < n)  s.classList.add('done');
+        if (i + 1 === n) s.classList.add('active');
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goStep2() {
+    const pb = document.querySelector('select[name="PickupBranchId"]').value;
+    const db = document.querySelector('select[name="DropoffBranchId"]').value;
+    const p  = document.getElementById('pickup-date').value;
+    const d  = document.getElementById('dropoff-date').value;
+
+    if (!pb) { alert('Lütfen alış şubesini seçin.');   return; }
+    if (!db) { alert('Lütfen teslim şubesini seçin.'); return; }
+    if (!p)  { alert('Lütfen alış tarihini seçin.');   return; }
+    if (!d)  { alert('Lütfen teslim tarihini seçin.'); return; }
+    if (new Date(d) <= new Date(p)) { alert('Teslim tarihi alış tarihinden sonra olmalıdır.'); return; }
+
+    calcPrice();
+    goPanel(2);
+}
+
+// İlk yükleme
+buildCalendar('pickup');
+buildCalendar('dropoff');
+
+console.log("script başladı");
+console.log("DAILY_PRICE:", DAILY_PRICE);
+</script>
+
+</body>
+</html>

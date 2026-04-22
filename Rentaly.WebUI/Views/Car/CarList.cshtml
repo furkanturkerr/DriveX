@@ -269,7 +269,12 @@ Layout = null;
                                         </div>
                                         <div class="d-price">
                                             Günlük Ücret <span>₺@item.DailyPrice</span>
-                                            <a class="btn-main" href="#">Şimdi Kirala</a>
+                                            <a class="btn-main" 
+                                               asp-action="Create" 
+                                               asp-controller="Rental" 
+                                               asp-route-carId="@item.CarId">
+                                                Şimdi Kirala
+                                            </a>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
