@@ -72,7 +72,7 @@ public class CarController : Controller
     {
         if (!ModelState.IsValid)
         {
-            await LoadCarDropdownsAsync(dto.BrandId, dto.ModelId, dto.CarCategoryId, dto.BranchId);
+            await LoadCarDropdownsAsync(dto.BrandId, dto.CarModelId, dto.CarCategoryId, dto.BranchId);
             return View(dto);
         }
 
@@ -87,7 +87,7 @@ public class CarController : Controller
 
         await LoadCarDropdownsAsync(
             values.BrandId,
-            values.ModelId,
+            values.CarModelId,
             values.CarCategoryId,
             values.BranchId);
 
@@ -100,7 +100,7 @@ public class CarController : Controller
     {
         if (!ModelState.IsValid)
         {
-            await LoadCarDropdownsAsync(dto.BrandId, dto.ModelId, dto.CarCategoryId, dto.BranchId);
+            await LoadCarDropdownsAsync(dto.BrandId, dto.CarModelId, dto.CarCategoryId, dto.BranchId);
             return View(dto);
         }
 

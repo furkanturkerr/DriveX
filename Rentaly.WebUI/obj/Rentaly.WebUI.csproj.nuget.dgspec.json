@@ -100,6 +100,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/Rentaly.DtoLayer.csproj": {
+                "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/Rentaly.DtoLayer.csproj"
+              },
               "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/Rentaly.Entity.csproj": {
                 "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/Rentaly.Entity.csproj"
               }

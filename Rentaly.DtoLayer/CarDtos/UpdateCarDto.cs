@@ -6,7 +6,7 @@ public class UpdateCarDto
     public string PlateNumber { get; set; }
     public string VIN { get; set; } 
     public int BrandId { get; set; }
-    public int ModelId { get; set; }
+    public int CarModelId { get; set; }
     public int SeatCount { get; set; }
     public int LuggageCount { get; set; }
     public int CarCategoryId { get; set; }

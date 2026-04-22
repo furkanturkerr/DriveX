@@ -1851,6 +1851,7 @@
       },
       "Rentaly.DataAccessLayer/1.0.0": {
         "dependencies": {
+          "Rentaly.DtoLayer": "1.0.0",
           "Rentaly.Entity": "1.0.0"
         },
         "runtime": {

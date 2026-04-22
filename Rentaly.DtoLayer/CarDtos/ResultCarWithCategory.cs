@@ -7,6 +7,8 @@ public class ResultCarWithCategory
     public string  VIN          { get; set; }
     public int     SeatCount    { get; set; }
     public int     LuggageCount { get; set; }
+    public int     CarCategoryId { get; set; }
+    public int     BrandId { get; set; }
     public int     Year         { get; set; }
     public int     Kilometer    { get; set; }
     public decimal DailyPrice   { get; set; }

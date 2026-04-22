@@ -983,6 +983,16 @@
           }
         }
       },
+      "Rentaly.DtoLayer/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Rentaly.DtoLayer.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Rentaly.DtoLayer.dll": {}
+        }
+      },
       "Rentaly.Entity/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -2718,6 +2728,11 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "Rentaly.DtoLayer/1.0.0": {
+      "type": "project",
+      "path": "../Rentaly.DtoLayer/Rentaly.DtoLayer.csproj",
+      "msbuildProject": "../Rentaly.DtoLayer/Rentaly.DtoLayer.csproj"
+    },
     "Rentaly.Entity/1.0.0": {
       "type": "project",
       "path": "../Rentaly.Entity/Rentaly.Entity.csproj",
@@ -2726,6 +2741,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Rentaly.DtoLayer >= 1.0.0",
       "Rentaly.Entity >= 1.0.0"
     ]
   },
@@ -2754,6 +2770,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/Rentaly.DtoLayer.csproj": {
+              "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DtoLayer/Rentaly.DtoLayer.csproj"
+            },
             "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/Rentaly.Entity.csproj": {
               "projectPath": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.Entity/Rentaly.Entity.csproj"
             }

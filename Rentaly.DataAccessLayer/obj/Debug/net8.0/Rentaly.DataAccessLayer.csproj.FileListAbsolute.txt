@@ -14,3 +14,5 @@
 /Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/refint/Rentaly.DataAccessLayer.dll
 /Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/Rentaly.DataAccessLayer.pdb
 /Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/obj/Debug/net8.0/ref/Rentaly.DataAccessLayer.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/bin/Debug/net8.0/Rentaly.DtoLayer.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.DataAccessLayer/bin/Debug/net8.0/Rentaly.DtoLayer.pdb

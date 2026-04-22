@@ -59,11 +59,11 @@
 
                 <div>
                     <label style="font-size:11px;color:#8b949e;font-weight:500;display:block;margin-bottom:5px">Model</label>
-                    <select asp-for="ModelId" asp-items="ViewBag.Models" id="modelSelect"
+                    <select asp-for="CarModelId" asp-items="ViewBag.Models" id="modelSelect"
                             style="width:100%;background:#0d1117;border:1px solid #30363d;border-radius:8px;padding:9px 12px;font-size:12px;color:#c9d1d9;outline:none">
                         <option value="">Model seçin</option>
                     </select>
-                    <span asp-validation-for="ModelId" style="font-size:11px;color:#ef4444"></span>
+                    <span asp-validation-for="CarModelId" style="font-size:11px;color:#ef4444"></span>
                 </div>
 
                 <div>
@@ -201,7 +201,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             const brandSelect = document.getElementById("brandSelect");
             const modelSelect = document.getElementById("modelSelect");
-            const selectedModelId = '@Model.ModelId';
+            const selectedModelId = '@Model.CarModelId';
 
             if (!brandSelect || !modelSelect) return;
 

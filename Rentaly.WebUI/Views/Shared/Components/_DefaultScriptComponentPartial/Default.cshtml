@@ -1,3 +1,61 @@
 <script src="~/Rentaly/RentalyHTML/js/plugins.js"></script>
 <script src="~/Rentaly/RentalyHTML/js/designesia.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=insert_your_api_key_here&amp;libraries=places&amp;callback=initPlaces" async="" defer=""></script>
+
+<script>
+    const minRange = document.getElementById("minRange");
+    const maxRange = document.getElementById("maxRange");
+    const minPrice = document.getElementById("MinPrice");
+    const maxPrice = document.getElementById("MaxPrice");
+
+    if (minRange && maxRange && minPrice && maxPrice) {
+
+        minRange.addEventListener("input", function () {
+            let minVal = parseInt(minRange.value);
+            let maxVal = parseInt(maxRange.value);
+
+            if (minVal > maxVal) {
+                minVal = maxVal;
+                minRange.value = minVal;
+            }
+
+            minPrice.value = minVal;
+        });
+
+        maxRange.addEventListener("input", function () {
+            let minVal = parseInt(minRange.value);
+            let maxVal = parseInt(maxRange.value);
+
+            if (maxVal < minVal) {
+                maxVal = minVal;
+                maxRange.value = maxVal;
+            }
+
+            maxPrice.value = maxVal;
+        });
+
+        minPrice.addEventListener("input", function () {
+            let minVal = parseInt(minPrice.value) || 0;
+            let maxVal = parseInt(maxPrice.value) || 10000;
+
+            if (minVal > maxVal) {
+                minVal = maxVal;
+                minPrice.value = minVal;
+            }
+
+            minRange.value = minVal;
+        });
+
+        maxPrice.addEventListener("input", function () {
+            let minVal = parseInt(minPrice.value) || 0;
+            let maxVal = parseInt(maxPrice.value) || 10000;
+
+            if (maxVal < minVal) {
+                maxVal = minVal;
+                maxPrice.value = maxVal;
+            }
+
+            maxRange.value = maxVal;
+        });
+    }
+</script>
