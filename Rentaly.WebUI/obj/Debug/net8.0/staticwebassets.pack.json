@@ -5,6 +5,134 @@
       "PackagePath": "staticwebassets/Rentaly.WebUI.bundle.scp.css"
     },
     {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/1.png",
+      "PackagePath": "staticwebassets/Admin/İmages/1.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/10.png",
+      "PackagePath": "staticwebassets/Admin/İmages/10.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/2.png",
+      "PackagePath": "staticwebassets/Admin/İmages/2.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/3.png",
+      "PackagePath": "staticwebassets/Admin/İmages/3.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/4.png",
+      "PackagePath": "staticwebassets/Admin/İmages/4.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/5.png",
+      "PackagePath": "staticwebassets/Admin/İmages/5.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/6.png",
+      "PackagePath": "staticwebassets/Admin/İmages/6.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/7.png",
+      "PackagePath": "staticwebassets/Admin/İmages/7.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/8.png",
+      "PackagePath": "staticwebassets/Admin/İmages/8.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/a1.png",
+      "PackagePath": "staticwebassets/Admin/İmages/a1.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/a2.png",
+      "PackagePath": "staticwebassets/Admin/İmages/a2.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/aboutlist.png",
+      "PackagePath": "staticwebassets/Admin/İmages/aboutlist.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/bannerlist.png",
+      "PackagePath": "staticwebassets/Admin/İmages/bannerlist.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/bloglist.png",
+      "PackagePath": "staticwebassets/Admin/İmages/bloglist.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/branchlist.png",
+      "PackagePath": "staticwebassets/Admin/İmages/branchlist.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/brandlist.png",
+      "PackagePath": "staticwebassets/Admin/İmages/brandlist.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/carlist.png",
+      "PackagePath": "staticwebassets/Admin/İmages/carlist.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/carmodellist.png",
+      "PackagePath": "staticwebassets/Admin/İmages/carmodellist.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/contact.png",
+      "PackagePath": "staticwebassets/Admin/İmages/contact.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/contactlist.png",
+      "PackagePath": "staticwebassets/Admin/İmages/contactlist.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/createblog.png",
+      "PackagePath": "staticwebassets/Admin/İmages/createblog.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/createcar.png",
+      "PackagePath": "staticwebassets/Admin/İmages/createcar.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/faqlist.png",
+      "PackagePath": "staticwebassets/Admin/İmages/faqlist.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/footerlist.png",
+      "PackagePath": "staticwebassets/Admin/İmages/footerlist.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/messageai.png",
+      "PackagePath": "staticwebassets/Admin/İmages/messageai.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/messagedetail.png",
+      "PackagePath": "staticwebassets/Admin/İmages/messagedetail.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/messagelist.png",
+      "PackagePath": "staticwebassets/Admin/İmages/messagelist.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/rezervasyonmail.png",
+      "PackagePath": "staticwebassets/Admin/İmages/rezervasyonmail.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/rezervationlsit.png",
+      "PackagePath": "staticwebassets/Admin/İmages/rezervationlsit.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/servicelist.png",
+      "PackagePath": "staticwebassets/Admin/İmages/servicelist.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/testimoniallist.png",
+      "PackagePath": "staticwebassets/Admin/İmages/testimoniallist.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/updaterezervation.png",
+      "PackagePath": "staticwebassets/Admin/İmages/updaterezervation.png"
+    },
+    {
       "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/rentaly_admin_v2.html",
       "PackagePath": "staticwebassets/Admin/rentaly_admin_v2.html"
     },
