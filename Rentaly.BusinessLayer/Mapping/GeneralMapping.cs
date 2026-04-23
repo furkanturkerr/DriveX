@@ -11,6 +11,7 @@ using Rentaly.DtoLayer.CategoryDtos;
 using Rentaly.DtoLayer.ContactDtos;
 using Rentaly.DtoLayer.FaqDtos;
 using Rentaly.DtoLayer.FooterDtos;
+using Rentaly.DtoLayer.MessageDtos;
 using Rentaly.DtoLayer.RentalDtos;
 using Rentaly.DtoLayer.ServiceDtos;
 using Rentaly.DtoLayer.TestimonialDtos;
@@ -67,6 +68,10 @@ public class GeneralMapping : Profile
         CreateMap<Brand, ResultBrandDto>().ReverseMap();
         CreateMap<Brand, UpdateBrandDto>().ReverseMap();
         CreateMap<Brand, CreateBrandDto>().ReverseMap();
+        
+        CreateMap<Message, ResultMessageDto>().ReverseMap();
+        CreateMap<Message, UpdateMessageDto>().ReverseMap();
+        CreateMap<Message, CreateMessageDto>().ReverseMap();
         
         CreateMap<Car, ResultCarDto>().ReverseMap();
         CreateMap<Car, UpdateCarDto>().ReverseMap();

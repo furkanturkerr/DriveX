@@ -26,4 +26,5 @@ public class RentalyContext : DbContext
     public DbSet<Branch> Branches { get; set; }
     public DbSet<CarCategory> CarCategories { get; set; }
     public DbSet<Rental> Rentals { get; set; }
+    public DbSet<Message> Messages { get; set; }
 }

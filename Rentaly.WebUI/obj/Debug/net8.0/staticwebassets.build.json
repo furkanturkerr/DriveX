@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DtuFllylKSFzs8genA/T/ZmQK8gQEItQH3Wsx10+MF8=",
+  "Hash": "BrLNVP/Y1uFfPmDxRR93APy1g9jXK0Z6yeM5Od6by0Q=",
   "Source": "Rentaly.WebUI",
   "BasePath": "_content/Rentaly.WebUI",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/G.png",
+      "SourceId": "Rentaly.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
+      "BasePath": "_content/Rentaly.WebUI",
+      "RelativePath": "G.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/G.png"
     },
     {
       "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/js/site.js",
@@ -1231,6 +1250,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/logo.png"
+    },
+    {
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/logo2.png",
+      "SourceId": "Rentaly.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
+      "BasePath": "_content/Rentaly.WebUI",
+      "RelativePath": "logo2.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/logo2.png"
     },
     {
       "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Rentaly/changelog.txt",

@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets/Admin/rentaly_admin_v2.html"
     },
     {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/G.png",
+      "PackagePath": "staticwebassets/G.png"
+    },
+    {
       "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Rentaly/RentalyHTML/02_dark-car-single.html",
       "PackagePath": "staticwebassets/Rentaly/RentalyHTML/02_dark-car-single.html"
     },
@@ -4615,6 +4619,10 @@
     {
       "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/logo.png",
       "PackagePath": "staticwebassets/logo.png"
+    },
+    {
+      "Id": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/logo2.png",
+      "PackagePath": "staticwebassets/logo2.png"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Rentaly.WebUI.Microsoft.AspNetCore.StaticWebAssets.props",

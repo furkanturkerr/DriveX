@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rentaly.Entity")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa372c420647835002c6f610312ee224037c580d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb433c70e09d35dd872b2af4ce26d5f45454b77d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rentaly.Entity")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rentaly.Entity")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
