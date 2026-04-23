@@ -20,7 +20,7 @@
 
 ## Proje Hakkında
 
-Rentaly, kullanıcıların araç kiralama işlemlerini kolayca gerçekleştirebildiği ve admin panel üzerinden tüm sürecin yönetilebildiği modern bir web uygulamasıdır.
+DriveX, kullanıcıların araç kiralama işlemlerini kolayca gerçekleştirebildiği ve admin panel üzerinden tüm sürecin yönetilebildiği modern bir web uygulamasıdır.
 
 Proje, katmanlı mimari (N-Tier Architecture) ile geliştirilmiş olup performans, sürdürülebilirlik ve temiz kod prensipleri ön planda tutulmuştur. Yapay zeka entegrasyonu sayesinde iletişim süreçleri otomatik hale getirilmiştir.
 
