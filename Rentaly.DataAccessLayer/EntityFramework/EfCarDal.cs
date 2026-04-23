@@ -32,6 +32,15 @@ public class EfCarDal : GenericRepository<Car>, ICarDal
             .ToListAsync();
         return values;
     }
+    
+    public async Task<Car> GetCarWithDetailsAsync(int id)
+    {
+        return await _context.Cars
+            .Include(x => x.Brand)
+            .Include(x => x.CarModel)
+            .Include(x => x.CarCategory)
+            .FirstOrDefaultAsync(x => x.CarId == id);
+    }
 
     public async Task<List<Car>> GetFilteredCars(int? brandId, int? carCategoryId, string? fuel, decimal? minPrice, decimal? maxPrice)
     {

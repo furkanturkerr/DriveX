@@ -388,9 +388,6 @@ namespace Rentaly.DataAccessLayer.Migrations
                     b.Property<decimal>("DailyPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("DepositAmount")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("DropoffBranchId")
                         .HasColumnType("int");
 

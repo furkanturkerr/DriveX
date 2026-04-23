@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rentaly.DtoLayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ec3dc7815d56422d6a3d3e613e0d2f4d705db2a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d244461e6d7702471e808cf1a3e6ab02f4adfd5d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rentaly.DtoLayer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rentaly.DtoLayer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

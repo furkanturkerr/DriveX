@@ -32,7 +32,6 @@ public class Rental
     public int     TotalDays     { get; set; }    // Gün Sayısı (hesaplanan)
     public decimal DailyPrice    { get; set; }    // Günlük Fiyat (o andaki, değişmemesi için kopyalanır)
     public decimal TotalPrice    { get; set; }    // Toplam Tutar
-    public decimal DepositAmount { get; set; }    // Depozito
 
     // ===== DURUM =====
     public RentalStatus Status { get; set; } = RentalStatus.Beklemede;

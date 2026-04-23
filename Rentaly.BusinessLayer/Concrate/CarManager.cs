@@ -34,6 +34,12 @@ public class CarManager : ICarService
         var entity = _mapper.Map<Car>(dto);
         await _carDal.InsertAsync(entity);
     }
+    
+    public async Task<ResultCarDto> TGetCarWithDetailsAsync(int id)
+    {
+        var values = await _carDal.GetCarWithDetailsAsync(id);
+        return _mapper.Map<ResultCarDto>(values);
+    }
 
     public async Task TUpdateAsync(UpdateCarDto dto)
     {

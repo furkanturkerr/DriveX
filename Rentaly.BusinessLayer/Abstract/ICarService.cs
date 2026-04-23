@@ -6,4 +6,5 @@ public interface ICarService : IGenericService<ResultCarDto, CreateCarDto, Updat
 {
     Task<List<ResultCarWithCategory>> TCarsWithCategoryAsync();
     Task<List<ResultCarWithCategory>> TCarsFilterAsync(CarFilterDto carFilterDto);
+    Task<ResultCarDto> TGetCarWithDetailsAsync(int id);
 }

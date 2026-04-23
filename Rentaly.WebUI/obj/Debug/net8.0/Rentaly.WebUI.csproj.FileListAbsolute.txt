@@ -259,3 +259,8 @@
 /Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/bin/Debug/net8.0/Rentaly.DataAccessLayer.pdb
 /Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/bin/Debug/net8.0/Rentaly.DtoLayer.pdb
 /Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/bin/Debug/net8.0/Rentaly.Entity.pdb
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/bin/Debug/net8.0/BouncyCastle.Cryptography.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/bin/Debug/net8.0/MailKit.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/bin/Debug/net8.0/MimeKit.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/bin/Debug/net8.0/System.Security.Cryptography.Pkcs.dll
+/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll

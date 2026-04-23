@@ -49,4 +49,12 @@ public class EfRentalDal : GenericRepository<Rental>, IRentalDal
 
         await _context.SaveChangesAsync();
     }
+
+    public async Task<Rental> GetRentalWithDetailsAsync(int id)
+    {
+        return await _context.Rentals
+            .Include(x => x.Car)
+            .ThenInclude(x => x.Brand)
+            .FirstOrDefaultAsync(x => x.RentalId == id);
+    }
 }
