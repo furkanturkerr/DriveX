@@ -1,5 +1,7 @@
 using AutoMapper;
+using FluentValidation;
 using Rentaly.BusinessLayer.Abstract;
+using Rentaly.BusinessLayer.ValidationRules.AboutValidations;
 using Rentaly.DataAccessLayer.Abstract;
 using Rentaly.DtoLayer.AboutDtos;
 using Rentaly.Entity;
@@ -19,7 +21,8 @@ public class AboutManager : IAboutService
 
     public async Task<List<ResultAboutDto>> TGetListAsync()
     {
-        return _mapper.Map<List<ResultAboutDto>>(await _aboutDal.GetListAsync());
+        var values = await _aboutDal.GetListAsync();
+        return _mapper.Map<List<ResultAboutDto>>(values);
     }
 
     public async Task<UpdateAboutDto> TGetByIdAsync(int id)
@@ -30,13 +33,31 @@ public class AboutManager : IAboutService
 
     public async Task TInsertAsync(CreateAboutDto dto)
     {
+        var validator = new CreateAboutValidator();
+        var result = await validator.ValidateAsync(dto);
+
+        if (!result.IsValid)
+        {
+            var errors = string.Join(" | ", result.Errors.Select(x => x.ErrorMessage));
+            throw new ValidationException(errors);
+        }
+
         var entity = _mapper.Map<About>(dto);
         await _aboutDal.InsertAsync(entity);
     }
 
     public async Task TUpdateAsync(UpdateAboutDto dto)
     {
-        var  entity = _mapper.Map<About>(dto);
+        var validator = new UpdateAboutValidator();
+        var result = await validator.ValidateAsync(dto);
+
+        if (!result.IsValid)
+        {
+            var errors = string.Join(" | ", result.Errors.Select(x => x.ErrorMessage));
+            throw new ValidationException(errors);
+        }
+
+        var entity = _mapper.Map<About>(dto);
         await _aboutDal.UpdateAsync(entity);
     }
 

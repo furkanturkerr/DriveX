@@ -1,5 +1,7 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Rentaly.BusinessLayer.Abstract;
+using Rentaly.BusinessLayer.ValidationRules.AboutValidations;
 using Rentaly.DtoLayer.AboutDtos;
 
 namespace RentalyNew.Areas.Admin.Controllers;
@@ -30,6 +32,17 @@ public class AboutController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateAbout(CreateAboutDto createAboutDto)
     {
+        var validator = new CreateAboutValidator(); 
+        var result = validator.Validate(createAboutDto);
+        
+        if (!result.IsValid)
+        {
+            foreach (var error in result.Errors) 
+                ModelState.AddModelError(error.PropertyName, error.ErrorMessage); 
+            
+            return View(createAboutDto);
+        } 
+
         await _aboutService.TInsertAsync(createAboutDto);
         return RedirectToAction("AboutList");
     }
@@ -40,11 +53,22 @@ public class AboutController : Controller
         var values = await _aboutService.TGetByIdAsync(id);
         return View(values);
     }
-    
+
     [ValidateAntiForgeryToken]
     [HttpPost]
     public async Task<IActionResult> UpdateAbout(UpdateAboutDto updateAboutDto)
     {
+        var validator = new UpdateAboutValidator(); 
+        var result = validator.Validate(updateAboutDto);
+        
+        if (!result.IsValid)
+        {
+            foreach (var error in result.Errors) 
+                ModelState.AddModelError(error.PropertyName, error.ErrorMessage); 
+            
+            return View(updateAboutDto);
+        } 
+
         await _aboutService.TUpdateAsync(updateAboutDto);
         return RedirectToAction("AboutList");
     }

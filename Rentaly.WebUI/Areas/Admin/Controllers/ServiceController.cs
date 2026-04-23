@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Rentaly.BusinessLayer.Abstract;
+using Rentaly.BusinessLayer.ValidationRules.ServiceValidations;
 using Rentaly.DtoLayer.ServiceDtos;
 
 namespace RentalyNew.Areas.Admin.Controllers;
+
 [Area("Admin")]
 public class ServiceController : Controller
 {
@@ -13,7 +15,6 @@ public class ServiceController : Controller
         _serviceService = serviceService;
     }
 
-    // GET
     public async Task<IActionResult> ServiceList()
     {
         var values = await _serviceService.TGetListAsync();
@@ -23,38 +24,61 @@ public class ServiceController : Controller
     [HttpGet]
     public IActionResult CreateService()
     {
-        return View();
+        return View(new CreateServiceDto());
     }
 
-    [ValidateAntiForgeryToken]
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> CreateService(CreateServiceDto dto)
     {
+        var validator = new CreateServiceValidator();
+        var result = validator.Validate(dto);
+
+        if (!result.IsValid)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+            }
+
+            return View(dto);
+        }
+
         await _serviceService.TInsertAsync(dto);
         return RedirectToAction("ServiceList");
     }
-    
+
     [HttpGet]
     public async Task<IActionResult> UpdateService(int id)
     {
-        var values = await _serviceService.TGetByIdAsync(id);
-        return View(values);
+        var value = await _serviceService.TGetByIdAsync(id);
+        return View(value);
     }
-    
-    [ValidateAntiForgeryToken]
+
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> UpdateService(UpdateServiceDto dto)
     {
+        var validator = new UpdateServiceValidator();
+        var result = validator.Validate(dto);
+
+        if (!result.IsValid)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+            }
+
+            return View(dto);
+        }
+
         await _serviceService.TUpdateAsync(dto);
         return RedirectToAction("ServiceList");
     }
-    
-    [HttpPost]
-    [ValidateAntiForgeryToken]
+
     public async Task<IActionResult> DeleteService(int id)
     {
         await _serviceService.TDeleteAsync(id);
         return RedirectToAction("ServiceList");
     }
-
 }

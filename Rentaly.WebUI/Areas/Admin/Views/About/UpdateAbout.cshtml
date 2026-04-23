@@ -24,7 +24,7 @@ bool isEdit = Model.AboutId > 0;
         </span>
     </div>
 
-    <form method="post">
+    <form method="post" asp-action="UpdateAbout" asp-controller="About">
         @Html.AntiForgeryToken()
 
         @if (isEdit)

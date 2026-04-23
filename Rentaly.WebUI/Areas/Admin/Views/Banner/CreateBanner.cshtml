@@ -22,7 +22,7 @@
         <span style="font-size:13px;font-weight:500;color:#f0f6fc">Yeni Banner Ekle</span>
     </div>
 
-    <form asp-action="CreateBanner" method="post">
+    <form asp-action="CreateBanner" asp-controller="Banner" method="post">
         @Html.AntiForgeryToken()
 
         <div style="background:#161b22;border:1px solid #21262d;border-radius:12px;padding:20px">
