@@ -1,0 +1,128 @@
+@model List<Rentaly.DtoLayer.MessageDtos.ResultMessageDto>
+
+@{
+    ViewData["Title"] = "Mesaj Yönetimi";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div style="padding:20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;
+                margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #21262d">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;display:inline-block"></span>
+            <span style="font-size:14px;font-weight:600;color:#f0f6fc">Mesaj Yönetimi</span>
+            <span style="font-size:10px;background:#0d2818;color:#22c55e;border:1px solid #22c55e33;padding:3px 10px;border-radius:20px">
+                @(Model?.Count ?? 0) mesaj
+            </span>
+        </div>
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div style="text-align:center;padding:52px 20px;background:#161b22;
+                    border:1px dashed #30363d;border-radius:14px">
+            <div style="font-size:14px;color:#f0f6fc;margin-bottom:6px">Mesaj bulunamadı</div>
+            <div style="font-size:12px;color:#8b949e">Henüz gönderilmiş iletişim formu yok.</div>
+        </div>
+    }
+    else
+    {
+        <div style="background:#161b22;border:1px solid #21262d;border-radius:14px;overflow:hidden">
+            <div style="overflow-x:auto">
+                <table style="width:100%;min-width:1150px;border-collapse:collapse;font-size:12px">
+                    <thead>
+                    <tr style="background:#0d1117;border-bottom:1px solid #21262d">
+                        <th style="width:70px;text-align:left;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">ID</th>
+                        <th style="width:240px;text-align:left;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Ad Soyad</th>
+                        <th style="width:220px;text-align:left;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">İletişim</th>
+                        <th style="width:380px;text-align:left;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Mesaj</th>
+                        <th style="width:120px;text-align:left;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Durum</th>
+                        <th style="width:160px;text-align:right;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">İşlem</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr style="border-bottom:1px solid #21262d;transition:all .15s ease"
+                            onmouseover="this.style.background='#0d1117'"
+                            onmouseout="this.style.background='transparent'">
+
+                            <td style="padding:16px;color:#8b949e;font-size:12px;vertical-align:top">
+                                #@item.MessageId
+                            </td>
+
+                            <td style="padding:16px;vertical-align:top">
+                                <div style="font-size:13px;font-weight:600;color:#f0f6fc;line-height:1.4">
+                                    @item.NameSurname
+                                </div>
+                            </td>
+
+                            <td style="padding:16px;vertical-align:top">
+                                <div style="font-size:12px;color:#f0f6fc;line-height:1.5">
+                                    @item.Email
+                                </div>
+                                <div style="font-size:11px;color:#8b949e;margin-top:6px">
+                                    @item.Phone
+                                </div>
+                            </td>
+
+                            <td style="padding:16px;vertical-align:top">
+                                <div style="font-size:12px;color:#c9d1d9;line-height:1.6;
+                                            max-width:360px;overflow:hidden;text-overflow:ellipsis;
+                                            display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;">
+                                    @item.Messages
+                                </div>
+                            </td>
+
+                            <td style="padding:16px;vertical-align:top">
+                                @if (item.IsRead)
+                                {
+                                    <span style="display:inline-flex;align-items:center;font-size:10px;
+                                                 background:#0d2818;color:#22c55e;border:1px solid #22c55e33;
+                                                 padding:4px 10px;border-radius:999px;font-weight:600">
+                                        Okundu
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span style="display:inline-flex;align-items:center;font-size:10px;
+                                                 background:#2a1e06;color:#f59e0b;border:1px solid #f59e0b33;
+                                                 padding:4px 10px;border-radius:999px;font-weight:600">
+                                        Okunmadı
+                                    </span>
+                                }
+                            </td>
+
+                            <td style="padding:16px;vertical-align:top">
+                                <div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap">
+                                    <a asp-action="MessageDetail" asp-route-id="@item.MessageId"
+                                       style="display:inline-flex;align-items:center;justify-content:center;
+                                              min-width:78px;padding:7px 12px;background:#0d2818;color:#22c55e;
+                                              border:1px solid #22c55e33;border-radius:8px;
+                                              font-size:11px;font-weight:600;text-decoration:none">
+                                        Detay
+                                    </a>
+
+                                    <form asp-action="DeleteMessage" asp-route-id="@item.MessageId"
+                                          method="post" style="display:inline"
+                                          onsubmit="return confirm('Mesaj silinsin mi?')">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit"
+                                                style="display:inline-flex;align-items:center;justify-content:center;
+                                                       min-width:60px;padding:7px 12px;background:#2a0d0d;color:#ef4444;
+                                                       border:1px solid #ef444433;border-radius:8px;
+                                                       font-size:11px;font-weight:600;cursor:pointer">
+                                            Sil
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>

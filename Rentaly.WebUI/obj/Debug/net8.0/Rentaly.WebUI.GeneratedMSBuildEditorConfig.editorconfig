@@ -170,6 +170,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvRm9vdGVyL1VwZGF0ZUZvb3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/Areas/Admin/Views/Message/MessageDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvTWVzc2FnZS9NZXNzYWdlRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/Areas/Admin/Views/Message/MessageList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvTWVzc2FnZS9NZXNzYWdlTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/Areas/Admin/Views/Rental/RentalList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvUmVudGFsL1JlbnRhbExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

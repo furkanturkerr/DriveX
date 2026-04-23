@@ -7,5 +7,6 @@ public class UpdateMessageDto
     public string Email { get; set; }
     public string Phone { get; set; }
     public string Messages { get; set; }
+    public string MessageAI { get; set; }
     public bool IsRead { get; set; }
 }

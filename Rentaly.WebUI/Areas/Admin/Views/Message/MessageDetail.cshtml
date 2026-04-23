@@ -1,0 +1,168 @@
+@model Rentaly.DtoLayer.MessageDtos.UpdateMessageDto
+
+@{
+    ViewData["Title"] = "Mesaj Detayı";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div style="padding:20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;
+                margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #21262d">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;display:inline-block"></span>
+            <span style="font-size:14px;font-weight:600;color:#f0f6fc">Mesaj Detayı</span>
+            <span style="font-size:10px;background:#0d1117;color:#8b949e;border:1px solid #30363d;padding:3px 10px;border-radius:20px">
+                #@Model.MessageId
+            </span>
+        </div>
+
+        <a asp-action="MessageList"
+           style="display:inline-flex;align-items:center;justify-content:center;
+                  padding:8px 14px;background:#21262d;color:#c9d1d9;
+                  border:1px solid #30363d;border-radius:8px;
+                  font-size:12px;font-weight:600;text-decoration:none">
+            Geri Dön
+        </a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        
+        <!-- Sol kart -->
+        <div style="background:#161b22;border:1px solid #21262d;border-radius:14px;overflow:hidden">
+            <div style="padding:16px 18px;border-bottom:1px solid #21262d;background:#0d1117">
+                <div style="font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#22c55e">
+                    Gönderen Bilgileri
+                </div>
+            </div>
+
+            <div style="padding:18px">
+                <div style="margin-bottom:16px">
+                    <div style="font-size:11px;color:#6e7681;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">
+                        Ad Soyad
+                    </div>
+                    <div style="font-size:14px;font-weight:600;color:#f0f6fc">
+                        @Model.NameSurname
+                    </div>
+                </div>
+
+                <div style="margin-bottom:16px">
+                    <div style="font-size:11px;color:#6e7681;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">
+                        E-Posta
+                    </div>
+                    <div style="font-size:14px;color:#c9d1d9">
+                        @Model.Email
+                    </div>
+                </div>
+
+                <div style="margin-bottom:16px">
+                    <div style="font-size:11px;color:#6e7681;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">
+                        Telefon
+                    </div>
+                    <div style="font-size:14px;color:#c9d1d9">
+                        @Model.Phone
+                    </div>
+                </div>
+
+                <div>
+                    <div style="font-size:11px;color:#6e7681;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">
+                        Okunma Durumu
+                    </div>
+
+                    @if (Model.IsRead)
+                    {
+                        <span style="display:inline-flex;align-items:center;font-size:10px;
+                                     background:#0d2818;color:#22c55e;border:1px solid #22c55e33;
+                                     padding:4px 10px;border-radius:999px;font-weight:600">
+                            Okundu
+                        </span>
+                    }
+                    else
+                    {
+                        <span style="display:inline-flex;align-items:center;font-size:10px;
+                                     background:#2a1e06;color:#f59e0b;border:1px solid #f59e0b33;
+                                     padding:4px 10px;border-radius:999px;font-weight:600">
+                            Okunmadı
+                        </span>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Sağ kart -->
+        <div style="background:#161b22;border:1px solid #21262d;border-radius:14px;overflow:hidden">
+            <div style="padding:16px 18px;border-bottom:1px solid #21262d;background:#0d1117">
+                <div style="font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#22c55e">
+                    AI Yanıt Durumu
+                </div>
+            </div>
+
+            <div style="padding:18px">
+                @if (!string.IsNullOrWhiteSpace(Model.MessageAI))
+                {
+                    <div style="font-size:12px;color:#8b949e;line-height:1.8">
+                        Bu mesaj için otomatik yanıt oluşturulmuş.
+                    </div>
+                    <div style="margin-top:10px">
+                        <span style="display:inline-flex;align-items:center;font-size:10px;
+                                     background:#0d2818;color:#22c55e;border:1px solid #22c55e33;
+                                     padding:4px 10px;border-radius:999px;font-weight:600">
+                            AI Hazır
+                        </span>
+                    </div>
+                }
+                else
+                {
+                    <div style="font-size:12px;color:#8b949e;line-height:1.8">
+                        Bu mesaj için henüz AI yanıtı bulunmuyor.
+                    </div>
+                    <div style="margin-top:10px">
+                        <span style="display:inline-flex;align-items:center;font-size:10px;
+                                     background:#2a0d0d;color:#ef4444;border:1px solid #ef444433;
+                                     padding:4px 10px;border-radius:999px;font-weight:600">
+                            Yanıt Yok
+                        </span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Kullanıcı Mesajı -->
+    <div style="margin-top:16px;background:#161b22;border:1px solid #21262d;border-radius:14px;overflow:hidden">
+        <div style="padding:16px 18px;border-bottom:1px solid #21262d;background:#0d1117">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#22c55e">
+                Kullanıcı Mesajı
+            </div>
+        </div>
+
+        <div style="padding:20px">
+            <div style="font-size:13px;line-height:1.9;color:#c9d1d9;white-space:pre-line">
+                @Model.Messages
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Yanıtı -->
+    <div style="margin-top:16px;background:#161b22;border:1px solid #21262d;border-radius:14px;overflow:hidden">
+        <div style="padding:16px 18px;border-bottom:1px solid #21262d;background:#0d1117">
+            <div style="font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#22c55e">
+                AI Yanıtı
+            </div>
+        </div>
+
+        <div style="padding:20px">
+            @if (!string.IsNullOrWhiteSpace(Model.MessageAI))
+            {
+                <div style="font-size:13px;line-height:1.9;color:#c9d1d9;white-space:pre-line">
+                    @Model.MessageAI
+                </div>
+            }
+            else
+            {
+                <div style="font-size:13px;line-height:1.8;color:#8b949e">
+                    Henüz oluşturulmuş bir AI yanıtı bulunmuyor.
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -34,6 +34,8 @@ public class MessageManager : IMessageService
     public async Task<UpdateMessageDto> TGetByIdAsync(int id)
     {
         var values = await _messageDal.GetByIdAsync(id);
+        values.IsRead = true;
+        await _messageDal.UpdateAsync(values);
         return _mapper.Map<UpdateMessageDto>(values);
     }
 
