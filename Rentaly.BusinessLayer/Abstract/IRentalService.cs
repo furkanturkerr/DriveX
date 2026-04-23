@@ -4,5 +4,4 @@ namespace Rentaly.BusinessLayer.Abstract;
 
 public interface IRentalService : IGenericService<ResultRentalDto, CreateRentalDto, UpdateRentalDto>
 {
-    
 }

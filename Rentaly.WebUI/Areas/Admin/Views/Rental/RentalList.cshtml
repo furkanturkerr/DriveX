@@ -1,0 +1,171 @@
+@model List<Rentaly.DtoLayer.RentalDtos.ResultRentalDto>
+
+@{
+    ViewData["Title"] = "Rezervasyon Yönetimi";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div style="padding:20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;
+                margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #21262d">
+        <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:7px;height:7px;background:#22c55e;border-radius:50%;display:inline-block"></span>
+            <span style="font-size:14px;font-weight:600;color:#f0f6fc">Rezervasyon Yönetimi</span>
+            <span style="font-size:10px;background:#0d2818;color:#22c55e;border:1px solid #22c55e33;padding:3px 10px;border-radius:20px">
+                @(Model?.Count ?? 0) rezervasyon
+            </span>
+        </div>
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div style="text-align:center;padding:52px 20px;background:#161b22;
+                    border:1px dashed #30363d;border-radius:14px">
+            <div style="font-size:14px;color:#f0f6fc;margin-bottom:6px">Rezervasyon bulunamadı</div>
+            <div style="font-size:12px;color:#8b949e">Henüz oluşturulmuş rezervasyon yok.</div>
+        </div>
+    }
+    else
+    {
+        <div style="background:#161b22;border:1px solid #21262d;border-radius:14px;overflow:hidden">
+            <div style="overflow-x:auto">
+                <table style="width:100%;min-width:1250px;border-collapse:collapse;font-size:12px">
+                    <thead>
+                    <tr style="background:#0d1117;border-bottom:1px solid #21262d">
+                        <th style="width:60px;text-align:left;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">ID</th>
+                        <th style="width:250px;text-align:left;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Müşteri</th>
+                        <th style="width:220px;text-align:left;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Araç</th>
+                        <th style="width:190px;text-align:left;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Alış</th>
+                        <th style="width:190px;text-align:left;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Teslim</th>
+                        <th style="width:170px;text-align:left;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Toplam</th>
+                        <th style="width:120px;text-align:left;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Durum</th>
+                        <th style="width:180px;text-align:right;padding:14px 16px;font-size:10px;color:#6e7681;font-weight:600;text-transform:uppercase;letter-spacing:.4px">İşlem</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr style="border-bottom:1px solid #21262d;transition:all .15s ease"
+                            onmouseover="this.style.background='#0d1117'"
+                            onmouseout="this.style.background='transparent'">
+
+                            <td style="padding:16px;color:#8b949e;font-size:12px;vertical-align:top">
+                                #@item.RentalId
+                            </td>
+
+                            <td style="padding:16px;vertical-align:top">
+                                <div style="font-size:13px;font-weight:600;color:#f0f6fc;line-height:1.4">
+                                    @item.FirstName @item.LastName
+                                </div>
+                                <div style="font-size:11px;color:#8b949e;margin-top:6px">
+                                    @item.Phone
+                                </div>
+                                <div style="font-size:11px;color:#6e7681;word-break:break-word;margin-top:2px">
+                                    @item.Email
+                                </div>
+                            </td>
+
+                            <td style="padding:16px;vertical-align:top">
+                                <div style="font-size:13px;font-weight:600;color:#f0f6fc;line-height:1.4">
+                                    @item.BrandName
+                                </div>
+                                <div style="font-size:11px;color:#8b949e;margin-top:6px">
+                                    @item.TotalDays gün · ₺@item.DailyPrice / gün
+                                </div>
+                            </td>
+
+                            <td style="padding:16px;vertical-align:top">
+                                <div style="font-size:12px;font-weight:600;color:#f0f6fc;line-height:1.4">
+                                    @item.PickupBranchName
+                                </div>
+                                <div style="font-size:11px;color:#8b949e;margin-top:6px">
+                                    @item.PickupDate.ToString("dd.MM.yyyy HH:mm")
+                                </div>
+                            </td>
+
+                            <td style="padding:16px;vertical-align:top">
+                                <div style="font-size:12px;font-weight:600;color:#f0f6fc;line-height:1.4">
+                                    @item.DropoffBranchName
+                                </div>
+                                <div style="font-size:11px;color:#8b949e;margin-top:6px">
+                                    @item.DropoffDate.ToString("dd.MM.yyyy HH:mm")
+                                </div>
+                            </td>
+
+                            <td style="padding:16px;vertical-align:top">
+                                <div style="font-size:15px;font-weight:700;color:#22c55e;line-height:1.3">
+                                    ₺@item.TotalPrice
+                                </div>
+                                <div style="font-size:10px;color:#6e7681;margin-top:4px">
+                                    Depozito: ₺@item.DepositAmount
+                                </div>
+                            </td>
+
+                            <td style="padding:16px;vertical-align:top">
+                                @if (item.Status == "Beklemede")
+                                {
+                                    <span style="display:inline-flex;align-items:center;font-size:10px;
+                                                 background:#2a1e06;color:#f59e0b;border:1px solid #f59e0b33;
+                                                 padding:4px 10px;border-radius:999px;font-weight:600">
+                                        Beklemede
+                                    </span>
+                                }
+                                else if (item.Status == "Onaylandi")
+                                {
+                                    <span style="display:inline-flex;align-items:center;font-size:10px;
+                                                 background:#0d2818;color:#22c55e;border:1px solid #22c55e33;
+                                                 padding:4px 10px;border-radius:999px;font-weight:600">
+                                        Onaylandı
+                                    </span>
+                                }
+                                else if (item.Status == "Reddedildi")
+                                {
+                                    <span style="display:inline-flex;align-items:center;font-size:10px;
+                                                 background:#2a0d0d;color:#ef4444;border:1px solid #ef444433;
+                                                 padding:4px 10px;border-radius:999px;font-weight:600">
+                                        Reddedildi
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span style="display:inline-flex;align-items:center;font-size:10px;
+                                                 background:#21262d;color:#8b949e;border:1px solid #30363d;
+                                                 padding:4px 10px;border-radius:999px;font-weight:600">
+                                        @item.Status
+                                    </span>
+                                }
+                            </td>
+
+                            <td style="padding:16px;vertical-align:top">
+                                <div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap">
+                                    <a asp-action="UpdateRental" asp-route-id="@item.RentalId"
+                                       style="display:inline-flex;align-items:center;justify-content:center;
+                                              min-width:78px;padding:7px 12px;background:#0d2818;color:#22c55e;
+                                              border:1px solid #22c55e33;border-radius:8px;
+                                              font-size:11px;font-weight:600;text-decoration:none">
+                                        Düzenle
+                                    </a>
+
+                                    <form asp-action="DeleteRental" asp-route-id="@item.RentalId"
+                                          method="post" style="display:inline"
+                                          onsubmit="return confirm('Rezervasyon silinsin mi?')">
+                                        @Html.AntiForgeryToken()
+                                        <button type="submit"
+                                                style="display:inline-flex;align-items:center;justify-content:center;
+                                                       min-width:60px;padding:7px 12px;background:#2a0d0d;color:#ef4444;
+                                                       border:1px solid #ef444433;border-radius:8px;
+                                                       font-size:11px;font-weight:600;cursor:pointer">
+                                            Sil
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>

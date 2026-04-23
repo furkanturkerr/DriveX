@@ -83,8 +83,15 @@ public class GeneralMapping : Profile
         CreateMap<CarCategory, UpdateCarCategoryDto>().ReverseMap();
         CreateMap<CarCategory, CreateCarCategoryDto>().ReverseMap();
         
+        CreateMap<Rental, UpdateRentalDto>()
+            .ForMember(dest => dest.Status,
+                opt => opt.MapFrom(src => (int)src.Status));
+
         CreateMap<CreateRentalDto, Rental>();
-        CreateMap<UpdateRentalDto, Rental>();
+
+        CreateMap<UpdateRentalDto, Rental>()
+            .ForMember(dest => dest.Status,
+                opt => opt.MapFrom(src => (RentalStatus)src.Status));
         // Rental entity → ResultRentalDto
         CreateMap<Rental, ResultRentalDto>()
             .ForMember(dest => dest.BrandName,
