@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TCoQDUAo8tHj5qdYqBtTc6/Qje+gmk1UwpKVIp32JfM=",
+  "Hash": "DtuFllylKSFzs8genA/T/ZmQK8gQEItQH3Wsx10+MF8=",
   "Source": "Rentaly.WebUI",
   "BasePath": "_content/Rentaly.WebUI",
   "Mode": "Default",
@@ -1212,6 +1212,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/logo.png",
+      "SourceId": "Rentaly.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
+      "BasePath": "_content/Rentaly.WebUI",
+      "RelativePath": "logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/logo.png"
     },
     {
       "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Rentaly/changelog.txt",
