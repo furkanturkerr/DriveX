@@ -30,7 +30,6 @@ Proje, katmanlı mimari (N-Tier Architecture) ile geliştirilmiş olup performan
 
 - Dinamik anasayfa (Banner, About, Services, FAQ, Footer)
 - Araç listeleme ve gelişmiş filtreleme
-- Tarih ve şube bazlı rezervasyon sistemi
 - Gün bazlı otomatik fiyat hesaplama
 - Blog sistemi
 - Responsive kullanıcı arayüzü
@@ -167,7 +166,7 @@ Projede Entity ve DTO dönüşümleri AutoMapper ile yapılmaktadır.
 
 ### 404 Sayfası
 
-<img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/%C4%B0mages/e1.png">
+<img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/e1.png">
 
 ---
 
@@ -199,7 +198,3 @@ Projede Entity ve DTO dönüşümleri AutoMapper ile yapılmaktadır.
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/footerlist.png">
 
 ---
-
-## Sonuç
-
-Rentaly, modern araç kiralama ihtiyaçlarına yönelik geliştirilmiş, yönetilebilir ve genişletilebilir bir platformdur. Katmanlı mimarisi ve yapay zeka entegrasyonu sayesinde sürdürülebilir ve profesyonel bir yapı sunar.
