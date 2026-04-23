@@ -30,9 +30,12 @@ Proje, katmanlı mimari (N-Tier Architecture) ile geliştirilmiş olup performan
 
 - Dinamik anasayfa (Banner, About, Services, FAQ, Footer)
 - Araç listeleme ve gelişmiş filtreleme
+- Çok adımlı araç kiralama sistemi (tarih, şube, saat seçimi)
 - Gün bazlı otomatik fiyat hesaplama
+- Kişisel bilgiler ile rezervasyon oluşturma
+- Rezervasyon oluşturulduktan sonra admin onay süreci
+- Admin tarafından onaylandığında kullanıcıya otomatik rezervasyon onay maili gönderimi
 - Blog sistemi
-- Responsive kullanıcı arayüzü
 - 404 sayfası
 
 ---
@@ -48,6 +51,47 @@ Proje, katmanlı mimari (N-Tier Architecture) ile geliştirilmiş olup performan
 - Sayfalama sistemi
 - Otomatik mail gönderimi
 - Admin panel arayüzü CloudAI kullanılarak tasarlanmış ve modern dark UI uygulanmıştır
+
+---
+
+### Araç Kiralama Süreci
+
+Sistem, kullanıcı deneyimini artırmak amacıyla çok adımlı (step-by-step) bir rezervasyon yapısı ile tasarlanmıştır.
+
+1. Tarih & Şube Seçimi
+- Kullanıcı alış ve teslim şubesini seçer
+- Araç kiralama tarih aralığı belirlenir
+- Flatpickr kütüphanesi kullanılarak modern takvim arayüzü sunulur
+- Daha önce kiralanmış (dolu) günler otomatik olarak pasif hale getirilir
+- Kullanıcı, dolu olan tarihlerde seçim yapamaz
+
+2. Saat ve Süre Belirleme
+- Alış ve teslim saatleri seçilir
+- Gün bazlı kiralama süresi otomatik hesaplanır
+- Günlük fiyat üzerinden toplam ücret anlık olarak hesaplanır
+
+3. Kişisel Bilgiler
+- Kullanıcıdan gerekli bilgiler alınır
+- (Ad, soyad, telefon, email, ehliyet vb.)
+
+4. Rezervasyon Oluşturma
+- Kullanıcı rezervasyonu tamamlar
+- Sistem rezervasyonu “Onay Bekliyor” durumuna alır
+
+5. Admin Onay Süreci
+- Admin panel üzerinden rezervasyon incelenir
+- Onay veya reddetme işlemi yapılır
+
+6. Otomatik Mail Gönderimi
+- Rezervasyon onaylandığında kullanıcıya otomatik email gönderilir
+- Mail içeriğinde:
+  - Rezervasyon detayları
+  - Tarih bilgileri
+  - Toplam ücret
+  - Özel indirim kodu
+  - Sonraki adımlar yer alır
+
+Bu yapı sayesinde kullanıcı, hatasız ve yönlendirmeli bir şekilde rezervasyon sürecini tamamlayabilir.
 
 ---
 
@@ -76,6 +120,7 @@ Proje, katmanlı mimari (N-Tier Architecture) ile geliştirilmiş olup performan
 - AutoMapper (Entity ↔ DTO dönüşümleri)
 - FluentValidation (veri doğrulama)
 - MailKit (email gönderimi)
+- Flatpickr (tarih seçimi ve dolu günleri pasif hale getirme)
 
 ### Araçlar
 - EF Core Tools
@@ -143,6 +188,7 @@ Projede Entity ve DTO dönüşümleri AutoMapper ile yapılmaktadır.
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/k1.png">
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/k2.png">
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/k3.png">
+<img src="https://github.com/furkanturkerr/DriveX/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/cartarih.png">
 
 ---
 
@@ -178,7 +224,7 @@ Projede Entity ve DTO dönüşümleri AutoMapper ile yapılmaktadır.
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/carmodellist.png">
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/carcategory.png">
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/branchlist.png">
-<img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/rezervationlsit.png">
+<img src="https://github.com/furkanturkerr/DriveX/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/rentallistnew.png">
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/updaterezervation.png">
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/messagelist.png">
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/messagedetail.png">
