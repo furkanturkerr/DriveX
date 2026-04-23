@@ -33,7 +33,7 @@ Proje, katmanlı mimari (N-Tier Architecture) ile geliştirilmiş olup performan
 - Gün bazlı otomatik fiyat hesaplama
 - Blog sistemi
 - Responsive kullanıcı arayüzü
-- Özel 404 sayfası
+- 404 sayfası
 
 ---
 
