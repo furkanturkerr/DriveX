@@ -1,4 +1,4 @@
-<h1 align="center">Rentaly</h1>
+<h1 align="center">DriveX</h1>
 
 <p align="center">
   ASP.NET Core ile geliştirilmiş, yapay zeka destekli modern araç kiralama platformu.
