@@ -30,4 +30,8 @@
       <ProjectReference Include="..\Rentaly.BusinessLayer\Rentaly.BusinessLayer.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="wwwroot\İmages\.DS_Store" />
+    </ItemGroup>
+
 </Project>

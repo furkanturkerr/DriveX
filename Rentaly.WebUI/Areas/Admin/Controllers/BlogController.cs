@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Rentaly.BusinessLayer.Abstract;
+using Rentaly.BusinessLayer.ValidationRules.BlogValidations;
 using Rentaly.DtoLayer.BlogDtos;
 
 namespace RentalyNew.Areas.Admin.Controllers;
@@ -41,8 +42,25 @@ public class BlogController : Controller
     [HttpPost]
     public async Task<IActionResult> CreateBlog(CreateBlogDto dto)
     {
+        var validator = new CreateBlogValidator();
+        var result = validator.Validate(dto);
+
+        if (!result.IsValid)
+        {
+            var categories = await _categoryService.TGetListAsync();
+            ViewBag.category = new SelectList(categories, "CategoryId", "CategoryName");
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+            }
+
+            return View(dto);
+        }
+
         dto.DateCreated = DateTime.Now;
         await _blogService.TInsertAsync(dto);
+
         return RedirectToAction("BlogList");
     }
     
@@ -65,6 +83,27 @@ public class BlogController : Controller
     [HttpPost]
     public async Task<IActionResult> UpdateBlog(UpdateBlogDto dto)
     {
+        var validator = new UpdateBlogValidator();
+        var result = validator.Validate(dto);
+
+        if (!result.IsValid)
+        {
+            var categories = await _categoryService.TGetListAsync();
+            ViewBag.category = new SelectList(
+                categories,
+                "CategoryId",
+                "CategoryName",
+                dto.CategoryId
+            );
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+            }
+
+            return View(dto);
+        }
+
         await _blogService.TUpdateAsync(dto);
         return RedirectToAction("BlogList");
     }
