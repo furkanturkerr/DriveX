@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/AAmikIsyM1GRMcaRxphNYOcyIiU/AOaTpNBP6WGL94=",
+  "Hash": "cfxrLqHogba0+qIk0KrxwG8eG0YCckmfUhbiRHb7olo=",
   "Source": "Rentaly.WebUI",
   "BasePath": "_content/Rentaly.WebUI",
   "Mode": "Default",
@@ -55,12 +55,12 @@
       "OriginalItemSpec": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/obj/Debug/net8.0/scopedcss/projectbundle/Rentaly.WebUI.bundle.scp.css"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/1.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/1.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/1.png",
+      "RelativePath": "Admin/Images/1.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -71,15 +71,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/1.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/1.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/10.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/10.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/10.png",
+      "RelativePath": "Admin/Images/10.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -90,15 +90,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/10.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/10.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/2.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/2.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/2.png",
+      "RelativePath": "Admin/Images/2.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -109,15 +109,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/2.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/2.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/3.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/3.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/3.png",
+      "RelativePath": "Admin/Images/3.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -128,15 +128,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/3.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/3.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/4.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/4.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/4.png",
+      "RelativePath": "Admin/Images/4.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -147,15 +147,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/4.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/4.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/5.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/5.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/5.png",
+      "RelativePath": "Admin/Images/5.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -166,15 +166,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/5.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/5.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/6.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/6.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/6.png",
+      "RelativePath": "Admin/Images/6.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -185,15 +185,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/6.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/6.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/7.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/7.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/7.png",
+      "RelativePath": "Admin/Images/7.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -204,15 +204,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/7.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/7.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/8.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/8.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/8.png",
+      "RelativePath": "Admin/Images/8.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -223,15 +223,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/8.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/8.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/a1.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/a1.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/a1.png",
+      "RelativePath": "Admin/Images/a1.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -242,15 +242,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/a1.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/a1.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/a2.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/a2.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/a2.png",
+      "RelativePath": "Admin/Images/a2.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -261,15 +261,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/a2.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/a2.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/aboutlist.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/aboutlist.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/aboutlist.png",
+      "RelativePath": "Admin/Images/aboutlist.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -280,15 +280,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/aboutlist.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/aboutlist.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/bannerlist.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/bannerlist.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/bannerlist.png",
+      "RelativePath": "Admin/Images/bannerlist.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -299,15 +299,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/bannerlist.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/bannerlist.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/bloglist.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/bloglist.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/bloglist.png",
+      "RelativePath": "Admin/Images/bloglist.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -318,15 +318,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/bloglist.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/bloglist.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/branchlist.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/branchlist.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/branchlist.png",
+      "RelativePath": "Admin/Images/branchlist.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -337,15 +337,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/branchlist.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/branchlist.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/brandlist.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/brandlist.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/brandlist.png",
+      "RelativePath": "Admin/Images/brandlist.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -356,15 +356,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/brandlist.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/brandlist.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/carlist.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/carlist.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/carlist.png",
+      "RelativePath": "Admin/Images/carlist.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -375,15 +375,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/carlist.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/carlist.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/carmodellist.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/carmodellist.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/carmodellist.png",
+      "RelativePath": "Admin/Images/carmodellist.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -394,15 +394,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/carmodellist.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/carmodellist.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/contact.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/contact.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/contact.png",
+      "RelativePath": "Admin/Images/contact.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -413,15 +413,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/contact.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/contact.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/contactlist.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/contactlist.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/contactlist.png",
+      "RelativePath": "Admin/Images/contactlist.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -432,15 +432,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/contactlist.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/contactlist.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/createblog.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/createblog.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/createblog.png",
+      "RelativePath": "Admin/Images/createblog.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -451,15 +451,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/createblog.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/createblog.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/createcar.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/createcar.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/createcar.png",
+      "RelativePath": "Admin/Images/createcar.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -470,15 +470,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/createcar.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/createcar.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/faqlist.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/e1.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/faqlist.png",
+      "RelativePath": "Admin/Images/e1.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -489,15 +489,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/faqlist.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/e1.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/footerlist.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/faqlist.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/footerlist.png",
+      "RelativePath": "Admin/Images/faqlist.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -508,15 +508,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/footerlist.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/faqlist.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/messageai.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/footerlist.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/messageai.png",
+      "RelativePath": "Admin/Images/footerlist.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -527,15 +527,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/messageai.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/footerlist.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/messagedetail.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/k1.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/messagedetail.png",
+      "RelativePath": "Admin/Images/k1.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -546,15 +546,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/messagedetail.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/k1.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/messagelist.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/k2.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/messagelist.png",
+      "RelativePath": "Admin/Images/k2.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -565,15 +565,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/messagelist.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/k2.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/rezervasyonmail.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/k3.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/rezervasyonmail.png",
+      "RelativePath": "Admin/Images/k3.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -584,15 +584,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/rezervasyonmail.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/k3.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/rezervationlsit.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/messageai.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/rezervationlsit.png",
+      "RelativePath": "Admin/Images/messageai.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -603,15 +603,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/rezervationlsit.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/messageai.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/servicelist.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/messagedetail.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/servicelist.png",
+      "RelativePath": "Admin/Images/messagedetail.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -622,15 +622,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/servicelist.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/messagedetail.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/testimoniallist.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/messagelist.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/testimoniallist.png",
+      "RelativePath": "Admin/Images/messagelist.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -641,15 +641,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/testimoniallist.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/messagelist.png"
     },
     {
-      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/İmages/updaterezervation.png",
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/rezervasyonmail.png",
       "SourceId": "Rentaly.WebUI",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
       "BasePath": "_content/Rentaly.WebUI",
-      "RelativePath": "Admin/İmages/updaterezervation.png",
+      "RelativePath": "Admin/Images/rezervasyonmail.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -660,7 +660,83 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/Admin/İmages/updaterezervation.png"
+      "OriginalItemSpec": "wwwroot/Admin/Images/rezervasyonmail.png"
+    },
+    {
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/rezervationlsit.png",
+      "SourceId": "Rentaly.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
+      "BasePath": "_content/Rentaly.WebUI",
+      "RelativePath": "Admin/Images/rezervationlsit.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Admin/Images/rezervationlsit.png"
+    },
+    {
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/servicelist.png",
+      "SourceId": "Rentaly.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
+      "BasePath": "_content/Rentaly.WebUI",
+      "RelativePath": "Admin/Images/servicelist.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Admin/Images/servicelist.png"
+    },
+    {
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/testimoniallist.png",
+      "SourceId": "Rentaly.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
+      "BasePath": "_content/Rentaly.WebUI",
+      "RelativePath": "Admin/Images/testimoniallist.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Admin/Images/testimoniallist.png"
+    },
+    {
+      "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/Images/updaterezervation.png",
+      "SourceId": "Rentaly.WebUI",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/",
+      "BasePath": "_content/Rentaly.WebUI",
+      "RelativePath": "Admin/Images/updaterezervation.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Admin/Images/updaterezervation.png"
     },
     {
       "Identity": "/Users/furkanturker/RiderProjects/RentalyNew/Rentaly.WebUI/wwwroot/Admin/rentaly_admin_v2.html",

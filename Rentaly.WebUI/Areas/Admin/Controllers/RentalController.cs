@@ -16,7 +16,7 @@ public class RentalController : Controller
 
     public async Task<IActionResult> RentalList()
     {
-        var values = await _rentalService.TGetListAsync();
+        var values = await _rentalService.GetRentalWithDetailsAsync();
         return View(values);
     }
 

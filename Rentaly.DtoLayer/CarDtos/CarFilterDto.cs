@@ -9,5 +9,6 @@ public class CarFilterDto
     public decimal? MinPrice { get; set; }
     public decimal? MaxPrice { get; set; }
     public string? FuelType { get; set; }
-
+    public DateTime? PickupDate   { get; set; }
+    public DateTime? DropoffDate  { get; set; }
 }

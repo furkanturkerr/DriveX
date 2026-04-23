@@ -101,6 +101,10 @@ public class GeneralMapping : Profile
         CreateMap<Rental, ResultRentalDto>()
             .ForMember(dest => dest.BrandName,
                 opt => opt.MapFrom(src => src.Car.CarModel.Brand.BrandName))
+            .ForMember(dest => dest.ModelName,
+                opt => opt.MapFrom(src => src.Car.CarModel.ModelName))
+            .ForMember(dest => dest.PlateNumber,
+                opt => opt.MapFrom(src => src.Car.PlateNumber))
             .ForMember(dest => dest.ImageUrl,
                 opt => opt.MapFrom(src => src.Car.ImageUrl))
             .ForMember(dest => dest.PickupBranchName,
@@ -109,6 +113,7 @@ public class GeneralMapping : Profile
                 opt => opt.MapFrom(src => src.DropoffBranch.BranchName))
             .ForMember(dest => dest.Status,
                 opt => opt.MapFrom(src => src.Status.ToString()));
+        
         
         CreateMap<CarModel, ResultCarModelDto>().ReverseMap();
         CreateMap<CarModel, UpdateCarModelDto>().ReverseMap();

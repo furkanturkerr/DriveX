@@ -19,7 +19,6 @@ public class ResultCarDto
     public string BrandName { get; set; }
     public string CategoryName { get; set; }
     public string FuelType { get; set; }
-    public decimal DepositAmount { get; set; }
     public bool IsAvailable { get; set; }
     public bool IsActive { get; set; }
 }

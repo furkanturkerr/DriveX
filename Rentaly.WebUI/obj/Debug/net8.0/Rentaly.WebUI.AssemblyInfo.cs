@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rentaly.WebUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+348470c68af0903759c43fd0db2bf138f65a8c1a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6c5cdd01b78483127771e0830adc65d6232f76c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rentaly.WebUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rentaly.WebUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

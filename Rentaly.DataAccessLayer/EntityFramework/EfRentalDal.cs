@@ -49,12 +49,48 @@ public class EfRentalDal : GenericRepository<Rental>, IRentalDal
 
         await _context.SaveChangesAsync();
     }
+    
+    public async Task<bool> IsCarAvailableForDatesAsync(int carId, DateTime pickupDate, DateTime dropoffDate)
+    {
+        return !await _context.Rentals
+            .Where(x => x.CarId == carId
+                        && x.Status != RentalStatus.Reddedildi
+                        && x.Status != RentalStatus.Iptal
+                        && x.Status != RentalStatus.Tamamlandi
+                        && x.PickupDate < dropoffDate
+                        && x.DropoffDate > pickupDate)
+            .AnyAsync();
+    }
+    
+    public async Task<List<Rental>> GetRentalsByCarIdAsync(int carId)
+    {
+        return await _context.Rentals
+            .Where(r => r.CarId == carId)
+            .ToListAsync();
+    }
+    
+    public async Task<List<int>> GetUnavailableCarIdsAsync(DateTime pickupDate, DateTime dropoffDate)
+    {
+        return await _context.Rentals
+            .Where(x =>
+                x.Status != RentalStatus.Reddedildi &&
+                x.Status != RentalStatus.Iptal &&
+                x.Status != RentalStatus.Tamamlandi &&
+                x.PickupDate  < dropoffDate &&
+                x.DropoffDate > pickupDate)
+            .Select(x => x.CarId)
+            .Distinct()
+            .ToListAsync();
+    }
 
-    public async Task<Rental> GetRentalWithDetailsAsync(int id)
+    public async Task<List<Rental>> GetRentalWithDetailsAsync()
     {
         return await _context.Rentals
             .Include(x => x.Car)
+            .ThenInclude(x => x.CarModel)
             .ThenInclude(x => x.Brand)
-            .FirstOrDefaultAsync(x => x.RentalId == id);
+            .Include(x => x.PickupBranch)
+            .Include(x => x.DropoffBranch)
+            .ToListAsync();
     }
 }

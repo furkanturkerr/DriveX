@@ -18,18 +18,42 @@ public class RentalController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Create(int carId)
+    public async Task<IActionResult> Create(int carId, DateTime? pickupDate, DateTime? dropoffDate)
     {
-        var cars     = await _carService.TCarsWithCategoryAsync();
-        var car      = cars.FirstOrDefault(x => x.CarId == carId);
+        var cars = await _carService.TCarsWithCategoryAsync();
+        var car  = cars.FirstOrDefault(x => x.CarId == carId);
 
         if (car == null)
             return RedirectToAction("CarList", "Car");
 
+        // Tarih bazlı müsaitlik kontrolü
+        if (pickupDate.HasValue && dropoffDate.HasValue)
+        {
+            var unavailable = await _rentalService
+                .TGetUnavailableCarIdsAsync(pickupDate.Value, dropoffDate.Value);
+
+            if (unavailable.Contains(carId))
+                return RedirectToAction("CarList", "Car");
+        }
+
         ViewBag.Car      = car;
         ViewBag.Branches = await _branchService.TGetListAsync();
 
-        return View(new CreateRentalDto { CarId = carId });
+        var dto = new CreateRentalDto
+        {
+            CarId       = carId,
+            PickupDate  = pickupDate ?? DateTime.Today,
+            DropoffDate = dropoffDate ?? DateTime.Today.AddDays(1)
+        };
+
+        return View(dto);
+    }
+    
+    [HttpGet]
+    public async Task<IActionResult> GetBookedDates(int carId)
+    {
+        var ranges = await _rentalService.TGetBookedDatesAsync(carId);
+        return Json(ranges);
     }
 
     [HttpPost]

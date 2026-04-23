@@ -65,6 +65,34 @@ public class RentalManager : IRentalService
 
         await _rentalDal.InsertAsync(entity);
     }
+    
+    public async Task<List<int>> TGetUnavailableCarIdsAsync(DateTime pickupDate, DateTime dropoffDate)
+    {
+      return await _rentalDal.GetUnavailableCarIdsAsync(pickupDate, dropoffDate);
+    }
+
+    public async Task<List<ResultRentalDto>> GetRentalWithDetailsAsync()
+    {
+      var values = await _rentalDal.GetRentalWithDetailsAsync();
+      return _mapper.Map<List<ResultRentalDto>>(values);
+    }
+    
+    public async Task<List<object>> TGetBookedDatesAsync(int carId)
+    {
+      var rentals = await _rentalDal.GetRentalsByCarIdAsync(carId);
+
+      return rentals
+        .Where(r =>
+          r.Status != RentalStatus.Reddedildi &&
+          r.Status != RentalStatus.Iptal &&
+          r.Status != RentalStatus.Tamamlandi)
+        .Select(r => (object)new
+        {
+          start = r.PickupDate.ToString("yyyy-MM-dd"),
+          end   = r.DropoffDate.ToString("yyyy-MM-dd")
+        })
+        .ToList();
+    }
 
     public async Task TUpdateAsync(UpdateRentalDto dto)
     {

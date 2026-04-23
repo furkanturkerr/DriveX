@@ -26,8 +26,11 @@ public class ResultRentalDto
     public int     TotalDays    { get; set; }
     public decimal DailyPrice   { get; set; }
     public decimal TotalPrice   { get; set; }
-    public decimal DepositAmount { get; set; }
 
+    public string PlateNumber { get; set; }
+    public string ModelName { get; set; }
+    
+    
     // Durum
     public string    Status     { get; set; }
     public DateTime  CreatedAt  { get; set; }
