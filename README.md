@@ -226,8 +226,8 @@ Projede Entity ve DTO dönüşümleri AutoMapper ile yapılmaktadır.
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/branchlist.png">
 <img src="https://github.com/furkanturkerr/DriveX/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/rentallistnew.png">
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/updaterezervation.png">
-<img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/messagelist.png">
-<img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/messagedetail.png">
+<img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/messagelistnew.png">
+<img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/messagedetailnew.png">
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/bloglist.png">
 <img src="https://github.com/furkanturkerr/Rentaly/blob/main/Rentaly.WebUI/wwwroot/Admin/Images/createblog.png">
 
